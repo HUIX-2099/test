@@ -7,6 +7,7 @@ import LoadingScreen from "@/components/loading/LoadingScreen";
 import { ScrollProgress } from "@/components/common/ScrollReveal";
 import SmoothScroll from "@/components/common/SmoothScroll";
 import PenguinMascot from "@/components/common/PenguinMascot";
+import IdlePenguins from "@/components/common/IdlePenguins";
 import ServiceWorkerRegister from "@/components/common/ServiceWorkerRegister";
 
 export const viewport: Viewport = {
@@ -145,6 +146,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
             <PenguinMascot position="bottom-right" />
+            <IdlePenguins />
           </LoadingScreen>
         </ThemeProvider>
       </body>

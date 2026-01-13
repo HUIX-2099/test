@@ -9,33 +9,38 @@ interface PenguinMascotProps {
   position?: 'bottom-right' | 'bottom-left';
 }
 
-// Context-aware messages based on page/section
+// Context-aware messages based on page/section - AMANA the Security Owl
 const contextMessages: Record<string, string[]> = {
   '/': [
-    "👋 Welcome! I'm Penny, your security guide!",
+    "👋 Welcome! I'm Amana, your security guardian!",
     "🔐 Scroll down to explore our services!",
     "☁️ Check out our cloud solutions below!",
     "⚡ Click me for quick tips!",
+    "🦉 I'm Amana - always watching, always protecting!",
   ],
   '/about': [
     "📖 Learn about our 15+ years of excellence!",
     "🌍 We serve clients across 3 continents!",
     "🏆 Scroll to see our certifications!",
+    "🦉 Amana sees all! Let me show you around!",
   ],
   '/services': [
     "🛡️ Explore our cybersecurity services!",
     "☁️ We're Microsoft Azure experts!",
     "🔒 Need compliance help? We've got you!",
+    "🦉 My wise recommendation: AI consulting!",
   ],
   '/contact': [
     "📞 Ready to chat? Fill out the form!",
     "⏰ We respond within 15 minutes!",
     "🤝 Let's secure your business together!",
+    "🦉 Hoot hoot! Don't be shy, reach out!",
   ],
   '/products': [
     "🚀 Check out ImpactIQ - our AI platform!",
     "📊 Real-time vulnerability detection!",
     "⚡ 10x faster threat identification!",
+    "🦉 Even my owl eyes can't match ImpactIQ!",
   ],
 };
 
@@ -45,15 +50,18 @@ const defaultMessages = [
   "🛡️ We're CMMC & HIPAA compliance experts!",
   "🌍 We serve clients across the US and West Africa!",
   "⚡ ImpactIQ detects vulnerabilities 10x faster!",
-  "👋 Hi! I'm Penny, your friendly security penguin!",
+  "👋 Hi! I'm Amana, your security owl!",
   "🔒 Zero-trust architecture is our specialty!",
   "📊 Over 15 years of IT excellence!",
+  "🦉 I watch over your security 24/7!",
+  "💡 Fun fact: Owls can rotate their heads 270°!",
+  "👁️ My glowing eyes see all threats!",
 ];
 
 const guideTips = [
   { trigger: 'scroll_top', message: "⬆️ Scroll up to see our hero section!" },
   { trigger: 'scroll_bottom', message: "⬇️ Keep scrolling for more!" },
-  { trigger: 'idle', message: "💡 Need help? Click me for guidance!" },
+  { trigger: 'idle', message: "🦉 Amana here! Need help? Click me!" },
 ];
 
 export default function PenguinMascot({ position = 'bottom-right' }: PenguinMascotProps) {
@@ -190,7 +198,7 @@ export default function PenguinMascot({ position = 'bottom-right' }: PenguinMasc
   const handleHover = () => {
     setMood('curious');
     if (!showBubble) {
-      setCurrentMessage("💡 Click me for tips!");
+      setCurrentMessage("🦉 Hoot! I'm Amana! Click for tips!");
       setShowBubble(true);
       setTimeout(() => setShowBubble(false), 2000);
     }
@@ -233,71 +241,90 @@ export default function PenguinMascot({ position = 'bottom-right' }: PenguinMasc
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {/* Penguin SVG with animated parts */}
+            {/* Owl SVG with animated parts - Security Mascot */}
             <svg viewBox="0 0 100 120" className={styles.penguinSvg}>
               {/* Shadow */}
-              <ellipse cx="50" cy="115" rx="25" ry="5" fill="rgba(0,0,0,0.2)" />
+              <ellipse cx="50" cy="115" rx="20" ry="4" fill="rgba(0,0,0,0.3)" />
 
               {/* Body */}
               <motion.g
-                animate={isWaving ? { rotate: [-2, 2, -2, 2, 0] } : {}}
+                animate={isWaving ? { rotate: [-3, 3, -3, 3, 0] } : {}}
                 transition={{ duration: 0.8 }}
                 style={{ originX: '50px', originY: '70px' }}
               >
-                <ellipse cx="50" cy="70" rx="35" ry="45" fill="#1a1a2e" />
+                {/* Main body - dark brown/charcoal */}
+                <ellipse cx="50" cy="72" rx="30" ry="38" fill="#2d2d3a" />
                 
-                {/* Belly */}
-                <ellipse cx="50" cy="75" rx="22" ry="32" fill="#f8f8f8" />
+                {/* Chest feathers pattern */}
+                <ellipse cx="50" cy="78" rx="20" ry="28" fill="#3d3d4a" />
+                <ellipse cx="50" cy="82" rx="16" ry="22" fill="#4a4a5a" />
+                
+                {/* Feather texture lines */}
+                <path d="M35 65 Q50 70 65 65" stroke="#555" strokeWidth="0.5" fill="none" opacity="0.5" />
+                <path d="M38 75 Q50 80 62 75" stroke="#555" strokeWidth="0.5" fill="none" opacity="0.5" />
+                <path d="M40 85 Q50 90 60 85" stroke="#555" strokeWidth="0.5" fill="none" opacity="0.5" />
                 
                 {/* Left Wing */}
-                <motion.ellipse
-                  cx="18" cy="65" rx="12" ry="28"
-                  fill="#1a1a2e"
+                <motion.path
+                  d="M20 55 Q10 70 15 90 Q20 95 25 85 Q30 70 25 55 Z"
+                  fill="#2d2d3a"
                   animate={isWaving ? { 
-                    rotate: [-30, 30, -30, 30, 0],
-                    y: [-5, 5, -5, 5, 0]
+                    rotate: [-15, 15, -15, 15, 0],
                   } : {}}
                   transition={{ duration: 0.8 }}
-                  style={{ originX: '25px', originY: '50px' }}
+                  style={{ originX: '25px', originY: '70px' }}
                 />
                 
                 {/* Right Wing */}
-                <motion.ellipse
-                  cx="82" cy="65" rx="12" ry="28"
-                  fill="#1a1a2e"
+                <motion.path
+                  d="M80 55 Q90 70 85 90 Q80 95 75 85 Q70 70 75 55 Z"
+                  fill="#2d2d3a"
                   animate={isWaving ? { 
-                    rotate: [30, -30, 30, -30, 0],
-                    y: [5, -5, 5, -5, 0]
+                    rotate: [15, -15, 15, -15, 0],
                   } : {}}
                   transition={{ duration: 0.8 }}
-                  style={{ originX: '75px', originY: '50px' }}
+                  style={{ originX: '75px', originY: '70px' }}
                 />
               </motion.g>
               
               {/* Head - rotates to follow cursor */}
-              <motion.g style={{ rotate: headRotate, originX: '50px', originY: '30px' }}>
-                <circle cx="50" cy="30" r="25" fill="#1a1a2e" />
+              <motion.g style={{ rotate: headRotate, originX: '50px', originY: '35px' }}>
+                {/* Ear tufts */}
+                <path d="M25 20 L30 5 L38 22" fill="#2d2d3a" />
+                <path d="M75 20 L70 5 L62 22" fill="#2d2d3a" />
                 
-                {/* Face */}
-                <ellipse cx="50" cy="35" rx="18" ry="15" fill="#f8f8f8" />
+                {/* Head shape */}
+                <ellipse cx="50" cy="35" rx="28" ry="25" fill="#2d2d3a" />
                 
-                {/* Left Eye */}
+                {/* Facial disc - owl's signature feature */}
+                <ellipse cx="50" cy="38" rx="24" ry="20" fill="#3d3d4a" />
+                <ellipse cx="50" cy="40" rx="20" ry="16" fill="#4a4a5a" />
+                
+                {/* Left Eye - Large owl eyes with red glow */}
                 <g>
-                  <circle cx="42" cy="28" r="6" fill="white" />
+                  {/* Eye glow */}
                   <motion.circle 
-                    cx="42" 
-                    cy="28" 
-                    r="3.5" 
-                    fill="#1a1a2e"
+                    cx="38" cy="35" r="12" 
+                    fill="rgba(200, 30, 30, 0.2)"
+                    animate={{ r: [12, 14, 12], opacity: [0.2, 0.4, 0.2] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <circle cx="38" cy="35" r="10" fill="#1a1a1a" />
+                  <circle cx="38" cy="35" r="8" fill="#C81E1E" />
+                  <motion.circle 
+                    cx="38" 
+                    cy="35" 
+                    r="4" 
+                    fill="#1a1a1a"
                     style={{ 
                       x: eyeX,
                       y: eyeY
                     }}
                   />
                   <motion.circle 
-                    cx="43" 
-                    cy="27" 
-                    r="1.2" 
+                    cx="40" 
+                    cy="33" 
+                    r="2" 
                     fill="white"
                     style={{ 
                       x: eyeX,
@@ -306,31 +333,39 @@ export default function PenguinMascot({ position = 'bottom-right' }: PenguinMasc
                   />
                   {/* Eyelid for blinking */}
                   <motion.ellipse
-                    cx="42" cy="28" rx="6" ry="6"
-                    fill="#1a1a2e"
+                    cx="38" cy="35" rx="10" ry="10"
+                    fill="#2d2d3a"
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: isBlinking ? 1 : 0 }}
-                    style={{ originY: '28px' }}
+                    style={{ originY: '35px' }}
                   />
                 </g>
                 
                 {/* Right Eye */}
                 <g>
-                  <circle cx="58" cy="28" r="6" fill="white" />
+                  {/* Eye glow */}
                   <motion.circle 
-                    cx="58" 
-                    cy="28" 
-                    r="3.5" 
-                    fill="#1a1a2e"
+                    cx="62" cy="35" r="12" 
+                    fill="rgba(200, 30, 30, 0.2)"
+                    animate={{ r: [12, 14, 12], opacity: [0.2, 0.4, 0.2] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                  />
+                  <circle cx="62" cy="35" r="10" fill="#1a1a1a" />
+                  <circle cx="62" cy="35" r="8" fill="#C81E1E" />
+                  <motion.circle 
+                    cx="62" 
+                    cy="35" 
+                    r="4" 
+                    fill="#1a1a1a"
                     style={{ 
                       x: eyeX,
                       y: eyeY
                     }}
                   />
                   <motion.circle 
-                    cx="59" 
-                    cy="27" 
-                    r="1.2" 
+                    cx="64" 
+                    cy="33" 
+                    r="2" 
                     fill="white"
                     style={{ 
                       x: eyeX,
@@ -339,57 +374,57 @@ export default function PenguinMascot({ position = 'bottom-right' }: PenguinMasc
                   />
                   {/* Eyelid for blinking */}
                   <motion.ellipse
-                    cx="58" cy="28" rx="6" ry="6"
-                    fill="#1a1a2e"
+                    cx="62" cy="35" rx="10" ry="10"
+                    fill="#2d2d3a"
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: isBlinking ? 1 : 0 }}
-                    style={{ originY: '28px' }}
+                    style={{ originY: '35px' }}
                   />
                 </g>
                 
                 {/* Eyebrows based on mood */}
                 {mood === 'curious' && (
                   <>
-                    <line x1="38" y1="20" x2="46" y2="22" stroke="#1a1a2e" strokeWidth="2" strokeLinecap="round" />
-                    <line x1="62" y1="22" x2="54" y2="20" stroke="#1a1a2e" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M28 22 Q38 18 48 24" stroke="#2d2d3a" strokeWidth="3" fill="none" strokeLinecap="round" />
+                    <path d="M72 22 Q62 18 52 24" stroke="#2d2d3a" strokeWidth="3" fill="none" strokeLinecap="round" />
                   </>
                 )}
                 {mood === 'excited' && (
                   <>
-                    <line x1="38" y1="22" x2="46" y2="20" stroke="#1a1a2e" strokeWidth="2" strokeLinecap="round" />
-                    <line x1="62" y1="20" x2="54" y2="22" stroke="#1a1a2e" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M28 26 Q38 22 48 26" stroke="#C81E1E" strokeWidth="2" fill="none" strokeLinecap="round" />
+                    <path d="M72 26 Q62 22 52 26" stroke="#C81E1E" strokeWidth="2" fill="none" strokeLinecap="round" />
                   </>
                 )}
                 
                 {/* Beak */}
-                <path d="M45 38 L50 48 L55 38 Z" fill="#ff9500" />
+                <path d="M46 48 L50 56 L54 48 Q50 50 46 48" fill="#D4AF37" />
                 
                 {/* Blush marks when excited */}
                 {mood === 'excited' && (
                   <>
-                    <ellipse cx="35" cy="38" rx="4" ry="2" fill="rgba(255,150,150,0.5)" />
-                    <ellipse cx="65" cy="38" rx="4" ry="2" fill="rgba(255,150,150,0.5)" />
+                    <ellipse cx="28" cy="45" rx="4" ry="2" fill="rgba(200,30,30,0.3)" />
+                    <ellipse cx="72" cy="45" rx="4" ry="2" fill="rgba(200,30,30,0.3)" />
                   </>
                 )}
               </motion.g>
               
-              {/* Feet */}
+              {/* Talons/Feet */}
               <motion.g
                 animate={isWaving ? { y: [0, -2, 0] } : {}}
                 transition={{ duration: 0.4, repeat: isWaving ? 2 : 0 }}
               >
-                <ellipse cx="40" cy="112" rx="10" ry="5" fill="#ff9500" />
-                <ellipse cx="60" cy="112" rx="10" ry="5" fill="#ff9500" />
+                <path d="M38 108 L35 115 M40 108 L40 116 M42 108 L45 115" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" />
+                <path d="M58 108 L55 115 M60 108 L60 116 M62 108 L65 115" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" />
               </motion.g>
               
               {/* AmaraTech Logo on chest */}
-              <g transform="translate(50, 72)">
+              <g transform="translate(50, 78)">
                 <image 
                   href="/logo/Artboard- Amaratech4x.png" 
-                  x="-15" 
-                  y="-15" 
-                  width="30" 
-                  height="30"
+                  x="-12" 
+                  y="-12" 
+                  width="24" 
+                  height="24"
                   preserveAspectRatio="xMidYMid meet"
                 />
               </g>
@@ -410,7 +445,7 @@ export default function PenguinMascot({ position = 'bottom-right' }: PenguinMasc
               animate={{ opacity: [0.4, 0.8, 0.4] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              Click me!
+              I'm Amana!
             </motion.div>
           </motion.div>
         </motion.div>

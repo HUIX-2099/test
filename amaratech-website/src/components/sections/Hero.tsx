@@ -96,7 +96,7 @@ export default function Hero() {
   const [activeService, setActiveService] = useState(0);
   const [matrixColumns, setMatrixColumns] = useState<Array<{chars: string[], left: string, duration: number, delay: number}>>([]);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
 
   const { scrollYProgress } = useScroll({
@@ -144,6 +144,16 @@ export default function Hero() {
       clearInterval(timeInterval);
       clearInterval(serviceInterval);
     };
+  }, []);
+
+  // Auto-play video on mount
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay blocked by browser, show play button
+        setIsPlaying(false);
+      });
+    }
   }, []);
 
   // Video controls

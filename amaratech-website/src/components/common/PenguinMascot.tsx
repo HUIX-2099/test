@@ -382,11 +382,16 @@ export default function PenguinMascot({ position = 'bottom-right' }: PenguinMasc
                 <ellipse cx="60" cy="112" rx="10" ry="5" fill="#ff9500" />
               </motion.g>
               
-              {/* Security badge */}
-              <g>
-                <rect x="43" y="52" width="14" height="12" rx="2" fill="#C81E1E" />
-                <circle cx="50" cy="58" r="3" fill="#ffd700" />
-                <text x="50" y="61" textAnchor="middle" fontSize="4" fill="#1a1a2e" fontWeight="bold">★</text>
+              {/* AmaraTech Logo on chest */}
+              <g transform="translate(50, 72)">
+                <image 
+                  href="/logo/Artboard- Amaratech4x.png" 
+                  x="-15" 
+                  y="-15" 
+                  width="30" 
+                  height="30"
+                  preserveAspectRatio="xMidYMid meet"
+                />
               </g>
             </svg>
 

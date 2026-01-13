@@ -7,6 +7,8 @@
   display: grid;
   place-items: center;
   background: #050505;
+  /* Clip the fixed background to this section only */
+  clip-path: inset(0);
 }
 
 .bg {
@@ -15,12 +17,15 @@
   background-size: cover;
   background-position: center;
   z-index: -2;
+  /* Parallax speed - moves slower than scroll */
+  transform: translateZ(-1px) scale(1.5);
+  transform-origin: center center;
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.7);
   pointer-events: none;
   z-index: -1;
 }

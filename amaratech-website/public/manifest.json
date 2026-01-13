@@ -1,12 +1,46 @@
 {
   "name": "AmaraTech IT Solutions",
   "short_name": "AmaraTech",
-  "description": "Enterprise-grade cybersecurity and IT solutions",
+  "description": "Enterprise-grade cybersecurity, cloud solutions, and IT consulting. Trusted by government agencies and Fortune 500 companies.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#C81E1E",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["business", "security", "technology"],
   "icons": [
+    {
+      "src": "/logo/Artboard- Amaratech4x.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo/Artboard- Amaratech4x.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo/Artboard- Amaratech4x.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo/Artboard- Amaratech4x.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo/Artboard- Amaratech4x.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/logo/Artboard- Amaratech4x.png",
       "sizes": "192x192",
@@ -15,9 +49,42 @@
     },
     {
       "src": "/logo/Artboard- Amaratech4x.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo/Artboard- Amaratech4x.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/other_images/AmaraTech IT Solutions.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "AmaraTech IT Solutions Homepage"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch with our team",
+      "url": "/contact",
+      "icons": [{ "src": "/logo/Artboard- Amaratech4x.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Our Services",
+      "short_name": "Services",
+      "description": "Explore our IT solutions",
+      "url": "/services",
+      "icons": [{ "src": "/logo/Artboard- Amaratech4x.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

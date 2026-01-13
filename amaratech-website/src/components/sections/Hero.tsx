@@ -1,14 +1,34 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { 
   Shield, Globe, Activity, CheckCircle2, Clock, Zap, 
   Server, Lock, Users, Award, TrendingUp, ArrowRight,
-  Building2, Cpu, Brain
+  Building2, Cpu, Brain, Plus, Minus, Play, Pause, Volume2, VolumeX
 } from 'lucide-react';
 import Link from 'next/link';
 import styles from './Hero.module.css';
+
+// FAQ Data
+const faqs = [
+  {
+    question: 'What cybersecurity services do you offer?',
+    answer: 'Comprehensive security including 24/7 threat monitoring, penetration testing, incident response, and compliance consulting (CMMC, HIPAA, SOC 2).'
+  },
+  {
+    question: 'How quickly can you respond to incidents?',
+    answer: 'Our SOC team provides 24/7/365 coverage with an average incident response time of under 15 minutes.'
+  },
+  {
+    question: 'Do you support cloud migrations?',
+    answer: 'Yes, we are Microsoft Azure Gold Partners and AWS Advanced Partners specializing in secure cloud migrations.'
+  },
+  {
+    question: 'What industries do you serve?',
+    answer: 'Healthcare, defense contractors, financial services, government agencies, and enterprises across all sectors.'
+  },
+];
 
 // Key differentiators / value props
 const trustBadges = [
@@ -71,9 +91,13 @@ const matrixChars = '01アイウエオカキクケコサシスセソタチツテ
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [time, setTime] = useState('');
   const [activeService, setActiveService] = useState(0);
   const [matrixColumns, setMatrixColumns] = useState<Array<{chars: string[], left: string, duration: number, delay: number}>>([]);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -121,6 +145,30 @@ export default function Hero() {
       clearInterval(serviceInterval);
     };
   }, []);
+
+  // Video controls
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      const newMuted = !videoRef.current.muted;
+      videoRef.current.muted = newMuted;
+      setIsMuted(newMuted);
+    }
+  };
+
+  const toggleFAQ = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
 
   return (
     <section ref={containerRef} className={styles.hero}>
@@ -248,10 +296,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Main Content */}
+        {/* Main Content - 3 Column Layout */}
         <div className={styles.mainContent}>
           
-          {/* Left - Hero Text */}
+          {/* Left Column - Hero Text */}
           <div className={styles.heroText}>
             <motion.div 
               className={styles.eyebrow}
@@ -280,8 +328,7 @@ export default function Hero() {
               transition={{ delay: 0.4 }}
             >
               AmaraTech delivers enterprise-grade cybersecurity, cloud infrastructure, 
-              and IT consulting. Trusted by government agencies and Fortune 500 companies 
-              across the US and Africa.
+              and IT consulting. Trusted by government agencies and Fortune 500 companies.
             </motion.p>
 
             {/* Key Stats Row */}
@@ -312,10 +359,10 @@ export default function Hero() {
             >
               <Link href="/contact" className={styles.ctaPrimary}>
                 <Zap size={18} />
-                Get Free Security Assessment
+                Get Free Assessment
               </Link>
               <Link href="/services" className={styles.ctaSecondary}>
-                Explore Services
+                Services
                 <ArrowRight size={16} />
               </Link>
             </motion.div>
@@ -328,112 +375,119 @@ export default function Hero() {
               transition={{ delay: 0.8 }}
             >
               <Users size={14} />
-              <span>Trusted by 100+ organizations including government agencies</span>
+              <span>Trusted by 100+ organizations</span>
             </motion.div>
           </div>
 
-          {/* Right - Service Cards */}
-          <div className={styles.serviceShowcase}>
-            <div className={styles.serviceHeader}>
-              <span className={styles.serviceHeaderLabel}>CORE CAPABILITIES</span>
-              <div className={styles.serviceNav}>
-                {coreServices.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`${styles.serviceNavDot} ${activeService === i ? styles.active : ''}`}
-                    onClick={() => setActiveService(i)}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.serviceCards}>
-              {coreServices.map((service, i) => (
-                <motion.div
-                  key={service.code}
-                  className={`${styles.serviceCard} ${activeService === i ? styles.activeCard : ''}`}
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + i * 0.15 }}
-                  onClick={() => setActiveService(i)}
-                  style={{ '--accent-color': service.color } as React.CSSProperties}
-                >
-                  <div className={styles.serviceCardHeader}>
-                    <span className={styles.serviceCode}>[{service.code}]</span>
-                    <h3 className={styles.serviceTitle}>{service.title}</h3>
-                  </div>
-                  
-                  <p className={styles.serviceDesc}>{service.description}</p>
-                  
-                  <div className={styles.serviceStatRow}>
-                    <div className={styles.serviceStat}>
-                      <span className={styles.serviceStatValue} style={{ color: service.color }}>
-                        {service.stat}
-                      </span>
-                      <span className={styles.serviceStatLabel}>{service.statLabel}</span>
-                    </div>
-                    <Link href={service.href} className={styles.serviceLink}>
-                      Learn more <ArrowRight size={12} />
-                    </Link>
-                  </div>
-
-                  {/* Active indicator bar */}
-                  <motion.div 
-                    className={styles.serviceActiveBar}
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: activeService === i ? 1 : 0 }}
-                    style={{ background: service.color }}
-                  />
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Visualization Preview */}
-            <div className={styles.vizPreview}>
-              <div className={styles.vizCircle}>
-                <svg viewBox="0 0 100 100" className={styles.vizSvg}>
-                  <defs>
-                    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#C81E1E" stopOpacity="0.3" />
-                      <stop offset="100%" stopColor="#C81E1E" stopOpacity="0" />
-                    </radialGradient>
-                  </defs>
-                  <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(200,30,30,0.2)" strokeWidth="0.5" strokeDasharray="4 2" />
-                  <circle cx="50" cy="50" r="35" fill="none" stroke="rgba(200,30,30,0.3)" strokeWidth="0.5" />
-                  <circle cx="50" cy="50" r="25" fill="none" stroke="rgba(200,30,30,0.4)" strokeWidth="0.5" />
-                  <circle cx="50" cy="50" r="15" fill="url(#centerGlow)" />
-                  <motion.circle 
-                    cx="50" cy="50" r="8" 
-                    fill="#C81E1E"
-                    animate={{ r: [8, 10, 8], opacity: [0.8, 1, 0.8] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                  {/* Orbiting nodes */}
-                  {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-                    const rad = (angle * Math.PI) / 180;
-                    const x = 50 + 35 * Math.cos(rad);
-                    const y = 50 + 35 * Math.sin(rad);
-                    return (
-                      <motion.circle
-                        key={i}
-                        cx={x}
-                        cy={y}
-                        r="3"
-                        fill={i === 2 ? '#00D1FF' : i === 4 ? '#22C55E' : '#C81E1E'}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.5 + i * 0.1 }}
-                      />
-                    );
-                  })}
-                </svg>
-                <div className={styles.vizLabel}>
-                  <Cpu size={14} />
-                  <span>ACTIVE MONITORING</span>
+          {/* Center Column - Video */}
+          <motion.div 
+            className={styles.videoColumn}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <div className={styles.videoWrapper}>
+              <div className={styles.videoFrame}>
+                <span className={styles.videoLabel}>// AMARATECH_PROMO</span>
+                <div className={styles.videoFrameDots}>
+                  <span />
+                  <span />
+                  <span />
                 </div>
               </div>
+              <div className={styles.videoContainer}>
+                <video
+                  ref={videoRef}
+                  className={styles.video}
+                  poster="/other_images/AmaraTech IT Solutions.png"
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                >
+                  <source src="/videos/AmaraTech .mp4" type="video/mp4" />
+                </video>
+
+                {/* Play Overlay */}
+                {!isPlaying && (
+                  <div className={styles.videoOverlay} onClick={toggleVideo}>
+                    <motion.div 
+                      className={styles.playBtn}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Play size={24} fill="white" />
+                    </motion.div>
+                  </div>
+                )}
+
+                {/* Video Controls */}
+                {isPlaying && (
+                  <div className={styles.videoControls}>
+                    <button onClick={toggleVideo} className={styles.controlBtn}>
+                      <Pause size={14} />
+                    </button>
+                    <button onClick={toggleMute} className={styles.controlBtn}>
+                      {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+            <div className={styles.videoCaption}>
+              <span>About AmaraTech</span>
+            </div>
+          </motion.div>
+
+          {/* Right Column - FAQ */}
+          <motion.div 
+            className={styles.faqColumn}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <div className={styles.faqHeader}>
+              <span className={styles.faqHeaderLabel}>FAQ</span>
+            </div>
+            <div className={styles.faqList}>
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className={`${styles.faqItem} ${openFaqIndex === index ? styles.faqOpen : ''}`}
+                >
+                  <button
+                    className={styles.faqQuestion}
+                    onClick={() => toggleFAQ(index)}
+                    aria-expanded={openFaqIndex === index}
+                  >
+                    <span className={styles.questionText}>{faq.question}</span>
+                    <span className={styles.questionIcon}>
+                      {openFaqIndex === index ? <Minus size={16} /> : <Plus size={16} />}
+                    </span>
+                  </button>
+
+                  <AnimatePresence>
+                    {openFaqIndex === index && (
+                      <motion.div
+                        className={styles.faqAnswer}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <p>{faq.answer}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+            <Link href="/contact" className={styles.faqCta}>
+              More Questions? Contact Us →
+            </Link>
+          </motion.div>
         </div>
 
         {/* Bottom Bar */}

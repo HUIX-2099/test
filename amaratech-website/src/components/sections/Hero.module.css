@@ -9,7 +9,8 @@
   background: linear-gradient(135deg, #050505 0%, #0a0a0a 50%, #050505 100%);
   color: #ffffff;
   overflow: hidden;
-  padding-top: 100px;
+  padding-top: 112px; /* top bar (40px) + navbar (72px) */
+  padding-bottom: 40px;
 }
 
 /* Background Effects */
@@ -202,15 +203,15 @@
 }
 
 /* ============================================
-   MAIN CONTENT
+   MAIN CONTENT - 3 Column Layout
    ============================================ */
 
 .mainContent {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
 }
 
 /* Left - Hero Text */
@@ -388,185 +389,249 @@
 }
 
 /* ============================================
-   RIGHT - SERVICE SHOWCASE
+   CENTER - VIDEO COLUMN
    ============================================ */
 
-.serviceShowcase {
+.videoColumn {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
-.serviceHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.serviceHeaderLabel {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.serviceNav {
-  display: flex;
-  gap: 8px;
-}
-
-.serviceNavDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.serviceNavDot.active {
-  background: #C81E1E;
-  box-shadow: 0 0 12px rgba(200, 30, 30, 0.5);
-}
-
-.serviceCards {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.serviceCard {
+.videoWrapper {
   position: relative;
-  padding: 20px 24px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: 12px;
   overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(200, 30, 30, 0.2);
 }
 
-.serviceCard:hover,
-.serviceCard.activeCard {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--accent-color, rgba(200, 30, 30, 0.3));
-}
-
-.serviceCardHeader {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.serviceCode {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11px;
-  color: var(--accent-color, #C81E1E);
-  opacity: 0.8;
-}
-
-.serviceTitle {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
-}
-
-.serviceDesc {
-  font-size: 13px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 12px 0;
-}
-
-.serviceStatRow {
+.videoFrame {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-}
-
-.serviceStat {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.serviceStatValue {
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.serviceStatLabel {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.serviceLink {
-  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
-  transition: color 0.2s ease;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.serviceLink:hover {
-  color: var(--accent-color, #C81E1E);
-}
-
-.serviceActiveBar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  width: 100%;
-  transform-origin: left;
-}
-
-/* Visualization Preview */
-.vizPreview {
-  display: flex;
-  justify-content: center;
-  margin-top: 16px;
-}
-
-.vizCircle {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  border: 1px solid rgba(200, 30, 30, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle, rgba(200, 30, 30, 0.05) 0%, transparent 70%);
-}
-
-.vizSvg {
-  width: 100%;
-  height: 100%;
-}
-
-.vizLabel {
-  position: absolute;
-  bottom: -30px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.videoLabel {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   color: rgba(255, 255, 255, 0.4);
   letter-spacing: 0.05em;
 }
 
-.vizLabel svg {
+.videoFrameDots {
+  display: flex;
+  gap: 6px;
+}
+
+.videoFrameDots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.videoFrameDots span:first-child {
+  background: #EF4444;
+}
+
+.videoFrameDots span:nth-child(2) {
+  background: #F59E0B;
+}
+
+.videoFrameDots span:nth-child(3) {
+  background: #22C55E;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.videoOverlay:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.playBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(200, 30, 30, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 4px 24px rgba(200, 30, 30, 0.4);
+}
+
+.videoControls {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.controlBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.controlBtn:hover {
+  background: rgba(200, 30, 30, 0.8);
+  border-color: rgba(200, 30, 30, 0.5);
+}
+
+.videoCaption {
+  text-align: center;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   RIGHT - FAQ COLUMN
+   ============================================ */
+
+.faqColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faqHeader {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.faqHeaderLabel {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.faqItem {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+  border-color: rgba(200, 30, 30, 0.2);
+}
+
+.faqItem.faqOpen {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(200, 30, 30, 0.3);
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: #fff;
+}
+
+.questionText {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.questionIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(200, 30, 30, 0.1);
+  border-radius: 4px;
   color: #C81E1E;
+}
+
+.faqAnswer {
+  overflow: hidden;
+}
+
+.faqAnswer p {
+  padding: 0 16px 14px 16px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.faqCta {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(200, 30, 30, 0.1);
+  border: 1px solid rgba(200, 30, 30, 0.2);
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  color: #C81E1E;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.faqCta:hover {
+  background: rgba(200, 30, 30, 0.15);
+  border-color: rgba(200, 30, 30, 0.4);
 }
 
 /* ============================================
@@ -631,13 +696,28 @@
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .mainContent {
-    gap: 40px;
+    gap: 30px;
+  }
+
+  .headline {
+    font-size: clamp(28px, 4vw, 44px);
   }
 
   .statsRow {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .mainContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .faqColumn {
+    display: none;
   }
 
   .trustBadges {
@@ -647,7 +727,7 @@
 
 @media (max-width: 1024px) {
   .hero {
-    padding-top: 80px;
+    padding-top: 120px;
   }
 
   .container {
@@ -656,7 +736,7 @@
 
   .mainContent {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
   .heroText {
@@ -681,19 +761,21 @@
     justify-content: center;
   }
 
-  .serviceShowcase {
-    max-width: 600px;
+  .videoColumn {
+    max-width: 500px;
     margin: 0 auto;
   }
 
-  .vizPreview {
-    display: none;
+  .faqColumn {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding-top: 70px;
+    padding-top: 100px;
     min-height: auto;
   }
 
@@ -740,12 +822,12 @@
     justify-content: center;
   }
 
-  .serviceCards {
-    gap: 10px;
+  .videoColumn {
+    max-width: 100%;
   }
 
-  .serviceCard {
-    padding: 16px;
+  .faqColumn {
+    max-width: 100%;
   }
 
   .bottomBar {
@@ -795,12 +877,12 @@
     font-size: 9px;
   }
 
-  .serviceTitle {
-    font-size: 16px;
+  .questionText {
+    font-size: 12px;
   }
 
-  .serviceDesc {
-    font-size: 12px;
+  .faqAnswer p {
+    font-size: 11px;
   }
 
   .locationBadge,

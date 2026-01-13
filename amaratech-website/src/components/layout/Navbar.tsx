@@ -23,7 +23,12 @@ import {
   ShieldCheck,
   ShieldAlert,
   Usb,
-  Monitor
+  Monitor,
+  Phone,
+  LogIn,
+  TicketPlus,
+  Sparkles,
+  Zap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaMicrosoft, FaWindows, FaApple, FaLinux } from 'react-icons/fa';
@@ -112,6 +117,61 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Top Announcement Bar */}
+      <div className={styles.topBar}>
+        {/* Contact Info & Buttons - Left Side */}
+        <div className={styles.topBarLeft}>
+          <a href="mailto:info@amaratechit.com" className={styles.topBarContact}>
+            <Mail size={14} />
+            <span>info@amaratechit.com</span>
+          </a>
+          <a href="tel:+14108552206" className={styles.topBarContact}>
+            <Phone size={14} />
+            <span>+1 410 855 2206</span>
+          </a>
+        </div>
+
+        {/* Sliding Promo Text - Center */}
+        <div className={styles.promoContainer}>
+          <div className={styles.promoTrack}>
+            <div className={styles.promoSlide}>
+              <Sparkles size={14} className={styles.promoIcon} />
+              <span>Free 2-weeks trial for any of these products:</span>
+              <span className={styles.promoHighlight}>Advanced Email Encryption</span>
+              <span className={styles.promoDivider}>•</span>
+              <span className={styles.promoHighlight}>Cloud 2 Cloud Backup</span>
+              <span className={styles.promoTag}>14-day trial standard</span>
+              <span className={styles.promoDivider}>•</span>
+              <span className={styles.promoHighlight}>DNS Protection</span>
+              <Zap size={14} className={styles.promoIcon} />
+            </div>
+            <div className={styles.promoSlide}>
+              <Sparkles size={14} className={styles.promoIcon} />
+              <span>Free 2-weeks trial for any of these products:</span>
+              <span className={styles.promoHighlight}>Advanced Email Encryption</span>
+              <span className={styles.promoDivider}>•</span>
+              <span className={styles.promoHighlight}>Cloud 2 Cloud Backup</span>
+              <span className={styles.promoTag}>14-day trial standard</span>
+              <span className={styles.promoDivider}>•</span>
+              <span className={styles.promoHighlight}>DNS Protection</span>
+              <Zap size={14} className={styles.promoIcon} />
+            </div>
+          </div>
+        </div>
+
+        {/* Action Buttons - Right Side */}
+        <div className={styles.topBarRight}>
+          <a href="https://login.amaratechit.com" className={styles.topBarBtn}>
+            <LogIn size={14} />
+            <span>Employee Login</span>
+          </a>
+          <a href="https://helpdesk.amaratechit.com" className={styles.topBarBtnPrimary}>
+            <TicketPlus size={14} />
+            <span>Create a Helpdesk Ticket</span>
+          </a>
+        </div>
+      </div>
+
       {/* Main Navigation */}
       <header className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
         <div className={styles.navContainer}>
@@ -282,6 +342,30 @@ export default function Navbar() {
                 Contact
               </Link>
             </nav>
+            {/* Mobile Contact & Actions */}
+            <div className={styles.mobileActions}>
+              <div className={styles.mobileContactRow}>
+                <a href="mailto:info@amaratechit.com" className={styles.mobileContactLink}>
+                  <Mail size={18} />
+                  <span>info@amaratechit.com</span>
+                </a>
+                <a href="tel:+14108552206" className={styles.mobileContactLink}>
+                  <Phone size={18} />
+                  <span>+1 410 855 2206</span>
+                </a>
+              </div>
+              <div className={styles.mobileActionBtns}>
+                <a href="https://login.amaratechit.com" className={styles.mobileActionBtn} onClick={() => setIsMenuOpen(false)}>
+                  <LogIn size={18} />
+                  <span>Employee Login</span>
+                </a>
+                <a href="https://helpdesk.amaratechit.com" className={styles.mobileActionBtnPrimary} onClick={() => setIsMenuOpen(false)}>
+                  <TicketPlus size={18} />
+                  <span>Create Helpdesk Ticket</span>
+                </a>
+              </div>
+            </div>
+
             <div className={styles.mobileCta}>
               <Link href="/contact" className={styles.ctaButton} onClick={() => setIsMenuOpen(false)}>
                 Get Started

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navbar from "@/components/layout/Navbar";
@@ -7,6 +7,15 @@ import LoadingScreen from "@/components/loading/LoadingScreen";
 import { ScrollProgress } from "@/components/common/ScrollReveal";
 import SmoothScroll from "@/components/common/SmoothScroll";
 import PenguinMascot from "@/components/common/PenguinMascot";
+import ServiceWorkerRegister from "@/components/common/ServiceWorkerRegister";
+
+export const viewport: Viewport = {
+  themeColor: "#C81E1E",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
 
 export const metadata: Metadata = {
   title: "AmaraTech IT Solutions | Cybersecurity & Cloud Services",
@@ -112,6 +121,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* PWA Meta Tags */}
+        <meta name="application-name" content="AmaraTech" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="AmaraTech" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-TileColor" content="#C81E1E" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <link rel="apple-touch-icon" href="/logo/Artboard- Amaratech4x.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -119,6 +137,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
+          <ServiceWorkerRegister />
           <LoadingScreen>
             <SmoothScroll />
             <ScrollProgress />

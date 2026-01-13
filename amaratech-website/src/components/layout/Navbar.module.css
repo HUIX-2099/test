@@ -1,10 +1,268 @@
 /* ============================================
+   TOP ANNOUNCEMENT BAR - Sliding Promo
+   ============================================ */
+
+.topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  border-bottom: 1px solid rgba(200, 30, 30, 0.3);
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.topBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(200, 30, 30, 0.5) 20%, 
+    rgba(212, 175, 55, 0.6) 50%, 
+    rgba(200, 30, 30, 0.5) 80%, 
+    transparent 100%
+  );
+}
+
+.topBar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(200, 30, 30, 0.3) 30%, 
+    rgba(200, 30, 30, 0.3) 70%, 
+    transparent 100%
+  );
+}
+
+/* Contact Info - Left Side */
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.topBarContact {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.topBarContact svg {
+  color: #C81E1E;
+  flex-shrink: 0;
+}
+
+.topBarContact:hover {
+  color: #D4AF37;
+}
+
+.topBarContact:hover svg {
+  color: #D4AF37;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
+}
+
+/* Promo Container - Center with Sliding Animation */
+.promoContainer {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  margin: 0 30px;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+.promoTrack {
+  display: flex;
+  width: max-content;
+  animation: slidePromo 30s linear infinite;
+}
+
+@keyframes slidePromo {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.promoSlide {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 50px;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.promoIcon {
+  color: #D4AF37;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.8));
+  }
+  50% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 1));
+  }
+}
+
+.promoHighlight {
+  color: #D4AF37;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  position: relative;
+}
+
+.promoHighlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+}
+
+.promoTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  background: linear-gradient(135deg, rgba(200, 30, 30, 0.3), rgba(200, 30, 30, 0.15));
+  border: 1px solid rgba(200, 30, 30, 0.4);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #ff6b6b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(200, 30, 30, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(200, 30, 30, 0.5);
+  }
+}
+
+.promoDivider {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 8px;
+}
+
+/* Action Buttons - Right Side */
+.topBarRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.topBarBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.topBarBtn svg {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.topBarBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.topBarBtn:hover svg {
+  color: #D4AF37;
+}
+
+.topBarBtnPrimary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #C81E1E, #a01818);
+  border: 1px solid rgba(200, 30, 30, 0.5);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(200, 30, 30, 0.3);
+}
+
+.topBarBtnPrimary svg {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.topBarBtnPrimary:hover {
+  background: linear-gradient(135deg, #d42b2b, #b81c1c);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(200, 30, 30, 0.5);
+}
+
+/* ============================================
    NAVBAR - Clean, Professional Design
    ============================================ */
 
 .navbar {
   position: fixed;
-  top: 0;
+  top: 40px;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -279,7 +537,7 @@
 
 .mobileMenu {
   position: fixed;
-  top: 72px;
+  top: 112px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -316,6 +574,103 @@
 
 .mobileLink svg {
   color: #C81E1E;
+}
+
+/* Mobile Actions Section */
+.mobileActions {
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+}
+
+.mobileContactRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobileContactLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.mobileContactLink svg {
+  color: #C81E1E;
+}
+
+.mobileContactLink:hover {
+  color: #D4AF37;
+}
+
+.mobileContactLink:hover svg {
+  color: #D4AF37;
+}
+
+.mobileActionBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileActionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.mobileActionBtn svg {
+  color: #D4AF37;
+}
+
+.mobileActionBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.mobileActionBtnPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #C81E1E, #a01818);
+  border: 1px solid rgba(200, 30, 30, 0.5);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(200, 30, 30, 0.3);
+}
+
+.mobileActionBtnPrimary svg {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mobileActionBtnPrimary:hover {
+  background: linear-gradient(135deg, #d42b2b, #b81c1c);
+  box-shadow: 0 6px 20px rgba(200, 30, 30, 0.4);
 }
 
 .mobileCta {
@@ -397,6 +752,29 @@
    RESPONSIVE
    ============================================ */
 
+@media (max-width: 1280px) {
+  .topBarContact span {
+    display: none;
+  }
+  
+  .topBarContact {
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+  }
+  
+  .topBarBtn span,
+  .topBarBtnPrimary span {
+    display: none;
+  }
+  
+  .topBarBtn,
+  .topBarBtnPrimary {
+    padding: 8px;
+    border-radius: 6px;
+  }
+}
+
 @media (max-width: 1024px) {
   .desktopNav {
     display: none;
@@ -413,9 +791,45 @@
   .systemStatus {
     display: none;
   }
+  
+  .topBarLeft {
+    gap: 10px;
+  }
+  
+  .topBarRight {
+    gap: 8px;
+  }
+  
+  .promoContainer {
+    margin: 0 15px;
+  }
 }
 
 @media (max-width: 768px) {
+  .topBar {
+    height: 36px;
+    padding: 0 12px;
+  }
+  
+  .topBarLeft,
+  .topBarRight {
+    display: none;
+  }
+  
+  .promoContainer {
+    margin: 0;
+  }
+  
+  .promoSlide {
+    font-size: 11px;
+    gap: 10px;
+    padding: 0 30px;
+  }
+  
+  .navbar {
+    top: 36px;
+  }
+
   .navContainer {
     height: 64px;
     padding: 0 16px;
@@ -431,12 +845,34 @@
   }
 
   .mobileMenu {
-    top: 64px;
-    display: none;
+    top: 100px;
   }
 }
 
 @media (max-width: 480px) {
+  .topBar {
+    height: 32px;
+  }
+  
+  .promoSlide {
+    font-size: 10px;
+    gap: 8px;
+    padding: 0 20px;
+  }
+  
+  .promoTag {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+  
+  .navbar {
+    top: 32px;
+  }
+  
+  .mobileMenu {
+    top: 96px;
+  }
+
   .logoImage {
     height: 24px;
   }

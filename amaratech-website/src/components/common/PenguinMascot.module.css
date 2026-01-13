@@ -1,0 +1,194 @@
+/* ============================================
+   PENGUIN MASCOT - Interactive Smart Guide
+   ============================================ */
+
+.mascotContainer {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.mascotContainer.bottom-right {
+  bottom: 24px;
+  right: 24px;
+}
+
+.mascotContainer.bottom-left {
+  bottom: 24px;
+  left: 24px;
+}
+
+/* ============================================
+   SPEECH BUBBLE
+   ============================================ */
+
+.speechBubble {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 16px;
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 30, 30, 0.3);
+  border-radius: 16px;
+  padding: 14px 18px;
+  max-width: 280px;
+  min-width: 180px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(200, 30, 30, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.speechBubble p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: 'Inter', sans-serif;
+}
+
+.bubbleTail {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid rgba(5, 5, 5, 0.95);
+}
+
+/* ============================================
+   PENGUIN
+   ============================================ */
+
+.penguin {
+  position: relative;
+  cursor: pointer;
+  width: 90px;
+  height: 108px;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
+  transition: filter 0.3s ease;
+}
+
+.penguin:hover {
+  filter: drop-shadow(0 8px 24px rgba(200, 30, 30, 0.35));
+}
+
+.penguinSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ============================================
+   STATUS INDICATOR
+   ============================================ */
+
+.statusIndicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #C81E1E;
+  box-shadow: 0 0 8px currentColor;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* ============================================
+   CLICK HINT
+   ============================================ */
+
+.clickHint {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .mascotContainer.bottom-right {
+    bottom: 90px; /* Above mobile nav */
+    right: 16px;
+  }
+
+  .mascotContainer.bottom-left {
+    bottom: 90px;
+    left: 16px;
+  }
+
+  .penguin {
+    width: 72px;
+    height: 86px;
+  }
+
+  .speechBubble {
+    max-width: 220px;
+    padding: 12px 14px;
+    right: 0;
+    left: auto;
+    transform: none;
+  }
+
+  .bubbleTail {
+    left: auto;
+    right: 30px;
+    transform: none;
+  }
+
+  .speechBubble p {
+    font-size: 12px;
+  }
+
+  .clickHint {
+    display: none;
+  }
+
+  .statusIndicator {
+    width: 8px;
+    height: 8px;
+    top: 6px;
+    right: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .penguin {
+    width: 64px;
+    height: 76px;
+  }
+
+  .speechBubble {
+    max-width: 180px;
+    padding: 10px 12px;
+  }
+}

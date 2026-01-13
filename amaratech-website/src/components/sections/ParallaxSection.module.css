@@ -1,0 +1,88 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  min-height: 520px;
+  display: grid;
+  place-items: center;
+  background: #050505;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  width: min(1100px, calc(100% - 40px));
+  padding: 72px 0;
+  z-index: 2;
+}
+
+.header {
+  max-width: 720px;
+}
+
+.kicker {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 10px;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.05;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+}
+
+.desc {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.55;
+  max-width: 62ch;
+}
+
+.body {
+  margin-top: 26px;
+  display: grid;
+  gap: 14px;
+}
+
+.frame {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .section {
+    min-height: 460px;
+  }
+
+  .content {
+    padding: 56px 0;
+  }
+}
+

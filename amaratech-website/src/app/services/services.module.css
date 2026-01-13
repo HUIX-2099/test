@@ -1,0 +1,422 @@
+/* ============================================
+   SERVICES PAGE - Wireflow Design
+   ============================================ */
+
+/* Wire Background */
+.wireBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Flow Connection Lines */
+.flowLines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flowLine {
+  position: absolute;
+  stroke: #C81E1E;
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 8 4;
+  opacity: 0.4;
+}
+
+/* Stats Bar */
+.statsBar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 24px 40px;
+  margin-bottom: 60px;
+  background: rgba(15, 15, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 30px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.statItem:last-child {
+  border-right: none;
+}
+
+.statValue {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #C81E1E;
+}
+
+.statLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Services Flow Layout */
+.servicesFlow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+/* Service Node */
+.serviceNode {
+  position: relative;
+}
+
+/* Service Card */
+.serviceCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(15, 15, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.serviceCard:hover {
+  border-color: rgba(200, 30, 30, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(200, 30, 30, 0.15);
+}
+
+/* Service Header */
+.serviceHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(200, 30, 30, 0.08) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.serviceIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.serviceInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.serviceCode {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+}
+
+.serviceName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Service Body */
+.serviceBody {
+  flex: 1;
+  padding: 20px;
+}
+
+.serviceDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 16px;
+}
+
+.serviceFeatures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.featureTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.featureTag svg {
+  color: #22C55E;
+}
+
+/* Service Footer */
+.serviceFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.exploreBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #C81E1E;
+  transition: gap 0.2s ease;
+}
+
+.serviceCard:hover .exploreBtn {
+  gap: 12px;
+}
+
+.wireDeco {
+  display: flex;
+  gap: 6px;
+}
+
+.wireRed,
+.wireBlue {
+  width: 30px;
+  height: 2px;
+  border-radius: 1px;
+  animation: wireGlow 2s ease-in-out infinite;
+}
+
+.wireRed {
+  background: linear-gradient(90deg, #C81E1E, transparent);
+}
+
+.wireBlue {
+  background: linear-gradient(90deg, transparent, #00D1FF);
+  animation-delay: 1s;
+}
+
+@keyframes wireGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Flow Hint (Top navigation indicator) */
+.flowHint {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  padding: 16px 24px;
+  background: rgba(15, 15, 20, 0.6);
+  border: 1px solid rgba(200, 30, 30, 0.2);
+  border-radius: 30px;
+  width: fit-content;
+}
+
+.flowHintLine {
+  width: 100px;
+  height: 20px;
+}
+
+.flowHintLine svg {
+  width: 100%;
+  height: 100%;
+}
+
+.flowHintText {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+}
+
+/* Card Tap Indicator */
+.cardTap {
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  z-index: 20;
+}
+
+/* Flow Connections SVG */
+.flowConnectionsSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* CTA Section */
+.ctaSection {
+  position: relative;
+  padding: 48px;
+  background: rgba(15, 15, 20, 0.6);
+  border: 1px solid rgba(200, 30, 30, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.ctaContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.ctaLeft {
+  flex: 1;
+}
+
+.ctaTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 8px 0 12px;
+}
+
+.ctaDesc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  max-width: 500px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .servicesFlow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flowHint {
+    flex-direction: column;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+
+  .flowHintLine {
+    width: 80px;
+  }
+
+  .flowHintText {
+    font-size: 10px;
+  }
+
+  .statsBar {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: space-around;
+  }
+
+  .statItem {
+    padding: 10px 20px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    width: calc(50% - 20px);
+  }
+
+  .statItem:nth-child(3),
+  .statItem:nth-child(4) {
+    border-bottom: none;
+  }
+
+  .statValue {
+    font-size: 24px;
+  }
+
+  .servicesFlow {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    position: relative;
+  }
+
+  .cardTap {
+    top: -12px;
+    right: 15px;
+  }
+
+  .flowConnectionsSvg {
+    display: none;
+  }
+
+  .ctaSection {
+    padding: 30px 24px;
+  }
+
+  .ctaContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .ctaDesc {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .serviceHeader {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .serviceIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .serviceFeatures {
+    gap: 6px;
+  }
+
+  .featureTag {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+}

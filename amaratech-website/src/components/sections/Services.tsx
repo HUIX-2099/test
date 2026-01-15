@@ -135,7 +135,7 @@ export default function Services() {
             </div>
             <div>
               <span className={styles.sectionLabel}>services</span>
-              <h2 className={styles.sectionTitle}>knowledge lab</h2>
+              <h2 className={styles.sectionTitle}>AmaraTech Core Business</h2>
             </div>
           </div>
           <div className={styles.headerRight}>
@@ -234,9 +234,9 @@ export default function Services() {
             </div>
 
             <p className={styles.featuredDesc}>
-              Automatically monitors your infrastructure,
-              identifies threats, and highlights critical
-              security risks.
+              Comprehensive Cloud and Cybersecurity services 
+              for businesses of all sizes worldwide. Our certified 
+              professionals deliver personalized solutions.
             </p>
 
             <div className={styles.featuredList}>

@@ -1,77 +1,95 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Plus, Minus, Shield, Award, Users, Clock, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
 import styles from './FAQ.module.css';
+
+const whyChooseUs = [
+  {
+    index: '01',
+    title: '15+ Years Experience',
+    description: 'Our team has 15+ years of industry experience and multiple certifications.',
+    icon: Award,
+  },
+  {
+    index: '02',
+    title: 'Measurable Outcomes',
+    description: 'We take pride in delivering customized IT solutions that produce measurable outcomes.',
+    icon: Shield,
+  },
+  {
+    index: '03',
+    title: 'Reliable Partnership',
+    description: 'We build a strong and reliable partnership with you to help you achieve your business goals.',
+    icon: Users,
+  },
+  {
+    index: '04',
+    title: 'Certified Expertise',
+    description: 'CISSP, Microsoft, AWS, and compliance-certified professionals.',
+    icon: Award,
+  },
+  {
+    index: '05',
+    title: '24/7 Threat Monitoring',
+    description: 'Always-on protection against evolving cyber risks.',
+    icon: Clock,
+  },
+];
 
 const faqs = [
   {
-    question: 'What cybersecurity services do you offer?',
-    answer: 'We provide comprehensive security services including 24/7 threat monitoring, penetration testing, incident response, compliance consulting (CMMC, HIPAA, SOC 2), and managed security services through our Security Operations Center (SOC).'
+    question: 'What services does AmaraTech IT provide?',
+    answer: 'We specialize in cybersecurity, cloud solutions, IT support, and compliance consulting for businesses of all sizes.'
   },
   {
-    question: 'How quickly can you respond to security incidents?',
-    answer: 'Our SOC team provides 24/7/365 coverage with an average incident response time of under 15 minutes. Critical threats are escalated immediately to our senior security analysts.'
+    question: 'How is AmaraTech IT different from others?',
+    answer: 'We combine 15+ years of experience with certified expertise (CISSP, Microsoft, AWS) and a genuine partnership approach. We deliver customized solutions with measurable outcomes.'
   },
   {
-    question: 'Do you support cloud migrations?',
-    answer: 'Yes, we are Microsoft Azure Gold Partners and AWS Advanced Partners. We specialize in secure cloud migrations, hybrid cloud architectures, and cloud security posture management.'
+    question: 'Do you offer 24/7 support?',
+    answer: 'Yes, our SOC team provides 24/7/365 coverage with an average incident response time of under 15 minutes.'
   },
   {
-    question: 'What industries do you serve?',
-    answer: 'We serve healthcare, defense contractors, financial services, government agencies, and enterprises across all sectors. Our solutions are tailored to meet industry-specific compliance requirements.'
+    question: 'Can you help with compliance requirements?',
+    answer: 'Absolutely. We have dedicated compliance specialists for CMMC, HIPAA, SOC 2, GDPR, and other regulatory frameworks.'
   },
   {
-    question: 'How do you ensure compliance with regulations?',
-    answer: 'We have dedicated compliance specialists who stay current with CMMC, HIPAA, SOC 2, GDPR, and other regulations. We provide gap assessments, implementation support, and ongoing compliance monitoring.'
+    question: 'What industries does AmaraTech IT serve?',
+    answer: 'We serve education, government, healthcare, non-profit, retail, banking, and enterprises across all sectors.'
   },
   {
-    question: 'What is your pricing model?',
-    answer: 'We offer flexible pricing including monthly managed services, project-based engagements, and retainer options. Contact us for a custom quote based on your specific needs and organization size.'
+    question: 'How quickly can you respond to a cyber incident?',
+    answer: 'Our incident response team is available 24/7 and begins containment and recovery immediately upon detection or notification.'
+  },
+  {
+    question: 'Do you provide ongoing IT management or one-time projects?',
+    answer: 'We offer both! Choose from monthly managed services, project-based engagements, or retainer options based on your needs.'
+  },
+  {
+    question: 'What size businesses do you work with?',
+    answer: 'We work with businesses of all sizes, from small startups to Fortune 500 companies and government agencies.'
+  },
+  {
+    question: 'Where is AmaraTech IT located?',
+    answer: 'Our main office is at 8865 Stanford Blvd, Suite 202, Columbia, MD 21045. We also have offices in Monrovia, Liberia.'
+  },
+  {
+    question: 'How can I get started with AmaraTech IT?',
+    answer: 'Contact us for a free security assessment! Call us at +1 410 855 2206 or email info@amaratechit.com to get started.'
   },
 ];
 
 export default function FAQ() {
   const ref = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const videoContainerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const isVideoInView = useInView(videoContainerRef, { once: true, margin: '-50px' });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
-
-  // Auto-play video when it comes into view
-  useEffect(() => {
-    if (isVideoInView && videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay may be blocked by browser, user can click to play
-      });
-    }
-  }, [isVideoInView]);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const toggleVideo = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      const newMuted = !videoRef.current.muted;
-      videoRef.current.muted = newMuted;
-      setIsMuted(newMuted);
-    }
   };
 
   return (
@@ -88,7 +106,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        {/* Main Content Grid - FAQ + Video */}
+        {/* Main Two Column Layout */}
         <div className={styles.mainContent}>
           {/* FAQ List */}
           <div className={styles.faqList}>
@@ -129,73 +147,87 @@ export default function FAQ() {
             ))}
           </div>
 
-          {/* Video Panel */}
+          {/* Why Choose Section */}
           <motion.div
-            className={styles.videoPanel}
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.3 }}
-          >
-            <div className={styles.videoWrapper}>
-              <div className={styles.videoFrame}>
-                <span className={styles.videoLabel}>// AMARATECH_PROMO</span>
-                <div className={styles.videoFrameDots}>
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-              <div ref={videoContainerRef} className={styles.videoContainer}>
-                <video
-                  ref={videoRef}
-                  className={styles.video}
-                  poster="/other_images/AmaraTech IT Solutions.png"
-                  muted
-                  loop
-                  playsInline
-                  autoPlay
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
+          className={styles.whyChooseSection}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5 }}
+        >
+          {/* Background Number */}
+          <span className={styles.bgNumber}>07</span>
+
+          {/* Section Header */}
+          <div className={styles.whyHeader}>
+            <div className={styles.whyHeaderLeft}>
+              <span className={styles.whyLabel}>[07] WHY_CHOOSE_US</span>
+              <h3 className={styles.whyTitle}>
+                Why Choose <span className={styles.titleAccent}>AmaraTech</span>
+              </h3>
+            </div>
+            <div className={styles.whyHeaderRight}>
+              <span className={styles.whyMeta}>SECTION / 07 · VALUE</span>
+            </div>
+          </div>
+
+          <p className={styles.whyDescription}>
+            Delivering solutions for business and maximizing value for money while excelling at the basics.
+          </p>
+
+          {/* Image */}
+          <div className={styles.whyImageWrapper}>
+            <Image
+              src="/other_images/fqa.webp"
+              alt="AmaraTech Cybersecurity Solutions"
+              width={400}
+              height={300}
+              className={styles.whyImage}
+            />
+          </div>
+
+          {/* Benefits List */}
+          <div className={styles.benefitsList}>
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.index}
+                  className={styles.benefitItem}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.6 + index * 0.1 }}
                 >
-                  <source src="/videos/AmaraTech .mp4" type="video/mp4" />
-                </video>
-
-                {/* Play Overlay */}
-                {!isPlaying && (
-                  <div className={styles.videoOverlay} onClick={toggleVideo}>
-                    <motion.div 
-                      className={styles.playBtn}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Play size={28} fill="white" />
-                    </motion.div>
-                    <span className={styles.playLabel}>Watch Video</span>
+                  <span className={styles.benefitIndex}>[{item.index}]</span>
+                  <div className={styles.benefitIcon}>
+                    <Icon size={18} />
                   </div>
-                )}
-
-                {/* Video Controls */}
-                {isPlaying && (
-                  <div className={styles.videoControls}>
-                    <button onClick={toggleVideo} className={styles.controlBtn}>
-                      <Pause size={16} />
-                    </button>
-                    <button onClick={toggleMute} className={styles.controlBtn}>
-                      {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-                    </button>
+                  <div className={styles.benefitContent}>
+                    <h4 className={styles.benefitTitle}>{item.title}</h4>
+                    <p className={styles.benefitDesc}>{item.description}</p>
                   </div>
-                )}
-              </div>
-            </div>
+                </motion.div>
+              );
+            })}
+          </div>
 
-            {/* Video Caption */}
-            <div className={styles.videoCaption}>
-              <span className={styles.captionTitle}>About AmaraTech</span>
-              <span className={styles.captionDesc}>
-                Learn about our mission, services, and global impact
-              </span>
-            </div>
-          </motion.div>
+          {/* Hire Us CTA */}
+          <div className={styles.hireCta}>
+            <Link href="/contact" className={styles.hireButton}>
+              HIRE US TODAY
+              <ArrowRight size={14} />
+            </Link>
+            <span className={styles.hireRef}>p. 07</span>
+          </div>
+
+          {/* Bottom Meta */}
+          <div className={styles.whyMeta2}>
+            <span className={styles.metaItem}>TYPE: ENTERPRISE</span>
+            <span className={styles.metaDivider}>|</span>
+            <span className={styles.metaItem}>CAT: PARTNERSHIP</span>
+            <span className={styles.metaDivider}>|</span>
+            <span className={styles.metaItem}>REV: 2026.01</span>
+          </div>
+        </motion.div>
         </div>
 
         {/* Contact CTA */}
@@ -203,7 +235,7 @@ export default function FAQ() {
           className={styles.contactCTA}
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.8 }}
         >
           <span className={styles.ctaText}>Still have questions?</span>
           <a href="/contact" className={styles.ctaLink}>

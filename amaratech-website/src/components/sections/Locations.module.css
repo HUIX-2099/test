@@ -1,12 +1,13 @@
 /* ============================================
-   LOCATIONS SECTION - Compact with Tech Setup
+   LOCATIONS / HOW IT WORKS SECTION
+   Two Column Layout
    ============================================ */
 
 .locations {
   position: relative;
   background: #050505;
   color: #ffffff;
-  padding: 80px 0;
+  padding: 100px 0;
   overflow: hidden;
 }
 
@@ -18,170 +19,424 @@
   padding: 0 32px;
 }
 
-.content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 20px;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headerLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #C81E1E;
+  letter-spacing: 0.15em;
+}
+
+.sectionTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.headerRight {
+  display: flex;
   align-items: center;
 }
 
+.headerMeta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.08em;
+}
+
+.sectionDesc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  max-width: 700px;
+  margin-bottom: 48px;
+}
+
 /* ============================================
-   LEFT PANEL - Location Info
+   TWO COLUMN GRID
    ============================================ */
 
-.leftPanel {
+.twoColumnGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightColumn {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.header {
-  margin-bottom: 8px;
+/* ============================================
+   PROCESS CARDS GRID
+   ============================================ */
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
 }
 
-.headerLabel {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: #C81E1E;
-  letter-spacing: 0.15em;
-  margin-bottom: 12px;
+.processCard {
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.title {
+.processCard:hover {
+  border-color: rgba(200, 30, 30, 0.4);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cardIndex {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #C81E1E;
+  line-height: 1;
 }
 
-.headerDesc {
+.cardTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.cardDescription {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
-  line-height: 1.5;
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+  flex: 1;
 }
 
-/* Video Player */
-.videoWrapper {
-  position: relative;
-  border-radius: 8px;
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.metaValue {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.deliverables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.deliverableTag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 6px 10px;
+  background: rgba(200, 30, 30, 0.1);
+  border: 1px solid rgba(200, 30, 30, 0.2);
+  color: #C81E1E;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   INDUSTRIES SECTION
+   ============================================ */
+
+.industriesSection {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.industriesHeader {
+  margin-bottom: 20px;
+}
+
+.industriesLabel {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.industriesTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.industriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.industryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+}
+
+.industryItem:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: rgba(200, 30, 30, 0.05);
+}
+
+.industryIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.industryItem:hover .industryIcon {
+  border-color: rgba(200, 30, 30, 0.4);
+  color: #C81E1E;
+}
+
+.industryName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+/* ============================================
+   DOWNLOAD SECTION
+   ============================================ */
+
+.downloadSection {
+  padding: 24px;
+  background: rgba(200, 30, 30, 0.05);
+  border: 1px solid rgba(200, 30, 30, 0.15);
+}
+
+.downloadContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.downloadLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+}
+
+.downloadTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.downloadDesc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #C81E1E;
+  border: none;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.downloadButton:hover {
+  background: #a01818;
+}
+
+/* ============================================
+   STORY + VIDEO GRID
+   ============================================ */
+
+.storyVideoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+/* ============================================
+   STORY SECTION
+   ============================================ */
+
+.storySection {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.storyHeader {
+  margin-bottom: 16px;
+}
+
+.storyLabel {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.storyTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.storyText {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+}
+
+/* ============================================
+   YOUTUBE SECTION
+   ============================================ */
+
+.youtubeSection {
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.videoFrame {
+.youtubeHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 12px;
+  padding: 10px 16px;
   background: rgba(20, 20, 20, 0.9);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.videoFrameLabel {
+.youtubeLabel {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  color: #C81E1E;
   letter-spacing: 0.1em;
 }
 
-.videoFrameDots {
-  display: flex;
-  gap: 4px;
+.youtubeMeta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
 }
 
-.videoFrameDots span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #333;
-}
-
-.videoFrameDots span:first-child {
-  background: #C81E1E;
-}
-
-.videoContainer {
+.youtubeWrapper {
   position: relative;
   aspect-ratio: 16/9;
+  background: #000;
 }
 
-.video {
+.youtubeIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border: none;
 }
 
-.playOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
+/* ============================================
+   OFFICE CARDS
+   ============================================ */
 
-.playButton {
-  width: 70px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(200, 30, 30, 0.9);
-  border-radius: 50%;
-  box-shadow: 0 0 30px rgba(200, 30, 30, 0.5);
-}
-
-.playText {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.videoControls {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  display: flex;
-  gap: 8px;
-}
-
-.controlBtn {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.controlBtn:hover {
-  background: rgba(200, 30, 30, 0.8);
-  border-color: #C81E1E;
-}
-
-/* Office Cards Row */
 .officesRow {
   display: flex;
-  gap: 12px;
+  gap: 16px;
+  margin-top: 24px;
 }
 
 .officeCard {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px;
+  gap: 12px;
+  padding: 16px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
@@ -193,7 +448,7 @@
 }
 
 .officeFlag {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .officeInfo {
@@ -205,367 +460,26 @@
 
 .officeCity {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .officePhone {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: 11px;
   color: rgba(255, 255, 255, 0.5);
 }
 
 .hqBadge {
-  padding: 2px 6px;
+  padding: 3px 8px;
   background: rgba(200, 30, 30, 0.15);
   border: 1px solid rgba(200, 30, 30, 0.3);
   border-radius: 3px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 8px;
-  font-weight: 600;
-  color: #C81E1E;
-  letter-spacing: 0.1em;
-}
-
-/* Right Panel Styles Below */
-
-.globalNote {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  background: rgba(200, 30, 30, 0.08);
-  border: 1px solid rgba(200, 30, 30, 0.2);
-  border-radius: 6px;
-}
-
-.globalNote svg {
-  color: #C81E1E;
-}
-
-.globalNote span {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* ============================================
-   RIGHT PANEL - Tech Setup
-   ============================================ */
-
-.rightPanel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1000px;
-}
-
-.techSetup {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  gap: 24px;
-}
-
-/* Wiring */
-.wiring {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 5;
-}
-
-/* Server Unit */
-.serverUnit {
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-}
-
-.serverTop {
-  width: 60px;
-  height: 10px;
-  background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
-  border-radius: 4px 4px 0 0;
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  padding: 2px;
-}
-
-.serverVent {
-  width: 8px;
-  height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    #0a0a0a 0px,
-    #0a0a0a 1px,
-    transparent 1px,
-    transparent 2px
-  );
-}
-
-.serverBody {
-  width: 60px;
-  background: linear-gradient(90deg, #1a1a1a, #252525, #1a1a1a);
-  border: 1px solid #333;
-  border-top: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 12px 8px;
-}
-
-.serverDrive {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 8px;
-  background: #0a0a0a;
-  border: 1px solid #222;
-  border-radius: 2px;
-}
-
-.serverDrive svg {
-  color: #444;
-}
-
-.driveLed {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #C81E1E;
-  box-shadow: 0 0 8px #C81E1E;
-}
-
-.serverFoot {
-  width: 60px;
-  height: 8px;
-  background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
-  border-radius: 0 0 4px 4px;
-  border: 1px solid #333;
-  border-top: none;
-}
-
-/* Monitor */
-.monitorContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.monitor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.monitorBezel {
-  width: 260px;
-  padding: 16px;
-  background: linear-gradient(135deg, #1a1a1a, #252525);
-  border: 2px solid #333;
-  border-radius: 12px 12px 8px 8px;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
-.screen {
-  position: relative;
-  width: 100%;
-  height: 160px;
-  background: #0a0505;
-  border: 2px solid #111;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.screenContent {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 12px;
-  z-index: 2;
-}
-
-.scanline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(200, 30, 30, 0.1),
-    transparent
-  );
-  z-index: 10;
-  pointer-events: none;
-}
-
-.screenGlow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(200, 30, 30, 0.08) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
-.terminalHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 8px;
-  margin-bottom: 8px;
-  border-bottom: 1px solid rgba(200, 30, 30, 0.2);
-}
-
-.terminalHeader span {
-  font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
+  font-weight: 600;
   color: #C81E1E;
   letter-spacing: 0.1em;
-}
-
-.terminalDots {
-  display: flex;
-  gap: 4px;
-}
-
-.terminalDots span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #333;
-}
-
-.terminalDots span:first-child {
-  background: #C81E1E;
-}
-
-.terminalBody {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-}
-
-.terminalLine {
-  margin: 0 0 6px;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.prompt {
-  color: #C81E1E;
-  margin-right: 4px;
-}
-
-.success {
-  color: #22C55E;
-}
-
-.highlight {
-  color: #C81E1E;
-}
-
-.cursor {
-  color: #C81E1E;
-  font-weight: bold;
-}
-
-.monitorLogo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 10px;
-  color: #444;
-}
-
-.monitorLogo span {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-}
-
-.monitorStand {
-  width: 40px;
-  height: 30px;
-  background: linear-gradient(90deg, #1a1a1a, #252525, #1a1a1a);
-  border: 1px solid #333;
-  border-top: none;
-}
-
-.monitorBase {
-  width: 100px;
-  height: 8px;
-  background: linear-gradient(180deg, #252525, #1a1a1a);
-  border: 1px solid #333;
-  border-radius: 2px;
-}
-
-/* Keyboard */
-.keyboard {
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.keyboardBody {
-  width: 220px;
-  padding: 10px;
-  background: linear-gradient(180deg, #1a1a1a, #121212);
-  border: 1px solid #333;
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.keyRow {
-  display: flex;
-  justify-content: center;
-  gap: 3px;
-}
-
-.key {
-  width: 14px;
-  height: 12px;
-  background: linear-gradient(180deg, #252525, #1a1a1a);
-  border: 1px solid #333;
-  border-radius: 2px;
-  transition: all 0.1s ease;
-}
-
-.key:hover {
-  background: linear-gradient(180deg, #333, #252525);
-  border-color: #C81E1E;
-}
-
-.spaceBar {
-  width: 80px;
-}
-
-.keyboardLed {
-  margin-top: 6px;
-}
-
-.keyboardLed span {
-  display: block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #C81E1E;
-  box-shadow: 0 0 6px #C81E1E;
 }
 
 /* ============================================
@@ -573,17 +487,17 @@
    ============================================ */
 
 @media (max-width: 1024px) {
-  .content {
-    gap: 40px;
+  .processGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
-  
-  .monitorBezel {
-    width: 220px;
-    padding: 12px;
+
+  .cardTitle {
+    font-size: 18px;
   }
-  
-  .screen {
-    height: 140px;
+
+  .twoColumnGrid {
+    gap: 32px;
   }
 }
 
@@ -592,38 +506,75 @@
     padding: 60px 0;
   }
 
-  .content {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .rightPanel {
-    order: -1;
-  }
-
-  .title {
-    font-size: 28px;
-  }
-  
-  .techSetup {
-    transform: scale(0.9);
-  }
-}
-
-@media (max-width: 480px) {
   .container {
     padding: 0 20px;
   }
 
-  .title {
+  .sectionHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .processGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .twoColumnGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .industriesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .officesRow {
+    flex-direction: column;
+  }
+
+  .storyVideoGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
     font-size: 24px;
   }
-  
-  .techSetup {
-    transform: scale(0.75);
+
+  .processCard {
+    padding: 20px;
   }
-  
-  .serverUnit {
-    display: none;
+
+  .cardIndex {
+    font-size: 28px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+  }
+
+  .cardDescription {
+    font-size: 13px;
+  }
+
+  .industriesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .industriesSection,
+  .downloadSection,
+  .storySection {
+    padding: 16px;
+  }
+
+  .downloadButton {
+    width: 100%;
+    justify-content: center;
   }
 }

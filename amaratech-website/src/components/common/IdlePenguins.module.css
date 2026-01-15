@@ -1,16 +1,16 @@
 /* ============================================
-   IDLE PENGUINS - MobaXterm-style Animation
+   IDLE HUDHUD (Hoopoe) - MobaXterm-style Animation
    ============================================ */
 
 .container {
   position: fixed;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 80px;
   pointer-events: none;
   z-index: 9998;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .walkingPenguin {
@@ -18,12 +18,24 @@
   bottom: 0;
   cursor: pointer;
   pointer-events: auto;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
   transition: filter 0.2s ease;
 }
 
 .walkingPenguin:hover {
-  filter: drop-shadow(0 4px 8px rgba(200, 30, 30, 0.4));
+  filter: drop-shadow(0 5px 12px rgba(212, 149, 106, 0.5));
+}
+
+.flyingPenguin {
+  position: absolute;
+  cursor: pointer;
+  pointer-events: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: filter 0.2s ease;
+}
+
+.flyingPenguin:hover {
+  filter: drop-shadow(0 6px 16px rgba(212, 149, 106, 0.5));
 }
 
 .penguinSvg {

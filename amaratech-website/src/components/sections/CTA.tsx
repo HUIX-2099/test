@@ -54,8 +54,8 @@ export default function CTA() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
             >
-              Ready to secure your<br />
-              <span className={styles.accent}>digital infrastructure?</span>
+              Ready to Secure Your<br />
+              <span className={styles.accent}>Business Future?</span>
             </motion.h2>
 
             <motion.p
@@ -64,8 +64,8 @@ export default function CTA() {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.3 }}
             >
-              Partner with AmaraTech for innovative IT solutions, 
-              cloud infrastructure, and digital transformation.
+              Partner with AmaraTech IT to protect your data, ensure compliance, 
+              and gain the confidence to grow in today&apos;s digital world.
             </motion.p>
 
             {/* Benefits */}
@@ -92,7 +92,7 @@ export default function CTA() {
             >
               <Link href="/contact" className={styles.primaryButton}>
                 <Zap size={18} />
-                Start Free Assessment
+                Request Free Security Assessment
               </Link>
               <Link href="/services" className={styles.secondaryButton}>
                 View Services

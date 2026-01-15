@@ -2,29 +2,102 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   Shield, Users, Globe, Award, Target, Briefcase,
   CheckCircle, ArrowRight, Zap, MapPin, Calendar,
-  Building2, TrendingUp, Heart
+  Building2, TrendingUp, Heart, Download, FileText,
+  Linkedin, Twitter, Github, Facebook, Mail, Phone,
+  Handshake, BookOpen, Lightbulb, GraduationCap, Network,
+  ExternalLink
 } from 'lucide-react';
 import styles from './about.module.css';
-import wireflow from '../wireflow.module.css';
-import ParallaxSection from '../../components/sections/ParallaxSection';
 
-const timeline = [
-  { year: '2009', title: 'Foundation', desc: 'AmaraTech IT Solutions established in Maryland, USA', stage: 1 },
-  { year: '2012', title: 'Expansion', desc: 'Opened operations in West Africa, serving government clients', stage: 2 },
-  { year: '2016', title: 'Microsoft Partnership', desc: 'Achieved Microsoft Gold Partner status', stage: 3 },
-  { year: '2020', title: 'SOC Operations', desc: 'Launched 24/7 Security Operations Center', stage: 4 },
-  { year: '2024', title: 'ImpactIQ Launch', desc: 'Released AI-powered vulnerability management platform', stage: 5 },
+const collaborativeJourney = [
+  {
+    title: 'Dedicated to Customer Service Excellence',
+    desc: 'We are committed to fostering and nurturing strategic partnerships with our valued customers and industry peers.',
+    icon: Heart,
+  },
+  {
+    title: 'Outcome-Driven Approach',
+    desc: 'Our passionate team places unwavering emphasis on delivering exceptional results and measurable outcomes.',
+    icon: Target,
+  },
+  {
+    title: 'Proactively Engage',
+    desc: 'We provide comprehensive customer training programs supplemented by systematic follow-ups and refresher training.',
+    icon: Zap,
+  },
+  {
+    title: 'Fostering Cooperation',
+    desc: 'We build lasting relationships based on trust, transparency, and mutual success across all partnerships.',
+    icon: Handshake,
+  },
 ];
 
-const values = [
-  { icon: Shield, title: 'Security First', desc: 'We prioritize the protection of our clients\' assets above all else.' },
-  { icon: Target, title: 'Excellence', desc: 'We strive for excellence in every solution we deliver.' },
-  { icon: Users, title: 'Partnership', desc: 'We build lasting relationships based on trust and mutual success.' },
-  { icon: Heart, title: 'Integrity', desc: 'We operate with transparency and ethical standards.' },
+const boardMembers = [
+  {
+    name: 'Mike Major',
+    role: 'Board Member',
+    image: '/other_images/aboutus/Mike.png',
+    bio: 'Mike has a strong educational background from the University of Maryland Eastern Shore and has accumulated 10 years of professional experience in technology. He is an experienced technical professional with a background in Technical and Production Support, Managed Services, DevOps, and Senior Azure Infrastructure Engineering. At AmaraTech IT, he supports Azure cloud offerings to enhance client productivity and implementation. Mike is the President of All Liberian Network, a non-profit organization that creates opportunities for disadvantaged members of his community.',
+  },
+  {
+    name: 'Morris Jones',
+    role: 'Board Member',
+    image: '/other_images/aboutus/Morris-Jones.png.jpg',
+    bio: 'Morris Jones is an MBA graduate of the George Washington University School of Business. He brings with him a 40 year career in business operations/portfolio management, wireless systems engineering and core infrastructure networking. He has led and supported Cybersecurity initiatives, cloud and hybrid hosting solutions at the US House of Representatives, Health And Human Services (HHS), and the World Bank Group (IBRD, IDA, IFC, MIGA, ICSID).',
+  },
+];
+
+const executiveTeam = [
+  {
+    name: 'Alieu Kamara',
+    role: 'Chief Technology Officer',
+    image: '/other_images/aboutus/ali-karama.png',
+    socials: ['linkedin', 'facebook', 'twitter', 'github'],
+  },
+  {
+    name: 'Christy Williams',
+    role: 'VP Operations & Strategic Relationships',
+    image: '/other_images/aboutus/Christy Williams.png',
+    socials: ['linkedin', 'facebook', 'twitter'],
+  },
+];
+
+const diasporaStrategies = [
+  {
+    title: 'African Diaspora as Assets',
+    desc: 'See Africans in the diaspora as one of Africa\'s greatest offshore assets due to its ability to bring financial resources and skills back to their home communities.',
+    icon: Globe,
+  },
+  {
+    title: 'Education and Outreach',
+    desc: 'Comprehensive programs designed to educate and connect diaspora members with opportunities in their home countries.',
+    icon: GraduationCap,
+  },
+  {
+    title: 'Economic Empowerment',
+    desc: 'Creating pathways for economic growth and investment opportunities that benefit both diaspora and local communities.',
+    icon: TrendingUp,
+  },
+  {
+    title: 'Digital Inclusion',
+    desc: 'Leveraging technology to bridge gaps and create inclusive digital ecosystems across borders.',
+    icon: Network,
+  },
+  {
+    title: 'Holistic Approach',
+    desc: 'Using a holistic and integrated approach, involving practical steps to create an ecosystem where both diaspora members and entrepreneurs can benefit.',
+    icon: Lightbulb,
+  },
+  {
+    title: 'Action-Oriented Approach',
+    desc: 'Moving beyond theory to implement tangible solutions that drive real impact in communities.',
+    icon: Target,
+  },
 ];
 
 const certifications = [
@@ -32,309 +105,523 @@ const certifications = [
   'AWS Certified', 'ISO 27001 Lead Auditor', 'CMMC Assessor'
 ];
 
-const locations = [
-  { city: 'Columbia, MD', country: 'USA', type: 'Headquarters' },
-  { city: 'Monrovia', country: 'Liberia', type: 'Regional Office' },
-];
-
 export default function About() {
   return (
-    <div className={wireflow.page}>
-      <div className={wireflow.gridBg} />
-      
-      {/* Wire Background */}
-      <svg className={styles.wireBg} viewBox="0 0 1400 2000" preserveAspectRatio="none">
-        {/* Vertical timeline wire */}
-        <motion.line
-          x1="700" y1="0" x2="700" y2="2000"
-          stroke="#C81E1E"
-          strokeWidth="2"
-          opacity="0.15"
-        />
-        {/* Stage connection points */}
-        {[300, 500, 700, 900, 1100].map((y, i) => (
-          <motion.circle
-            key={i}
-            cx="700"
-            cy={y}
-            r="8"
-            fill="#0a0a0f"
-            stroke="#C81E1E"
-            strokeWidth="2"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2 * i }}
-          />
-        ))}
-      </svg>
+    <div className={styles.page}>
+      {/* Background Elements */}
+      <div className={styles.gridBg} />
+      <div className={styles.glowOrb} />
 
-      <div className={wireflow.container}>
-        {/* Header */}
-        <header className={wireflow.pageHeader}>
-          <div className={wireflow.breadcrumb}>
-            <Link href="/">HOME</Link>
-            <span className={wireflow.breadcrumbSep}>/</span>
-            <span>ABOUT</span>
-          </div>
-          
-          <div className={wireflow.pageHeaderInner}>
-            <div className={wireflow.pageTitle}>
-              <span className={wireflow.pageTitleCode}>// COMPANY.INFO</span>
-              <h1 className={wireflow.pageTitleMain}>
-                About <span className={wireflow.pageTitleAccent}>AmaraTech</span>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroContainer}>
+          <motion.div
+            className={styles.heroMeta}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link href="/" className={styles.breadcrumbLink}>HOME</Link>
+            <span className={styles.breadcrumbSep}>/</span>
+            <span className={styles.breadcrumbCurrent}>ABOUT</span>
+          </motion.div>
+
+          <motion.div
+            className={styles.heroContent}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className={styles.heroNumber}>01</div>
+            <div className={styles.heroTitleBlock}>
+              <h1 className={styles.heroTitle}>
+                ABOUT <span className={styles.titleAccent}>US</span>
               </h1>
-              <p className={wireflow.pageDescription}>
-                Your trusted partner for enterprise-grade IT solutions since 2009. 
-                We specialize in cybersecurity, cloud services, and IT consulting, 
-                helping organizations navigate the complex landscape of modern technology.
+              <div className={styles.heroRule} />
+              <p className={styles.heroDescription}>
+                We believe that technology should be a driver of growth — not a source of risk. 
+                Our mission is to empower organizations with secure, reliable, and future-ready 
+                IT solutions that protect critical assets, ensure compliance, and enable innovation.
               </p>
             </div>
-            <div className={wireflow.pageNumber}>02</div>
-          </div>
-        </header>
+          </motion.div>
 
-        {/* Mission Section */}
-        <motion.div 
-          className={styles.missionSection}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <div className={styles.missionCard}>
-            <div className={`${wireflow.connectionPoint} ${wireflow.left}`} />
-            <div className={styles.missionHeader}>
-              <div className={wireflow.nodeIcon}><Target size={20} /></div>
-              <span className={wireflow.nodeTitle}>OUR MISSION</span>
+          <motion.div
+            className={styles.heroStats}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <div className={styles.statBlock}>
+              <span className={styles.statNumber}>15+</span>
+              <span className={styles.statLabel}>YEARS EXPERTISE</span>
             </div>
-            <p className={styles.missionText}>
-              To deliver innovative IT solutions that safeguard our clients&apos; systems, 
-              ensure compliance, and provide the confidence needed to grow in today&apos;s digital world.
-            </p>
-            <div className={styles.missionWires}>
-              <div className={styles.wireRed} />
-              <div className={styles.wireBlue} />
+            <div className={styles.statBlock}>
+              <span className={styles.statNumber}>4</span>
+              <span className={styles.statLabel}>INDUSTRIES</span>
+            </div>
+            <div className={styles.statBlock}>
+              <span className={styles.statNumber}>24/7</span>
+              <span className={styles.statLabel}>SUPPORT</span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Mission Section */}
+      <section className={styles.missionSection}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionNumber}>02</div>
+            <div className={styles.sectionTitleBlock}>
+              <h2 className={styles.sectionTitle}>OUR MISSION</h2>
+              <span className={styles.sectionMeta}>WHO WE ARE</span>
             </div>
           </div>
-        </motion.div>
 
-        <ParallaxSection
-          kicker="VISION_LAYER"
-          title="Engineering clarity behind every decision."
-          description="This is the same blueprint image running as a parallax layer behind content — it helps break up long pages and adds depth."
-        />
+          <div className={styles.missionGrid}>
+            <motion.div 
+              className={styles.missionContent}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <p className={styles.missionLead}>
+                We Collaborate with top Industry Experts
+              </p>
+              <p className={styles.missionText}>
+                AmaraTech IT Solutions is driven by a fervent commitment to offer entrepreneurs 
+                and organizations worldwide access to remarkably effective and efficient solutions 
+                meticulously crafted to address their unique needs.
+              </p>
+              <p className={styles.missionText}>
+                Rooted in pioneering IT business strategies and cutting-edge technologies, 
+                AmaraTech is a forward-looking service with a business-oriented focus. Our 
+                extensive array of offerings encompasses technology consultancy, Cybersecurity 
+                services and data migration. We cater to clients spanning diverse industries, 
+                harnessing technology to amplify outcomes.
+              </p>
 
-        {/* Timeline Section */}
-        <section className={styles.timelineSection}>
-          <div className={wireflow.flowLabel}>
-            <Calendar size={14} />
-            COMPANY_TIMELINE
+              <div className={styles.missionHighlights}>
+                <div className={styles.highlightItem}>
+                  <CheckCircle size={18} />
+                  <span>15+ years of combined IT and security expertise</span>
+                </div>
+                <div className={styles.highlightItem}>
+                  <CheckCircle size={18} />
+                  <span>Proven track record with healthcare, finance, government, and education</span>
+                </div>
+                <div className={styles.highlightItem}>
+                  <CheckCircle size={18} />
+                  <span>Trusted partner for cybersecurity, compliance, and digital transformation</span>
+                </div>
+              </div>
+
+              <p className={styles.missionQuote}>
+                &ldquo;We don&apos;t just secure your systems — we help secure your future.&rdquo;
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className={styles.missionImage}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src="/other_images/aboutus/about-dir-1-min.png"
+                alt="AmaraTech Team"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+              <div className={styles.missionImageOverlay} />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Collaborative Journey Section */}
+      <section className={styles.collaborativeSection}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionNumber}>03</div>
+            <div className={styles.sectionTitleBlock}>
+              <h2 className={styles.sectionTitle}>OUR COLLABORATIVE JOURNEY</h2>
+              <span className={styles.sectionMeta}>DELIVERING HIGH-QUALITY SOLUTIONS</span>
+            </div>
           </div>
 
-          <div className={styles.timeline}>
-            {timeline.map((item, i) => (
-              <motion.div 
-                key={i}
-                className={styles.timelineItem}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.15 * i }}
-              >
-                {/* Large Stage Number (Industrial Style) */}
-                <div className={styles.stageLarge}>
-                  <span className={styles.stageBigNum}>{item.stage}</span>
-                  <div className={styles.stageLabel}>
-                    <span>STAGE</span>
-                    <span className={styles.stageTitle}>{item.title.toUpperCase()}</span>
-                  </div>
-                </div>
-
-                {/* Dashed Connection Line */}
-                <div className={styles.timelineConnector}>
-                  <svg viewBox="0 0 80 40" preserveAspectRatio="none">
-                    <motion.path
-                      d="M0 20 L60 20"
-                      stroke="#C81E1E"
-                      strokeWidth="2"
-                      strokeDasharray="6 4"
-                      fill="none"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ delay: 0.15 * i + 0.2, duration: 0.5 }}
-                    />
-                    <motion.circle 
-                      cx="70" cy="20" r="8" 
-                      fill="none" 
-                      stroke="#C81E1E" 
-                      strokeWidth="2"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.15 * i + 0.4 }}
-                    />
-                    <motion.circle 
-                      cx="70" cy="20" r="4" 
-                      fill="#C81E1E"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.15 * i + 0.5 }}
-                    />
-                  </svg>
-                </div>
-
-                {/* Content Card (Industrial Panel) */}
-                <div className={styles.timelineCard}>
-                  <div className={styles.timelineCardInner}>
-                    <div className={styles.timelineYear}>{item.year}</div>
-                    <p className={styles.timelineDesc}>{item.desc}</p>
-                  </div>
-                  {/* Corner brackets */}
-                  <div className={`${wireflow.cornerDecor} ${wireflow.topLeft}`} />
-                  <div className={`${wireflow.cornerDecor} ${wireflow.bottomRight}`} />
-                </div>
-
-                {/* TAP Indicator */}
-                <motion.div 
-                  className={styles.timelineTap}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.15 * i + 0.3 }}
-                >
-                  <div className={wireflow.tapIndicatorOutline}>TAP</div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Values Section */}
-        <section className={styles.valuesSection}>
-          <div className={wireflow.flowLabel}>
-            <Heart size={14} />
-            CORE_VALUES
-          </div>
-
-          <div className={styles.valuesGrid}>
-            {values.map((value, i) => {
-              const ValueIcon = value.icon;
+          <div className={styles.journeyGrid}>
+            {collaborativeJourney.map((item, index) => {
+              const IconComponent = item.icon;
               return (
                 <motion.div
-                  key={i}
-                  className={styles.valueCard}
+                  key={index}
+                  className={styles.journeyCard}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * i }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  <div className={styles.valueIcon}>
-                    <ValueIcon size={24} />
+                  <div className={styles.journeyIndex}>{String(index + 1).padStart(2, '0')}</div>
+                  <div className={styles.journeyIcon}>
+                    <IconComponent size={24} />
                   </div>
-                  <h3 className={styles.valueTitle}>{value.title}</h3>
-                  <p className={styles.valueDesc}>{value.desc}</p>
-                  <div className={`${wireflow.cornerDecor} ${wireflow.topRight}`} />
+                  <h3 className={styles.journeyTitle}>{item.title}</h3>
+                  <p className={styles.journeyDesc}>{item.desc}</p>
+                  <div className={styles.journeyLine} />
                 </motion.div>
               );
             })}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Expertise Section */}
-        <section className={styles.expertiseSection}>
-          <div className={wireflow.nodeCard}>
-            <div className={wireflow.nodeHeader}>
-              <div className={wireflow.nodeIcon}><Award size={18} /></div>
-              <span className={wireflow.nodeTitle}>CERTIFICATIONS & EXPERTISE</span>
-              <div className={wireflow.nodeStatus}>
-                <span className={wireflow.nodeStatusDot} />
-                VERIFIED
-              </div>
-            </div>
-            <div className={wireflow.nodeBody}>
-              <div className={styles.certGrid}>
-                {certifications.map((cert, i) => (
-                  <motion.div
-                    key={i}
-                    className={styles.certBadge}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.05 * i }}
-                  >
-                    <CheckCircle size={14} />
-                    {cert}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-            <div className={wireflow.nodeFooter}>
-              <span className={styles.footerNote}>
-                Our team consists of certified professionals with expertise across major cloud platforms and security frameworks.
-              </span>
+      {/* Contract Vehicles Section */}
+      <section className={styles.contractSection}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionNumber}>04</div>
+            <div className={styles.sectionTitleBlock}>
+              <h2 className={styles.sectionTitle}>CONTRACT VEHICLES</h2>
+              <span className={styles.sectionMeta}>VERIFIED PARTNERSHIPS</span>
             </div>
           </div>
-        </section>
 
-        {/* Locations Section */}
-        <section className={styles.locationsSection}>
-          <div className={wireflow.flowLabel}>
-            <Globe size={14} />
-            GLOBAL_PRESENCE
+          <div className={styles.contractGrid}>
+            <motion.div 
+              className={styles.contractContent}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <p className={styles.contractLead}>
+                Unlock Your Business Potential with AmaraTech IT
+              </p>
+              <p className={styles.contractText}>
+                Verified by American Contract Vehicles. Elevate your operations with our 
+                cutting-edge IT solutions and trusted expertise. Maximize efficiency and 
+                security today!
+              </p>
+              <p className={styles.contractText}>
+                What sets us apart? Our prestigious status as a verified vendor with American 
+                Contract Vehicles, ensuring our clients that they are partnering with a reliable 
+                and trustworthy IT provider. This esteemed certification reflects our adherence 
+                to stringent quality standards and the highest levels of professional integrity.
+              </p>
+
+              <div className={styles.contractActions}>
+                <a href="#" className={styles.contractBtn}>
+                  <Download size={16} />
+                  <span>Download Capability Statement</span>
+                </a>
+                <a href="#" className={styles.contractBtnSecondary}>
+                  <FileText size={16} />
+                  <span>Download Certification</span>
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className={styles.contractBadge}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src="/other_images/aboutus/naics.png"
+                alt="NAICS Certification"
+                width={200}
+                height={200}
+                style={{ objectFit: 'contain' }}
+              />
+              <div className={styles.badgeGlow} />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Board Members Section */}
+      <section className={styles.boardSection}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionNumber}>05</div>
+            <div className={styles.sectionTitleBlock}>
+              <h2 className={styles.sectionTitle}>BOARD MEMBERS</h2>
+              <span className={styles.sectionMeta}>LEADERSHIP TEAM</span>
+            </div>
           </div>
 
-          <div className={styles.locationsGrid}>
-            {locations.map((loc, i) => (
+          <div className={styles.boardGrid}>
+            {boardMembers.map((member, index) => (
               <motion.div
-                key={i}
-                className={styles.locationCard}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 * i }}
+                key={index}
+                className={styles.boardCard}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
               >
-                <div className={`${wireflow.connectionPoint} ${wireflow.top}`} />
-                <div className={styles.locationHeader}>
-                  <MapPin size={20} className={styles.locationPin} />
-                  <span className={styles.locationType}>{loc.type}</span>
-                </div>
-                <h3 className={styles.locationCity}>{loc.city}</h3>
-                <span className={styles.locationCountry}>{loc.country}</span>
-                
-                <div className={styles.locationWire}>
-                  <motion.div
-                    className={styles.locationPulse}
-                    animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                <div className={styles.boardImageWrapper}>
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    style={{ objectFit: 'cover' }}
                   />
+                  <div className={styles.boardImageOverlay} />
                 </div>
+                <div className={styles.boardInfo}>
+                  <div className={styles.boardMeta}>
+                    <span className={styles.boardIndex}>[{String(index + 1).padStart(2, '0')}]</span>
+                    <span className={styles.boardRole}>{member.role}</span>
+                  </div>
+                  <h3 className={styles.boardName}>{member.name}</h3>
+                  <p className={styles.boardBio}>{member.bio}</p>
+                </div>
+                <div className={styles.boardAccent} />
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <motion.div 
-          className={styles.ctaSection}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          <div className={styles.ctaContent}>
-            <Building2 size={32} className={styles.ctaIcon} />
-            <h2 className={styles.ctaTitle}>Ready to Partner with Us?</h2>
-            <p className={styles.ctaDesc}>
-              Let&apos;s discuss how AmaraTech can help secure and transform your IT infrastructure.
-            </p>
-            <div className={styles.ctaActions}>
-              <Link href="/contact" className={wireflow.btnPrimary}>
-                <Zap size={16} />
-                Contact Us
-              </Link>
-              <Link href="/services" className={wireflow.btnSecondary}>
-                View Services
-                <ArrowRight size={16} />
-              </Link>
+      {/* Executive Team Section */}
+      <section className={styles.teamSection}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionNumber}>06</div>
+            <div className={styles.sectionTitleBlock}>
+              <h2 className={styles.sectionTitle}>EXECUTIVE TEAM</h2>
+              <span className={styles.sectionMeta}>MEET OUR LEADERSHIP</span>
             </div>
           </div>
-          
-          <div className={`${wireflow.cornerDecor} ${wireflow.topLeft}`} />
-          <div className={`${wireflow.cornerDecor} ${wireflow.topRight}`} />
-          <div className={`${wireflow.cornerDecor} ${wireflow.bottomLeft}`} />
-          <div className={`${wireflow.cornerDecor} ${wireflow.bottomRight}`} />
-        </motion.div>
+
+          <div className={styles.teamGrid}>
+            {executiveTeam.map((member, index) => (
+              <motion.div
+                key={index}
+                className={styles.teamCard}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+              >
+                <div className={styles.teamImageWrapper}>
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <div className={styles.teamImageGradient} />
+                </div>
+                <div className={styles.teamInfo}>
+                  <h3 className={styles.teamName}>{member.name}</h3>
+                  <span className={styles.teamRole}>{member.role}</span>
+                  <div className={styles.teamSocials}>
+                    {member.socials.includes('linkedin') && (
+                      <a href="#" className={styles.socialLink}><Linkedin size={16} /></a>
+                    )}
+                    {member.socials.includes('facebook') && (
+                      <a href="#" className={styles.socialLink}><Facebook size={16} /></a>
+                    )}
+                    {member.socials.includes('twitter') && (
+                      <a href="#" className={styles.socialLink}><Twitter size={16} /></a>
+                    )}
+                    {member.socials.includes('github') && (
+                      <a href="#" className={styles.socialLink}><Github size={16} /></a>
+                    )}
+                  </div>
+                </div>
+                <div className={styles.teamCornerTL} />
+                <div className={styles.teamCornerBR} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Diaspora Engagement Section */}
+      <section className={styles.diasporaSection}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionNumber}>07</div>
+            <div className={styles.sectionTitleBlock}>
+              <h2 className={styles.sectionTitle}>DIASPORA ENGAGEMENT</h2>
+              <span className={styles.sectionMeta}>BRIDGING COMMUNITIES</span>
+            </div>
+          </div>
+
+          <motion.div 
+            className={styles.diasporaIntro}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <p>
+              At AmaraTech IT we aim to promote a Diaspora engagement that would serve as a 
+              liaison between the African community, people of African descent to provide 
+              opportunities and resources effectively meet the technological needs and concerns 
+              of the Africans living and/or working in the United States and on the African Continent.
+            </p>
+            <p>
+              We have begun this work in Liberia and will expand to countries across the continent. 
+              We partner with other organizations such as All Liberian Network and African Diaspora 
+              Affairs of Anne Arundel County to create a platform that promotes technological solutions 
+              aimed at gaining competitive advantage for businesses and governments in Africa and 
+              diaspora engagement activities.
+            </p>
+          </motion.div>
+
+          <div className={styles.diasporaGrid}>
+            {diasporaStrategies.map((strategy, index) => {
+              const IconComponent = strategy.icon;
+              return (
+                <motion.div
+                  key={index}
+                  className={styles.diasporaCard}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                >
+                  <div className={styles.diasporaIcon}>
+                    <IconComponent size={22} />
+                  </div>
+                  <h4 className={styles.diasporaTitle}>{strategy.title}</h4>
+                  <p className={styles.diasporaDesc}>{strategy.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* IT Mentorship Section */}
+      <section className={styles.mentorshipSection}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionNumber}>08</div>
+            <div className={styles.sectionTitleBlock}>
+              <h2 className={styles.sectionTitle}>IT MENTORSHIP PROGRAM</h2>
+              <span className={styles.sectionMeta}>EMPOWERING THE NEXT GENERATION</span>
+            </div>
+          </div>
+
+          <div className={styles.mentorshipGrid}>
+            <motion.div 
+              className={styles.mentorshipContent}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <p className={styles.mentorshipLead}>
+                Fostering Connections & Facilitating Growth
+              </p>
+              <p className={styles.mentorshipText}>
+                Our mission is simple – to foster connections and facilitate growth within the 
+                IT community. We are a community-driven enterprise firmly rooted in the incredible 
+                power of peer-to-peer mentorship, and we are committed to investing the time and 
+                effort required to educate, advocate, and inspire.
+              </p>
+              <p className={styles.mentorshipText}>
+                We strive to eliminate any obstacles that may hinder our mission and are devoted 
+                to promoting a culture of inclusivity, collaboration, and innovation.
+              </p>
+
+              <div className={styles.mentorshipCta}>
+                <Link href="/contact" className={styles.mentorshipBtn}>
+                  <Mail size={16} />
+                  <span>Get in Touch</span>
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className={styles.mentorshipImage}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src="/other_images/aboutus/it-mentoring-1.png"
+                alt="IT Mentorship Program"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section className={styles.certsSection}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionNumber}>09</div>
+            <div className={styles.sectionTitleBlock}>
+              <h2 className={styles.sectionTitle}>CERTIFICATIONS & EXPERTISE</h2>
+              <span className={styles.sectionMeta}>VERIFIED CREDENTIALS</span>
+            </div>
+          </div>
+
+          <div className={styles.certsGrid}>
+            {certifications.map((cert, index) => (
+              <motion.div
+                key={index}
+                className={styles.certBadge}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <CheckCircle size={16} />
+                <span>{cert}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className={styles.ctaSection}>
+        <div className={styles.container}>
+          <motion.div
+            className={styles.ctaCard}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className={styles.ctaGlow} />
+            <div className={styles.ctaNumber}>10</div>
+            <div className={styles.ctaContent}>
+              <h2>Ready to Partner with Us?</h2>
+              <p>
+                Let&apos;s discuss how AmaraTech can help secure and transform your IT infrastructure.
+              </p>
+              <div className={styles.ctaActions}>
+                <Link href="/contact" className={styles.ctaButton}>
+                  <Zap size={16} />
+                  <span>Contact Us</span>
+                </Link>
+                <Link href="/services" className={styles.ctaButtonSecondary}>
+                  <span>View Services</span>
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer Strip */}
+      <div className={styles.footerStrip}>
+        <span>AMARATECH IT SOLUTIONS</span>
+        <span className={styles.footerDot} />
+        <span>ABOUT</span>
+        <span className={styles.footerDot} />
+        <span>{new Date().getFullYear()}</span>
       </div>
     </div>
   );

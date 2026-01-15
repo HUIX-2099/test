@@ -309,6 +309,7 @@
    SYSTEM STATUS INDICATORS
    ============================================ */
 
+/* System Status Indicators */
 .systemStatus {
   display: flex;
   align-items: center;
@@ -351,6 +352,83 @@
   display: none;
 }
 
+/* Theme Toggle Switch */
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.toggleTrack {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.toggleTrack.dark {
+  background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(200, 30, 30, 0.15);
+}
+
+.toggleTrack.light {
+  background: linear-gradient(135deg, #f0f0f5, #e0e0e8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.1),
+    0 0 8px rgba(255, 200, 50, 0.2);
+}
+
+.toggleThumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggleTrack.dark .toggleThumb {
+  left: 2px;
+  background: linear-gradient(135deg, #2a2a3e, #3a3a4e);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: #8888ff;
+}
+
+.toggleTrack.light .toggleThumb {
+  left: 22px;
+  background: linear-gradient(135deg, #ffffff, #f5f5f5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  color: #ff9500;
+}
+
+.toggleThumb svg {
+  width: 12px;
+  height: 12px;
+}
+
+.themeToggle:hover .toggleTrack {
+  transform: scale(1.05);
+}
+
+.themeToggle:active .toggleThumb {
+  transform: scale(0.95);
+}
+
 /* Show labels on larger screens */
 @media (min-width: 1280px) {
   .statusLabel {
@@ -365,7 +443,7 @@
 .desktopNav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .navItem {
@@ -375,18 +453,19 @@
 .navLink {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 10px 16px;
+  gap: 4px;
+  padding: 8px 10px;
   background: none;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .navLink:hover {
@@ -752,26 +831,50 @@
    RESPONSIVE
    ============================================ */
 
+@media (max-width: 1400px) {
+  .navLink {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  
+  .navActionBtn span,
+  .navActionBtnPrimary span {
+    display: none;
+  }
+  
+  .navActionBtn,
+  .navActionBtnPrimary {
+    padding: 8px;
+  }
+}
+
 @media (max-width: 1280px) {
   .topBarContact span {
     display: none;
   }
-  
+
   .topBarContact {
     padding: 6px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
   }
-  
+
   .topBarBtn span,
   .topBarBtnPrimary span {
     display: none;
   }
-  
+
   .topBarBtn,
   .topBarBtnPrimary {
     padding: 8px;
     border-radius: 6px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .navActionBtn,
+  .navActionBtnPrimary {
+    display: none;
   }
 }
 
@@ -789,7 +892,28 @@
   }
 
   .systemStatus {
-    display: none;
+    margin-left: auto;
+    margin-right: 12px;
+    padding: 4px 8px;
+    gap: 12px;
+  }
+
+  .themeToggle {
+    margin-left: 8px;
+  }
+
+  .toggleTrack {
+    width: 40px;
+    height: 22px;
+  }
+
+  .toggleThumb {
+    width: 18px;
+    height: 18px;
+  }
+
+  .toggleTrack.light .toggleThumb {
+    left: 20px;
   }
   
   .topBarLeft {
@@ -847,6 +971,51 @@
   .mobileMenu {
     top: 100px;
   }
+
+  .systemStatus {
+    display: flex;
+    margin-left: auto;
+    margin-right: 12px;
+    padding: 4px 8px;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+  }
+
+  .statusItem {
+    font-size: 9px;
+    gap: 4px;
+  }
+
+  .statusItem svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .themeToggle {
+    display: flex;
+    margin-left: 8px;
+  }
+
+  .toggleTrack {
+    width: 38px;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  .toggleThumb {
+    width: 16px;
+    height: 16px;
+  }
+
+  .toggleTrack.light .toggleThumb {
+    left: 20px;
+  }
+
+  .toggleThumb svg {
+    width: 10px;
+    height: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -880,5 +1049,47 @@
   .tabItem {
     padding: 6px 8px;
     font-size: 9px;
+  }
+
+  .systemStatus {
+    display: flex;
+    padding: 3px 6px;
+    gap: 8px;
+    margin-right: 8px;
+  }
+
+  .statusItem {
+    font-size: 8px;
+    gap: 3px;
+  }
+
+  .statusItem svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .themeToggle {
+    display: flex;
+    margin-left: 6px;
+  }
+
+  .toggleTrack {
+    width: 34px;
+    height: 18px;
+    border-radius: 9px;
+  }
+
+  .toggleThumb {
+    width: 14px;
+    height: 14px;
+  }
+
+  .toggleTrack.light .toggleThumb {
+    left: 18px;
+  }
+
+  .toggleThumb svg {
+    width: 9px;
+    height: 9px;
   }
 }

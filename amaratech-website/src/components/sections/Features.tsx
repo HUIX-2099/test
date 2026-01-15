@@ -24,102 +24,102 @@ const securityModules = [
   {
     id: 'MOD_00',
     icon: Brain,
-    title: 'AI Analytics',
-    metric: '50+',
-    metricLabel: 'AI MODELS',
+    title: 'AI-Powered Detection',
+    metric: '99.9%',
+    metricLabel: 'ACCURACY',
     status: 'LEARNING',
     color: '#A855F7',
   },
   {
     id: 'MOD_01',
     icon: Shield,
-    title: 'Zero Trust',
-    metric: '99.9%',
-    metricLabel: 'ACCURACY',
+    title: 'Zero Trust Security',
+    metric: '24/7',
+    metricLabel: 'PROTECTION',
     status: 'ACTIVE',
     color: '#C81E1E',
   },
   {
     id: 'MOD_02',
     icon: Eye,
-    title: 'Threat Detection',
-    metric: '24/7',
-    metricLabel: 'MONITORING',
+    title: 'SOC Monitoring',
+    metric: '365',
+    metricLabel: 'DAYS/YEAR',
     status: 'ONLINE',
     color: '#22C55E',
   },
   {
     id: 'MOD_03',
     icon: Lock,
-    title: 'Encryption',
+    title: 'Data Encryption',
     metric: 'AES-256',
-    metricLabel: 'STANDARD',
+    metricLabel: 'MILITARY GRADE',
     status: 'SECURED',
     color: '#00D1FF',
   },
   {
     id: 'MOD_04',
     icon: Zap,
-    title: 'Response Time',
+    title: 'Incident Response',
     metric: '<15',
-    metricLabel: 'MINUTES',
+    metricLabel: 'MIN RESPONSE',
     status: 'READY',
     color: '#F59E0B',
   },
   {
     id: 'MOD_05',
     icon: Cloud,
-    title: 'Cloud Security',
-    metric: '3',
-    metricLabel: 'PLATFORMS',
+    title: 'Multi-Cloud Security',
+    metric: 'AWS',
+    metricLabel: 'AZURE & GCP',
     status: 'SYNCED',
     color: '#8B5CF6',
   },
 ];
 
 const liveStats = [
-  { label: 'Endpoints Protected', value: '12,847', icon: Database },
-  { label: 'Threats Blocked Today', value: '2,341', icon: Shield },
-  { label: 'Active Clients', value: '156', icon: Users },
-  { label: 'Global Regions', value: '15', icon: Globe },
+  { label: 'Endpoints Protected', value: '15,000+', icon: Database },
+  { label: 'Threats Blocked Monthly', value: '50,000+', icon: Shield },
+  { label: 'Enterprise Clients', value: '100+', icon: Users },
+  { label: 'Countries Served', value: '15+', icon: Globe },
 ];
 
 const features = [
   {
     id: 'FEAT_01',
     icon: Shield,
-    title: 'Zero Trust Architecture',
-    desc: 'Never trust, always verify. Complete identity verification for every access request.',
+    title: 'Threat Detection & Response',
+    desc: '24/7 AI-powered threat monitoring with sub-15-minute incident response times.',
   },
   {
     id: 'FEAT_02',
-    icon: Eye,
-    title: '24/7 Threat Monitoring',
-    desc: 'AI-powered surveillance detecting anomalies in real-time.',
+    icon: Lock,
+    title: 'Penetration Testing',
+    desc: 'Comprehensive vulnerability assessments to identify and fix security gaps.',
   },
   {
     id: 'FEAT_03',
-    icon: Lock,
-    title: 'Data Encryption',
-    desc: 'Military-grade AES-256 encryption for data at rest and in transit.',
+    icon: Eye,
+    title: 'Security Operations Center',
+    desc: 'Dedicated SOC team monitoring your infrastructure around the clock.',
   },
   {
     id: 'FEAT_04',
-    icon: Zap,
-    title: 'Rapid Response',
-    desc: 'Sub-minute incident response with automated containment.',
+    icon: Database,
+    title: 'Compliance Management',
+    desc: 'CMMC, HIPAA, SOC 2, and GDPR compliance consulting and implementation.',
   },
   {
     id: 'FEAT_05',
-    icon: Server,
-    title: 'Infrastructure Security',
-    desc: 'Hardened servers and continuous compliance monitoring.',
+    icon: Cloud,
+    title: 'Cloud Security Posture',
+    desc: 'Secure your AWS, Azure, and GCP environments with zero-trust architecture.',
   },
   {
     id: 'FEAT_06',
-    icon: Cloud,
-    title: 'Cloud Protection',
-    desc: 'Comprehensive security for AWS, Azure, and hybrid clouds.',
+    icon: Users,
+    title: 'Security Awareness Training',
+    desc: 'Employee training programs to build a security-first culture.',
   },
 ];
 
@@ -137,11 +137,11 @@ export default function Features() {
         {/* Header */}
         <div className={styles.header}>
           <div className={styles.headerLeft}>
-            <span className={styles.headerLabel}>SECURITY OPERATIONS CENTER</span>
+            <span className={styles.headerLabel}>SECURITY OPERATIONS DASHBOARD</span>
             <div className={styles.headerMeta}>
-              <span className={styles.metaItem}>STATUS: OPERATIONAL</span>
+              <span className={styles.metaItem}>Real-time threat intelligence</span>
               <span className={styles.metaDivider}>|</span>
-              <span className={styles.metaItem}>THREAT LEVEL: LOW</span>
+              <span className={styles.metaItem}>Enterprise protection</span>
             </div>
           </div>
           <div className={styles.headerRight}>
@@ -227,7 +227,7 @@ export default function Features() {
           {/* Right - Features List */}
           <div className={styles.tracksPanel}>
             <div className={styles.trackHeader}>
-              <span className={styles.trackCode}>// SECURITY_FEATURES</span>
+              <span className={styles.trackCode}>// SECURITY_CAPABILITIES</span>
               <Activity size={16} className={styles.trackActivity} />
             </div>
 
@@ -264,16 +264,16 @@ export default function Features() {
             {/* System Status */}
             <div className={styles.systemStatus}>
               <div className={styles.statusRow}>
-                <span className={styles.statusLabel}>System Health</span>
-                <span className={styles.statusValue}>OPTIMAL</span>
+                <span className={styles.statusLabel}>Threat Level</span>
+                <span className={styles.statusValue}>LOW</span>
               </div>
               <div className={styles.statusRow}>
-                <span className={styles.statusLabel}>Last Scan</span>
-                <span className={styles.statusValue}>2 MIN AGO</span>
+                <span className={styles.statusLabel}>Last Security Scan</span>
+                <span className={styles.statusValue}>JUST NOW</span>
               </div>
               <div className={styles.statusRow}>
-                <span className={styles.statusLabel}>Active Rules</span>
-                <span className={styles.statusValue}>1,247</span>
+                <span className={styles.statusLabel}>Active Security Rules</span>
+                <span className={styles.statusValue}>2,500+</span>
               </div>
             </div>
           </div>

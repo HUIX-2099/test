@@ -15,12 +15,8 @@ import {
   Users,
   Shield,
   Cloud,
-  Building2,
   Brain,
   Settings,
-  Wifi,
-  WifiOff,
-  ShieldCheck,
   ShieldAlert,
   Usb,
   Monitor,
@@ -28,7 +24,10 @@ import {
   LogIn,
   TicketPlus,
   Sparkles,
-  Zap
+  Zap,
+  Building2,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaMicrosoft, FaWindows, FaApple, FaLinux } from 'react-icons/fa';
@@ -49,11 +48,10 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark theme
   
   // System status states
   const [osInfo, setOsInfo] = useState<{ name: string; icon: 'windows' | 'mac' | 'linux' | 'unknown' }>({ name: 'Detecting...', icon: 'unknown' });
-  const [isOnline, setIsOnline] = useState(true);
-  const [isSecure, setIsSecure] = useState(true);
 
   // Helper to check if tab is active
   const isTabActive = (path: string) => {
@@ -63,24 +61,15 @@ export default function Navbar() {
 
   // Detect system info on mount
   useEffect(() => {
-    // Detect OS
     setOsInfo(getOS());
-    
-    // Detect online status
-    setIsOnline(navigator.onLine);
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-    
-    // Check if HTTPS (secure)
-    setIsSecure(window.location.protocol === 'https:');
-    
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
   }, []);
+
+  // Theme toggle handler (for future implementation)
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    // Future: Apply theme to document
+    // document.documentElement.setAttribute('data-theme', isDarkMode ? 'light' : 'dark');
+  };
 
   // Scroll handler
   useEffect(() => {
@@ -107,12 +96,20 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   const servicesItems = [
-    { name: 'AI Consulting', href: '/services/ai-consulting', Icon: Brain },
     { name: 'Microsoft Azure', href: '/services/azure', Icon: FaMicrosoft },
+    { name: 'Azure Migration Strategy', href: '/services/azure-migration', Icon: Cloud },
+    { name: 'Microsoft Office 365', href: '/services/office-365', Icon: FaMicrosoft },
     { name: 'Cloud Solutions', href: '/services/cloud', Icon: Cloud },
     { name: 'Cyber Security', href: '/services/security', Icon: Shield },
-    { name: 'IT Consulting', href: '/services/consulting', Icon: Settings },
     { name: 'E-Governance', href: '/services/e-governance', Icon: Building2 },
+    { name: 'Penetration Testing', href: '/services/penetration-testing', Icon: ShieldAlert },
+    { name: 'Managed IT Support', href: '/services/managed-it', Icon: Settings },
+  ];
+
+  const aboutItems = [
+    { name: 'About Us', href: '/about', Icon: Users },
+    { name: 'Our Team', href: '/about/team', Icon: Users },
+    { name: 'Our Mission', href: '/about/mission', Icon: Shield },
   ];
 
   return (
@@ -198,18 +195,6 @@ export default function Navbar() {
               <span className={styles.statusLabel}>{osInfo.name}</span>
             </div>
 
-            {/* WiFi / Online Status */}
-            <div className={`${styles.statusItem} ${isOnline ? styles.statusGood : styles.statusBad}`} title={isOnline ? 'Online' : 'Offline'}>
-              {isOnline ? <Wifi size={14} /> : <WifiOff size={14} />}
-              <span className={styles.statusLabel}>{isOnline ? 'Online' : 'Offline'}</span>
-            </div>
-
-            {/* Secure Connection */}
-            <div className={`${styles.statusItem} ${isSecure ? styles.statusGood : styles.statusWarning}`} title={isSecure ? 'Secure Connection (HTTPS)' : 'Insecure Connection'}>
-              {isSecure ? <ShieldCheck size={14} /> : <ShieldAlert size={14} />}
-              <span className={styles.statusLabel}>{isSecure ? 'Secure' : 'Insecure'}</span>
-            </div>
-
             {/* USB Icon (decorative) */}
             <div className={styles.statusItem} title="USB Ready">
               <Usb size={14} />
@@ -223,7 +208,6 @@ export default function Navbar() {
               href="/" 
               className={`${styles.navLink} ${isTabActive('/') && pathname === '/' ? styles.active : ''}`}
             >
-              <Home size={14} className={styles.navIcon} />
               Home
             </Link>
 
@@ -234,7 +218,6 @@ export default function Navbar() {
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <button className={`${styles.navLink} ${isTabActive('/services') ? styles.active : ''}`}>
-                <Layers size={14} className={styles.navIcon} />
                 Services
                 <ChevronDown size={14} className={`${styles.chevron} ${openDropdown === 'services' ? styles.open : ''}`} />
               </button>
@@ -267,36 +250,108 @@ export default function Navbar() {
             </div>
 
             <Link 
-              href="/platform" 
-              className={`${styles.navLink} ${isTabActive('/platform') ? styles.active : ''}`}
+              href="/services/ai" 
+              className={`${styles.navLink} ${isTabActive('/services/ai') ? styles.active : ''}`}
             >
-              <Package size={14} className={styles.navIcon} />
-              Platform
-              <span className={styles.comingSoon}>Soon</span>
+              Artificial Intelligence
+            </Link>
+
+            {/* About Us Dropdown */}
+            <div 
+              className={styles.navItem}
+              onMouseEnter={() => setOpenDropdown('about')}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
+              <button className={`${styles.navLink} ${isTabActive('/about') ? styles.active : ''}`}>
+                About Us
+                <ChevronDown size={14} className={`${styles.chevron} ${openDropdown === 'about' ? styles.open : ''}`} />
+              </button>
+              <AnimatePresence>
+                {openDropdown === 'about' && (
+                  <motion.div
+                    className={styles.dropdown}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {aboutItems.map((item) => {
+                      const ItemIcon = item.Icon;
+                      return (
+                        <Link key={item.href} href={item.href} className={styles.dropdownItem}>
+                          <ItemIcon size={16} />
+                          <span>{item.name}</span>
+                        </Link>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <Link 
+              href="/careers" 
+              className={`${styles.navLink} ${isTabActive('/careers') ? styles.active : ''}`}
+            >
+              Careers
             </Link>
 
             <Link 
-              href="/about" 
-              className={`${styles.navLink} ${isTabActive('/about') ? styles.active : ''}`}
+              href="/events" 
+              className={`${styles.navLink} ${isTabActive('/events') ? styles.active : ''}`}
             >
-              <Users size={14} className={styles.navIcon} />
-              About
+              Events
             </Link>
 
             <Link 
-              href="/contact" 
-              className={`${styles.navLink} ${isTabActive('/contact') ? styles.active : ''}`}
+              href="/swag" 
+              className={`${styles.navLink} ${isTabActive('/swag') ? styles.active : ''}`}
             >
-              <Mail size={14} className={styles.navIcon} />
-              Contact
+              Swag
+            </Link>
+
+            <Link 
+              href="/blog" 
+              className={`${styles.navLink} ${isTabActive('/blog') ? styles.active : ''}`}
+            >
+              Blog
+            </Link>
+
+            <Link 
+              href="/self-assessment" 
+              className={`${styles.navLink} ${isTabActive('/self-assessment') ? styles.active : ''}`}
+            >
+              Self Assessment
             </Link>
           </nav>
 
-          {/* CTA Button */}
+          {/* Action Buttons */}
           <div className={styles.actions}>
+            <a href="https://login.amaratechit.com" className={styles.navActionBtn}>
+              <LogIn size={14} />
+              <span>Employee Login</span>
+            </a>
+            <a href="https://helpdesk.amaratechit.com" className={styles.navActionBtnPrimary}>
+              <TicketPlus size={14} />
+              <span>Create a Helpdesk Ticket</span>
+            </a>
             <Link href="/contact" className={styles.ctaButton}>
-              Get Started
+              Contact Us
             </Link>
+            
+            {/* Theme Toggle Switch */}
+            <button 
+              className={styles.themeToggle}
+              onClick={toggleTheme}
+              title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              aria-label="Toggle theme"
+            >
+              <div className={`${styles.toggleTrack} ${isDarkMode ? styles.dark : styles.light}`}>
+                <div className={styles.toggleThumb}>
+                  {isDarkMode ? <Moon size={12} /> : <Sun size={12} />}
+                </div>
+              </div>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -329,17 +384,37 @@ export default function Navbar() {
                 <Layers size={20} />
                 Services
               </Link>
-              <Link href="/platform" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Package size={20} />
-                Platform
+              <Link href="/services/ai" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                <Brain size={20} />
+                Artificial Intelligence
               </Link>
               <Link href="/about" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
                 <Users size={20} />
-                About
+                About Us
+              </Link>
+              <Link href="/careers" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                <Users size={20} />
+                Careers
+              </Link>
+              <Link href="/events" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                <Sparkles size={20} />
+                Events
+              </Link>
+              <Link href="/swag" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                <Package size={20} />
+                Swag
+              </Link>
+              <Link href="/blog" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                <Layers size={20} />
+                Blog
+              </Link>
+              <Link href="/self-assessment" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                <Shield size={20} />
+                Self Assessment
               </Link>
               <Link href="/contact" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
                 <Mail size={20} />
-                Contact
+                Contact Us
               </Link>
             </nav>
             {/* Mobile Contact & Actions */}
@@ -368,7 +443,7 @@ export default function Navbar() {
 
             <div className={styles.mobileCta}>
               <Link href="/contact" className={styles.ctaButton} onClick={() => setIsMenuOpen(false)}>
-                Get Started
+                Contact Us
               </Link>
             </div>
           </motion.div>
@@ -391,13 +466,13 @@ export default function Navbar() {
           </div>
           <span>Contact</span>
         </Link>
-        <Link href="/platform" className={`${styles.tabItem} ${isTabActive('/platform') ? styles.tabActive : ''}`}>
-          <Package size={20} />
-          <span>Platform</span>
-        </Link>
         <Link href="/about" className={`${styles.tabItem} ${isTabActive('/about') ? styles.tabActive : ''}`}>
           <Users size={20} />
           <span>About</span>
+        </Link>
+        <Link href="/blog" className={`${styles.tabItem} ${isTabActive('/blog') ? styles.tabActive : ''}`}>
+          <Layers size={20} />
+          <span>Blog</span>
         </Link>
       </nav>
     </>

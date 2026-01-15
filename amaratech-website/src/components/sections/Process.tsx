@@ -15,35 +15,27 @@ import styles from './Process.module.css';
 const steps = [
   {
     number: '01',
-    icon: Brain,
-    title: 'AI Consultation',
-    desc: 'Analyze your business needs with AI-powered insights and strategic planning.',
-    duration: '1 week',
-    outputs: ['AI Strategy', 'Use Case Analysis', 'ROI Projection']
+    icon: Search,
+    title: 'Assessment',
+    desc: 'Identify vulnerabilities with a comprehensive security review. Evaluate compliance gaps and technology risks.',
+    duration: '1-2 weeks',
+    outputs: ['Risk Report', 'Gap Analysis', 'Compliance Review']
   },
   {
     number: '02',
-    icon: Search,
-    title: 'Assessment',
-    desc: 'Comprehensive security audit and vulnerability assessment of your infrastructure.',
-    duration: '1-2 weeks',
-    outputs: ['Risk Report', 'Gap Analysis', 'Roadmap']
+    icon: Shield,
+    title: 'Implementation',
+    desc: 'Deploy tailored cybersecurity and IT solutions. Strengthen cloud, network, and endpoint security.',
+    duration: '2-4 weeks',
+    outputs: ['Security Controls', 'Cloud Setup', 'Network Hardening']
   },
   {
     number: '03',
-    icon: Shield,
-    title: 'Implementation',
-    desc: 'Deploy security controls, configure monitoring, and establish baselines.',
-    duration: '2-4 weeks',
-    outputs: ['Security Controls', 'Monitoring Setup', 'Policies']
-  },
-  {
-    number: '04',
     icon: Activity,
-    title: 'Monitoring',
-    desc: 'Continuous 24/7 AI-powered threat monitoring and incident response.',
+    title: 'Ongoing Protection',
+    desc: '24/7 threat monitoring and rapid incident response. Continuous updates to stay ahead of evolving threats.',
     duration: 'Ongoing',
-    outputs: ['SOC Services', 'Alert Management', 'Reporting']
+    outputs: ['SOC Services', 'Threat Monitoring', 'Incident Response']
   },
 ];
 
@@ -62,9 +54,10 @@ export default function Process() {
             <span className={styles.labelNumber}>[03]</span>
             <span className={styles.labelText}>PROCESS</span>
           </div>
-          <h2 className={styles.title}>How We Work</h2>
+          <h2 className={styles.title}>How It Works</h2>
           <p className={styles.subtitle}>
-            A systematic approach to securing your digital infrastructure
+            Securing your business doesn&apos;t have to be complicated. At AmaraTech IT, 
+            we follow a proven, step-by-step process to protect your organization.
           </p>
         </div>
 
@@ -119,22 +112,6 @@ export default function Process() {
               </motion.div>
             );
           })}
-        </div>
-
-        {/* Bottom Stats */}
-        <div className={styles.bottomStats}>
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>4-8</span>
-            <span className={styles.statLabel}>Weeks to Deploy</span>
-          </div>
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>100%</span>
-            <span className={styles.statLabel}>Success Rate</span>
-          </div>
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>24/7</span>
-            <span className={styles.statLabel}>Support Coverage</span>
-          </div>
         </div>
       </div>
     </section>

@@ -2,51 +2,42 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GlassCard from "@/components/common/GlassCard";
 import Button from "@/components/common/Button";
+import Features from "@/components/sections/Features";
+import TechShowcase from "@/components/sections/TechShowcase";
+import AzurePage from "./AzurePage";
+import CloudPage from "./CloudPage";
+import EGovernancePage from "./EGovernancePage";
+import AIPage from "./AIPage";
+import SecurityPage from "./SecurityPage";
 
 const services: Record<string, {
   title: string;
   description: string;
   content: string;
   features: string[];
+  showSecurityDashboard?: boolean;
+  customComponent?: boolean;
 }> = {
   azure: {
     title: 'Microsoft Azure',
     description: 'Strategic partnership with Microsoft for cloud transformation and Azure migration.',
-    content: 'At AmaraTech IT Solutions, we are proud to announce our strategic partnership with Microsoft, a collaboration designed to revolutionize the way businesses embrace cloud technology. Our Azure services help organizations migrate, optimize, and manage their cloud infrastructure with confidence.',
-    features: [
-      'Azure Migration Strategy',
-      'Microsoft Office 365',
-      'Cloud Infrastructure Management',
-      'Azure Security & Compliance',
-      'Cost Optimization',
-      '24/7 Azure Monitoring',
-    ],
+    content: '',
+    features: [],
+    customComponent: true,
   },
   cloud: {
     title: 'Cloud Solutions',
     description: 'Scalable cloud infrastructure and architecture for modern businesses.',
-    content: 'Transform your IT infrastructure with scalable cloud solutions designed for modern businesses. From networking to storage, we provide comprehensive cloud services that help organizations achieve agility, scalability, and cost-efficiency.',
-    features: [
-      'Cloud Architecture Design',
-      'Infrastructure Scaling',
-      'Data Storage Solutions',
-      'Cloud Security',
-      'Disaster Recovery',
-      'Multi-Cloud Strategy',
-    ],
+    content: '',
+    features: [],
+    customComponent: true,
   },
   security: {
     title: 'Cyber Security',
     description: '24/7 threat monitoring, incident response, and comprehensive security services.',
-    content: 'Protect your digital assets with enterprise-grade cybersecurity services. Our team provides 24/7 threat detection, monitoring, and rapid incident response to ensure your systems are protected at all times. We specialize in advanced threat prevention and security posture management.',
-    features: [
-      '24/7 Threat Monitoring',
-      'Data Protection',
-      'Incident Response',
-      'Security Audits',
-      'Penetration Testing',
-      'Security Training',
-    ],
+    content: '',
+    features: [],
+    customComponent: true,
   },
   consulting: {
     title: 'IT Consulting',
@@ -64,33 +55,26 @@ const services: Record<string, {
   'e-governance': {
     title: 'E-Governance',
     description: 'Digital solutions for government operations and citizen services.',
-    content: 'Streamline government operations with modern e-governance solutions. From licensing to compliance reporting, we help public sector organizations digitize efficiently while ensuring security, compliance, and citizen satisfaction.',
-    features: [
-      'Digital Licensing Systems',
-      'Compliance Reporting',
-      'Citizen Services Portal',
-      'Document Management',
-      'Workflow Automation',
-      'Data Analytics',
-    ],
+    content: '',
+    features: [],
+    customComponent: true,
   },
   ai: {
     title: 'Artificial Intelligence',
     description: 'Custom AI and machine learning solutions for business automation.',
-    content: 'Harness the power of AI to automate processes, gain insights, and drive innovation. We develop custom AI solutions tailored to your business needs, from machine learning models to intelligent automation systems.',
-    features: [
-      'AI Strategy & Planning',
-      'Machine Learning Solutions',
-      'AI Integration Services',
-      'Natural Language Processing',
-      'Computer Vision',
-      'Predictive Analytics',
-    ],
+    content: '',
+    features: [],
+    customComponent: true,
   },
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const service = services[params.slug];
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const service = services[slug];
   
   if (!service) {
     return {
@@ -108,11 +92,33 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function ServicePage({ params }: { params: { slug: string } }) {
-  const service = services[params.slug];
+export default async function ServicePage({ params }: Props) {
+  const { slug } = await params;
+  const service = services[slug];
 
   if (!service) {
     notFound();
+  }
+
+  // Render custom pages
+  if (slug === 'azure') {
+    return <AzurePage />;
+  }
+  
+  if (slug === 'cloud') {
+    return <CloudPage />;
+  }
+  
+  if (slug === 'e-governance') {
+    return <EGovernancePage />;
+  }
+  
+  if (slug === 'ai') {
+    return <AIPage />;
+  }
+  
+  if (slug === 'security') {
+    return <SecurityPage />;
   }
 
   return (
@@ -147,6 +153,14 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           </div>
         </GlassCard>
       </div>
+      
+      {/* Security Dashboard & Attack Flow - Only shown on security page */}
+      {service.showSecurityDashboard && (
+        <>
+          <Features />
+          <TechShowcase />
+        </>
+      )}
     </div>
   );
 }

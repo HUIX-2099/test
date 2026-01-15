@@ -400,6 +400,135 @@ export default function Contact() {
             Request Now
           </a>
         </motion.div>
+
+        {/* Map Section - Book Screen Design */}
+        <motion.div 
+          className={styles.mapSection}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className={styles.mapContainer}>
+            {/* Mac-style Window Dots */}
+            <div className={styles.windowDots}>
+              <span className={styles.dotRed}></span>
+              <span className={styles.dotYellow}></span>
+              <span className={styles.dotBlue}></span>
+            </div>
+
+            {/* Map Header */}
+            <div className={styles.mapHeader}>
+              <div className={styles.mapHeaderLeft}>
+                <MapPin size={18} className={styles.mapHeaderIcon} />
+                <div className={styles.mapHeaderInfo}>
+                  <span className={styles.mapHeaderTitle}>GLOBAL LOCATIONS</span>
+                  <span className={styles.mapHeaderCode}>LOC.MAP.v2.0</span>
+                </div>
+              </div>
+              <div className={styles.mapTabs}>
+                <button className={`${styles.mapTab} ${styles.mapTabActive}`}>satellite</button>
+                <button className={styles.mapTab}>terrain</button>
+                <button className={styles.mapTab}>hybrid</button>
+              </div>
+            </div>
+
+            {/* Map Content */}
+            <div className={styles.mapContent}>
+              {/* Left Sidebar - Location List */}
+              <div className={styles.mapSidebar}>
+                <div className={styles.mapSidebarHeader}>
+                  <span className={styles.mapSidebarTitle}>Office Nodes</span>
+                  <span className={styles.mapSidebarCount}>2 locations</span>
+                </div>
+                
+                <div className={styles.locationList}>
+                  <div className={`${styles.locationItem} ${styles.locationActive}`}>
+                    <div className={styles.locationMarker}>
+                      <span className={styles.markerDot}></span>
+                      <span className={styles.markerPulse}></span>
+                    </div>
+                    <div className={styles.locationInfo}>
+                      <span className={styles.locationCode}>[HQ.01]</span>
+                      <span className={styles.locationName}>Columbia, MD</span>
+                      <span className={styles.locationCountry}>United States</span>
+                    </div>
+                    <div className={styles.locationStatus}>
+                      <span className={styles.statusOnline}></span>
+                      <span>ONLINE</span>
+                    </div>
+                  </div>
+                  
+                  <div className={styles.locationItem}>
+                    <div className={styles.locationMarker}>
+                      <span className={styles.markerDot}></span>
+                      <span className={styles.markerPulse}></span>
+                    </div>
+                    <div className={styles.locationInfo}>
+                      <span className={styles.locationCode}>[RG.02]</span>
+                      <span className={styles.locationName}>Monrovia</span>
+                      <span className={styles.locationCountry}>Liberia</span>
+                    </div>
+                    <div className={styles.locationStatus}>
+                      <span className={styles.statusOnline}></span>
+                      <span>ONLINE</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.mapStats}>
+                  <div className={styles.mapStat}>
+                    <span className={styles.mapStatValue}>2</span>
+                    <span className={styles.mapStatLabel}>REGIONS</span>
+                  </div>
+                  <div className={styles.mapStat}>
+                    <span className={styles.mapStatValue}>24/7</span>
+                    <span className={styles.mapStatLabel}>COVERAGE</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map Embed */}
+              <div className={styles.mapEmbed}>
+                <div className={styles.mapOverlay}>
+                  <div className={styles.mapGrid}></div>
+                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.7574559073776!2d-76.86138208431406!3d39.21292397952407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7df9c5c1f5b7b%3A0x6f7b7b7b7b7b7b7b!2s8865%20Stanford%20Blvd%2C%20Columbia%2C%20MD%2021045!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+                  className={styles.mapIframe}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="AmaraTech Office Location"
+                />
+                
+                {/* Map Coordinates Display */}
+                <div className={styles.mapCoords}>
+                  <span>39.2129° N</span>
+                  <span className={styles.coordsDivider}>|</span>
+                  <span>76.8614° W</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Map Footer */}
+            <div className={styles.mapFooter}>
+              <div className={styles.mapFooterLeft}>
+                <span className={styles.mapFooterItem}>ZOOM: 15x</span>
+                <span className={styles.mapFooterDivider}>•</span>
+                <span className={styles.mapFooterItem}>LAYER: DEFAULT</span>
+              </div>
+              <a 
+                href="https://maps.google.com/?q=8865+Stanford+Blvd,+Columbia,+MD+21045" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.mapFooterLink}
+              >
+                Open in Google Maps
+                <ArrowRight size={12} />
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

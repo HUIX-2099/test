@@ -750,3 +750,136 @@
     font-size: 9px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .speechBubble {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(200, 30, 30, 0.05);
+}
+
+[data-theme='light'] .speechBubble p {
+  color: #333333;
+}
+
+[data-theme='light'] .bubbleTail {
+  border-top-color: rgba(255, 255, 255, 0.98);
+}
+
+[data-theme='light'] .chatWindow {
+  background: #ffffff;
+  box-shadow: 
+    0 25px 80px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .windowHeader {
+  background: linear-gradient(180deg, #f8f8f8 0%, #ebebeb 100%);
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .chatTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .headerActions button {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .headerActions button:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .chatMessages {
+  background: #fafafa;
+}
+
+[data-theme='light'] .chatMessages::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='light'] .chatMessages::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .messageBubble.assistant {
+  background: #f0f0f0;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .messageText {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .typingIndicator {
+  background: #f0f0f0;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .typingDot {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .chatInputArea {
+  background: #f8f8f8;
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .chatInput input {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .chatInput input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .chatInput input:focus {
+  border-color: rgba(200, 30, 30, 0.5);
+  background: #ffffff;
+}
+
+[data-theme='light'] .quickActions {
+  background: #f8f8f8;
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .quickActions button {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .quickActions button:hover {
+  border-color: rgba(200, 30, 30, 0.4);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .voiceFooter {
+  background: #f8f8f8;
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .voiceBtn {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .voiceBtn:hover {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .aiIndicator {
+  color: rgba(139, 92, 246, 0.9);
+}

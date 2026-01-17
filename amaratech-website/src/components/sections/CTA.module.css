@@ -336,3 +336,76 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .cta {
+  background: #f8f9fa;
+}
+
+[data-theme='light'] .gridOverlay {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+[data-theme='light'] .backgroundGlow {
+  background: radial-gradient(ellipse at center, rgba(200, 30, 30, 0.04) 0%, transparent 60%);
+}
+
+[data-theme='light'] .content h2 {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .description {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .benefitItem {
+  color: #333333 !important;
+}
+
+[data-theme='light'] .secondaryButton {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #333333;
+}
+
+[data-theme='light'] .secondaryButton:hover {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme='light'] .statCard {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .statCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .statValue {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .statLabel {
+  color: #666666 !important;
+}
+
+[data-theme='light'] .aiButton {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #1a1a1a;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='light'] .aiButton:hover {
+  background: #ffffff;
+  border-color: rgba(200, 30, 30, 0.3);
+}

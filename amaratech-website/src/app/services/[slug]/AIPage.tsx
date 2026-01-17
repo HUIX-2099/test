@@ -9,8 +9,11 @@ import {
   Search, LineChart, Cpu, Settings, 
   HeartPulse, Building2, GraduationCap, Landmark,
   Bot, FileText, Calculator, Briefcase, Scale,
-  ChevronDown, ArrowRight, Target, Rocket
+  ChevronDown, ArrowRight, Target, Rocket,
+  Globe, AlertTriangle, FileCode, Fingerprint, ExternalLink
 } from "lucide-react";
+import { FaGoogle, FaReddit, FaGithub } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import styles from '../services.module.css';
 
 export default function AIPage() {
@@ -20,6 +23,7 @@ export default function AIPage() {
   const whyUsRef = useRef<HTMLDivElement>(null);
   const industriesRef = useRef<HTMLDivElement>(null);
   const agentsRef = useRef<HTMLDivElement>(null);
+  const threatIntelRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
   
   const heroInView = useInView(heroRef, { once: true });
@@ -28,6 +32,7 @@ export default function AIPage() {
   const whyUsInView = useInView(whyUsRef, { once: true, margin: "-100px" });
   const industriesInView = useInView(industriesRef, { once: true, margin: "-100px" });
   const agentsInView = useInView(agentsRef, { once: true, margin: "-100px" });
+  const threatIntelInView = useInView(threatIntelRef, { once: true, margin: "-100px" });
   const faqInView = useInView(faqRef, { once: true, margin: "-100px" });
 
   const [formData, setFormData] = useState({
@@ -474,6 +479,201 @@ export default function AIPage() {
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
+      </section>
+
+      {/* AI-Driven Threat Intelligence Section */}
+      <section ref={threatIntelRef} className={styles.threatIntelSection}>
+        <div className={styles.container}>
+          <motion.div 
+            className={styles.introHeader}
+            initial={{ opacity: 0, y: 20 }}
+            animate={threatIntelInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+          >
+            <span className={styles.sectionLabel}>CYBER THREAT INTELLIGENCE</span>
+            <h2 className={styles.sectionTitle}>
+              AI-Driven Insights for<br/>
+              <span className={styles.titleAccent}>Intelligence Analysis</span>
+            </h2>
+          </motion.div>
+
+          {/* Flow Diagram */}
+          <div className={styles.threatFlowContainer}>
+            {/* Left Side - Multi-Source Intels */}
+            <motion.div 
+              className={styles.threatSourceColumn}
+              initial={{ opacity: 0, x: -30 }}
+              animate={threatIntelInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {/* CTI Sources */}
+              <div className={styles.sourceGroup}>
+                <span className={styles.sourceGroupLabel}>AmaraTech CTI</span>
+                <div className={styles.sourceCircle}>
+                  <Shield size={24} />
+                  <span>AmaraTech</span>
+                </div>
+              </div>
+
+              {/* Reputable Sources */}
+              <div className={styles.sourceGroup}>
+                <span className={styles.sourceGroupLabel}>Threat Feeds</span>
+                <div className={styles.sourceIcons}>
+                  <div className={styles.sourceIcon}><Globe size={18} /></div>
+                  <div className={styles.sourceIcon}><AlertTriangle size={18} /></div>
+                  <div className={styles.sourceIcon}><Database size={18} /></div>
+                </div>
+              </div>
+
+              {/* Web Sources */}
+              <div className={styles.sourceGroup}>
+                <span className={styles.sourceGroupLabel}>OSINT Sources</span>
+                <div className={styles.sourceIcons}>
+                  <div className={styles.sourceIcon}><FaGoogle size={16} /></div>
+                  <div className={styles.sourceIcon}><FaXTwitter size={16} /></div>
+                  <div className={styles.sourceIcon}><FaReddit size={16} /></div>
+                  <div className={styles.sourceIcon}><FaGithub size={16} /></div>
+                </div>
+              </div>
+
+              {/* Knowledge Base */}
+              <div className={styles.sourceGroup}>
+                <span className={styles.sourceGroupLabel}>Enterprise Knowledge Base</span>
+                <div className={styles.sourceIcon}><Database size={18} /></div>
+              </div>
+            </motion.div>
+
+            {/* Center - AmaraTech AI Hub */}
+            <motion.div 
+              className={styles.threatCenterHub}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={threatIntelInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              {/* Connection Lines Left */}
+              <div className={styles.connectionLinesLeft}>
+                <svg viewBox="0 0 100 200" className={styles.connectionSvg}>
+                  <path d="M100,20 Q50,20 50,60 Q50,100 100,100" stroke="currentColor" strokeWidth="1.5" fill="none" strokeDasharray="4 2" />
+                  <path d="M100,60 Q60,60 60,100 Q60,100 100,100" stroke="currentColor" strokeWidth="1.5" fill="none" strokeDasharray="4 2" />
+                  <path d="M100,140 Q50,140 50,100 Q50,100 100,100" stroke="currentColor" strokeWidth="1.5" fill="none" strokeDasharray="4 2" />
+                  <path d="M100,180 Q40,180 40,100 Q40,100 100,100" stroke="currentColor" strokeWidth="1.5" fill="none" strokeDasharray="4 2" />
+                </svg>
+              </div>
+
+              <div className={styles.hubCenter}>
+                <div className={styles.hubIcon}>
+                  <Brain size={40} />
+                </div>
+                <span className={styles.hubLabel}>AmaraTech AI</span>
+                <span className={styles.hubSubLabel}>Multi-Agent Intelligence<br/>Platform for Cybersecurity</span>
+              </div>
+
+              {/* Connection Lines Right */}
+              <div className={styles.connectionLinesRight}>
+                <svg viewBox="0 0 100 200" className={styles.connectionSvg}>
+                  <path d="M0,100 Q50,100 50,40 Q50,20 100,20" stroke="currentColor" strokeWidth="1.5" fill="none" strokeDasharray="4 2" />
+                  <path d="M0,100 Q50,100 50,100 Q50,100 100,100" stroke="currentColor" strokeWidth="1.5" fill="none" strokeDasharray="4 2" />
+                  <path d="M0,100 Q50,100 50,160 Q50,180 100,180" stroke="currentColor" strokeWidth="1.5" fill="none" strokeDasharray="4 2" />
+                </svg>
+              </div>
+            </motion.div>
+
+            {/* Right Side - Analysis Outputs */}
+            <motion.div 
+              className={styles.threatOutputColumn}
+              initial={{ opacity: 0, x: 30 }}
+              animate={threatIntelInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <div className={styles.outputCard}>
+                <div className={styles.outputCardHeader}>
+                  <FileCode size={16} />
+                  <span>Threat Resolution</span>
+                </div>
+                <div className={styles.outputCardLines}>
+                  <div className={styles.outputLine} style={{ width: '90%' }} />
+                  <div className={styles.outputLine} style={{ width: '75%' }} />
+                </div>
+              </div>
+
+              <div className={styles.outputCard}>
+                <div className={styles.outputCardHeader}>
+                  <FileText size={16} />
+                  <span>IOC Analysis</span>
+                </div>
+                <div className={styles.outputCardLines}>
+                  <div className={styles.outputLine} style={{ width: '85%' }} />
+                  <div className={styles.outputLine} style={{ width: '60%' }} />
+                  <div className={styles.outputLine} style={{ width: '70%' }} />
+                </div>
+              </div>
+
+              <div className={styles.outputCard}>
+                <div className={styles.outputCardHeader}>
+                  <Fingerprint size={16} />
+                  <span>Attack Attribution</span>
+                </div>
+                <div className={styles.outputCardLines}>
+                  <div className={styles.outputLine} style={{ width: '80%' }} />
+                  <div className={styles.outputLine} style={{ width: '95%' }} />
+                  <div className={styles.outputLine} style={{ width: '65%' }} />
+                  <div className={styles.outputLine} style={{ width: '50%' }} />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Bottom Info Cards */}
+          <div className={styles.threatInfoGrid}>
+            <motion.div 
+              className={styles.threatInfoCard}
+              initial={{ opacity: 0, y: 20 }}
+              animate={threatIntelInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: 0.7 }}
+            >
+              <h4>Multi-Source Intelligence</h4>
+              <p>Aggregate threat data from premium feeds, open-source intelligence, dark web monitoring, and your enterprise knowledge base—unified in one platform.</p>
+            </motion.div>
+
+            <motion.div 
+              className={styles.threatInfoCard}
+              initial={{ opacity: 0, y: 20 }}
+              animate={threatIntelInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: 0.8 }}
+            >
+              <h4>AmaraTech AI Engine</h4>
+              <p>Our advanced multi-agent AI system provides real-time threat analysis, automated incident response, and predictive security insights.</p>
+            </motion.div>
+
+            <motion.div 
+              className={styles.threatInfoCard}
+              initial={{ opacity: 0, y: 20 }}
+              animate={threatIntelInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: 0.9 }}
+            >
+              <h4>Actionable Insights</h4>
+              <p>Get IOC verdicts, attack attribution, vulnerability assessments, and compliance reports—all delivered with clear remediation guidance.</p>
+            </motion.div>
+          </div>
+
+          {/* CTA Button */}
+          <motion.div 
+            className={styles.threatCta}
+            initial={{ opacity: 0, y: 20 }}
+            animate={threatIntelInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, delay: 1.0 }}
+          >
+            <a 
+              href="https://i.secai.ai/research" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.threatCtaButton}
+            >
+              <span>Explore Threat Intelligence</span>
+              <ExternalLink size={16} />
+            </a>
+          </motion.div>
         </div>
       </section>
 

@@ -140,3 +140,36 @@
     width: 100%;
   }
 }
+
+/* Light Mode Styles */
+[data-theme='light'] .productCard {
+  background: #f8f9fa;
+  border-color: rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .productCard::before {
+  background: linear-gradient(180deg, rgba(200, 30, 30, 0.06) 0%, transparent 100%);
+}
+
+[data-theme='light'] .productCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+[data-theme='light'] .screenshot {
+  background: #ffffff;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='light'] .title {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .description {
+  color: #555555;
+}
+
+[data-theme='light'] .features li {
+  color: #555555;
+}

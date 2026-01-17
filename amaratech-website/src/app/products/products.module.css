@@ -516,3 +516,69 @@
     height: 150px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .productHero {
+  background: #ffffff;
+  border-color: rgba(200, 30, 30, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .productName {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .productDesc {
+  color: #555555;
+}
+
+[data-theme='light'] .tab {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .tab:hover {
+  background: #f8f9fa;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .tab.active {
+  background: rgba(200, 30, 30, 0.08);
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #C81E1E;
+}
+
+[data-theme='light'] .featureCard {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .featureCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .featureTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .featureDesc {
+  color: #555555;
+}
+
+[data-theme='light'] .ctaSection {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .ctaTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .ctaSubtitle {
+  color: #555555;
+}

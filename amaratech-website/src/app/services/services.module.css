@@ -2731,3 +2731,755 @@
     height: 32px;
   }
 }
+
+/* ============================================
+   THREAT INTELLIGENCE SECTION - SecAI Style
+   ============================================ */
+
+.threatIntelSection {
+  padding: 100px 0;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Override text colors for light section */
+.threatIntelSection .sectionLabel {
+  color: #C81E1E;
+}
+
+.threatIntelSection .sectionTitle {
+  color: #1a1a1a;
+}
+
+.threatIntelSection .titleAccent {
+  color: #C81E1E;
+}
+
+/* Flow Container */
+.threatFlowContainer {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 20px;
+  align-items: center;
+  margin: 60px 0;
+  padding: 40px 0;
+}
+
+/* Source Column - Left */
+.threatSourceColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sourceGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sourceGroupLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sourceCircle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 2px solid #C81E1E;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(200, 30, 30, 0.15);
+  width: fit-content;
+}
+
+.sourceCircle svg {
+  color: #C81E1E;
+}
+
+.sourceCircle span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.sourceIcons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sourceIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: #666666;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.sourceIcon:hover {
+  border-color: #C81E1E;
+  color: #C81E1E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 30, 30, 0.15);
+}
+
+/* Center Hub */
+.threatCenterHub {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connectionLinesLeft,
+.connectionLinesRight {
+  position: absolute;
+  width: 80px;
+  height: 200px;
+  color: rgba(200, 30, 30, 0.4);
+}
+
+.connectionLinesLeft {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.connectionLinesRight {
+  right: 0;
+  transform: translateX(100%);
+}
+
+.connectionSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.hubCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 50px;
+  background: linear-gradient(135deg, #C81E1E 0%, #a01818 100%);
+  border-radius: 20px;
+  box-shadow: 
+    0 20px 60px rgba(200, 30, 30, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  position: relative;
+  z-index: 2;
+}
+
+.hubCenter::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  border-radius: 22px;
+  z-index: -1;
+}
+
+.hubIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: #ffffff;
+  position: relative;
+}
+
+.hubIcon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px dotted rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: rotateDots 20s linear infinite;
+}
+
+@keyframes rotateDots {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hubLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.hubSubLabel {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Output Column - Right */
+.threatOutputColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.outputCard {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.outputCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #22C55E, #16a34a);
+}
+
+.outputCard:nth-child(2)::before {
+  background: linear-gradient(180deg, #F59E0B, #d97706);
+}
+
+.outputCard:nth-child(3)::before {
+  background: linear-gradient(180deg, #3B82F6, #2563eb);
+}
+
+.outputCard:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.outputCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.outputCardHeader svg {
+  color: #666666;
+}
+
+.outputCardHeader span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.outputCardLines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.outputLine {
+  height: 8px;
+  background: linear-gradient(90deg, #e5e7eb 0%, #f3f4f6 100%);
+  border-radius: 4px;
+}
+
+/* Info Grid */
+.threatInfoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+
+.threatInfoCard {
+  text-align: center;
+  padding: 24px;
+}
+
+.threatInfoCard h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.threatInfoCard p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666666;
+  margin: 0;
+}
+
+/* CTA Button */
+.threatCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.threatCtaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #C81E1E 0%, #9A1616 100%);
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(200, 30, 30, 0.3);
+}
+
+.threatCtaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(200, 30, 30, 0.4);
+}
+
+.threatCtaButton:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   THREAT INTEL RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .threatFlowContainer {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .threatSourceColumn {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .sourceGroup {
+    align-items: center;
+    text-align: center;
+  }
+
+  .connectionLinesLeft,
+  .connectionLinesRight {
+    display: none;
+  }
+
+  .threatOutputColumn {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .outputCard {
+    flex: 1;
+    min-width: 200px;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .threatIntelSection {
+    padding: 60px 0;
+  }
+
+  .threatFlowContainer {
+    margin: 40px 0;
+    gap: 32px;
+  }
+
+  .hubCenter {
+    padding: 32px 40px;
+  }
+
+  .hubIcon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hubLabel {
+    font-size: 18px;
+  }
+
+  .threatInfoGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .threatInfoCard {
+    padding: 20px;
+  }
+
+  .threatInfoCard h4 {
+    font-size: 16px;
+  }
+
+  .threatInfoCard p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .threatFlowContainer {
+    padding: 20px 0;
+  }
+
+  .sourceCircle {
+    padding: 12px 16px;
+  }
+
+  .sourceIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hubCenter {
+    padding: 24px 32px;
+  }
+
+  .hubIcon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .hubLabel {
+    font-size: 16px;
+  }
+
+  .hubSubLabel {
+    font-size: 10px;
+  }
+
+  .outputCard {
+    min-width: 100%;
+    padding: 14px 16px;
+  }
+
+  .threatCtaButton {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 13px;
+  }
+}
+
+/* ============================================
+   LIGHT MODE GLOBAL STYLES
+   ============================================ */
+
+/* Main Services Page Light Mode */
+[data-theme='light'] .wireBg {
+  opacity: 0.3 !important;
+}
+
+[data-theme='light'] .statsBar {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .statItem {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme='light'] .statLabel {
+  color: #666666 !important;
+}
+
+[data-theme='light'] .serviceCard {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .serviceCard:hover {
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme='light'] .serviceHeader {
+  background: linear-gradient(135deg, rgba(200, 30, 30, 0.04) 0%, transparent 100%) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme='light'] .serviceCode {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme='light'] .serviceName {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .serviceDesc {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .featureTag {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #555555 !important;
+}
+
+[data-theme='light'] .serviceFooter {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme='light'] .exploreBtn {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .wireDeco .wireRed,
+[data-theme='light'] .wireDeco .wireBlue {
+  opacity: 0.5 !important;
+}
+
+[data-theme='light'] .cardTap {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .flowHint {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .flowHintText {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .ctaSection {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .ctaTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .ctaDesc {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .flowConnectionsSvg path {
+  opacity: 0.2 !important;
+}
+
+/* AI Page Light Mode */
+[data-theme='light'] .aiPage {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .aiHero {
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+[data-theme='light'] .heroBackground .heroBgNumber {
+  color: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='light'] .heroBackground .heroGrid {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+[data-theme='light'] .aiHeroTitle,
+[data-theme='light'] .sectionTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroSubtitle,
+[data-theme='light'] .introText {
+  color: #666666;
+}
+
+[data-theme='light'] .aiLeadForm {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .leadFormTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .formInput,
+[data-theme='light'] .formTextarea {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .formInput::placeholder,
+[data-theme='light'] .formTextarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .formInput:focus,
+[data-theme='light'] .formTextarea:focus {
+  border-color: #C81E1E;
+  background: #ffffff;
+}
+
+[data-theme='light'] .introSection {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+[data-theme='light'] .featureCard,
+[data-theme='light'] .processCard,
+[data-theme='light'] .agentDetails {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .featureCard:hover,
+[data-theme='light'] .processCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .featureTitle,
+[data-theme='light'] .processTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .featureDesc,
+[data-theme='light'] .processDesc {
+  color: #666666;
+}
+
+[data-theme='light'] .migrationSection {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .m365Section {
+  background: #ffffff;
+}
+
+[data-theme='light'] .industriesSection {
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .industryTab {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #666666;
+}
+
+[data-theme='light'] .industryTab:hover {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='light'] .industryTab.activeTab {
+  background: rgba(200, 30, 30, 0.08);
+  border-color: #C81E1E;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .industryContent {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .industryContent p {
+  color: #666666;
+}
+
+[data-theme='light'] .agentsSection {
+  background: #f8f9fa;
+}
+
+[data-theme='light'] .agentItem {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .agentItem:hover {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='light'] .agentItem.activeAgent {
+  background: rgba(200, 30, 30, 0.05);
+  border-color: #C81E1E;
+}
+
+[data-theme='light'] .agentName {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .agentTitle {
+  color: #666666;
+}
+
+[data-theme='light'] .agentDetailHeader h3 {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .agentFeatures li {
+  color: #444444;
+}
+
+[data-theme='light'] .faqSection {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .faqItem {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .faqItem:hover {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='light'] .faqItem.faqOpen {
+  border-color: rgba(200, 30, 30, 0.3);
+}
+
+[data-theme='light'] .faqQuestion {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .faqAnswer p {
+  color: #666666;
+}
+
+[data-theme='light'] .aiStats {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .aiStatLabel {
+  color: #666666;
+}

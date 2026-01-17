@@ -32,6 +32,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaMicrosoft, FaWindows, FaApple, FaLinux } from 'react-icons/fa';
 import styles from './Navbar.module.css';
+import { useTheme } from '@/contexts/ThemeContext';
 
 // Detect OS
 function getOS(): { name: string; icon: 'windows' | 'mac' | 'linux' | 'unknown' } {
@@ -45,13 +46,15 @@ function getOS(): { name: string; icon: 'windows' | 'mac' | 'linux' | 'unknown' 
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark theme
   
   // System status states
   const [osInfo, setOsInfo] = useState<{ name: string; icon: 'windows' | 'mac' | 'linux' | 'unknown' }>({ name: 'Detecting...', icon: 'unknown' });
+
+  const isDarkMode = theme === 'dark';
 
   // Helper to check if tab is active
   const isTabActive = (path: string) => {
@@ -63,13 +66,6 @@ export default function Navbar() {
   useEffect(() => {
     setOsInfo(getOS());
   }, []);
-
-  // Theme toggle handler (for future implementation)
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    // Future: Apply theme to document
-    // document.documentElement.setAttribute('data-theme', isDarkMode ? 'light' : 'dark');
-  };
 
   // Scroll handler
   useEffect(() => {
@@ -175,7 +171,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className={styles.logo}>
             <Image
-              src="/logo/AmaraTech IT Logo (new) - dark bg.png"
+              src={theme === 'light' ? "/logo/Login Logo (140x60 px) light mode.png" : "/logo/AmaraTech IT Logo (new) - dark bg.png"}
               alt="AmaraTech IT Solutions"
               width={180}
               height={40}
@@ -365,88 +361,116 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Apple-style Micro Window */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            className={styles.mobileMenu}
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.3 }}
-          >
-            <nav className={styles.mobileNav}>
-              <Link href="/" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Home size={20} />
-                Home
-              </Link>
-              <Link href="/services" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Layers size={20} />
-                Services
-              </Link>
-              <Link href="/services/ai" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Brain size={20} />
-                Artificial Intelligence
-              </Link>
-              <Link href="/about" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Users size={20} />
-                About Us
-              </Link>
-              <Link href="/careers" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Users size={20} />
-                Careers
-              </Link>
-              <Link href="/events" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Sparkles size={20} />
-                Events
-              </Link>
-              <Link href="/swag" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Package size={20} />
-                Swag
-              </Link>
-              <Link href="/blog" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Layers size={20} />
-                Blog
-              </Link>
-              <Link href="/self-assessment" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Shield size={20} />
-                Self Assessment
-              </Link>
-              <Link href="/contact" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
-                <Mail size={20} />
-                Contact Us
-              </Link>
-            </nav>
-            {/* Mobile Contact & Actions */}
-            <div className={styles.mobileActions}>
-              <div className={styles.mobileContactRow}>
-                <a href="mailto:info@amaratechit.com" className={styles.mobileContactLink}>
-                  <Mail size={18} />
-                  <span>info@amaratechit.com</span>
-                </a>
-                <a href="tel:+14108552206" className={styles.mobileContactLink}>
-                  <Phone size={18} />
-                  <span>+1 410 855 2206</span>
-                </a>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className={styles.menuBackdrop}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            {/* Floating Menu Window */}
+            <motion.div
+              className={styles.mobileMenu}
+              initial={{ opacity: 0, scale: 0.9, y: -10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -5 }}
+              transition={{ 
+                type: "spring",
+                stiffness: 400,
+                damping: 30,
+                mass: 0.8
+              }}
+            >
+              {/* Window Header */}
+              <div className={styles.menuWindowHeader}>
+                <div className={styles.menuWindowDots}>
+                  <span className={styles.dotRed} onClick={() => setIsMenuOpen(false)} />
+                  <span className={styles.dotYellow} />
+                  <span className={styles.dotGreen} />
+                </div>
+                <span className={styles.menuWindowTitle}>Navigation</span>
+                <button className={styles.menuCloseBtn} onClick={() => setIsMenuOpen(false)}>
+                  <X size={14} />
+                </button>
               </div>
-              <div className={styles.mobileActionBtns}>
-                <a href="https://login.amaratechit.com" className={styles.mobileActionBtn} onClick={() => setIsMenuOpen(false)}>
-                  <LogIn size={18} />
-                  <span>Employee Login</span>
-                </a>
-                <a href="https://helpdesk.amaratechit.com" className={styles.mobileActionBtnPrimary} onClick={() => setIsMenuOpen(false)}>
-                  <TicketPlus size={18} />
-                  <span>Create Helpdesk Ticket</span>
-                </a>
-              </div>
-            </div>
 
-            <div className={styles.mobileCta}>
-              <Link href="/contact" className={styles.ctaButton} onClick={() => setIsMenuOpen(false)}>
-                Contact Us
-              </Link>
-            </div>
-          </motion.div>
+              {/* Menu Content */}
+              <div className={styles.menuWindowContent}>
+                <nav className={styles.mobileNav}>
+                  <Link href="/" className={`${styles.mobileLink} ${isTabActive('/') && pathname === '/' ? styles.mobileLinkActive : ''}`} onClick={() => setIsMenuOpen(false)}>
+                    <Home size={18} />
+                    <span>Home</span>
+                  </Link>
+                  <Link href="/services" className={`${styles.mobileLink} ${isTabActive('/services') ? styles.mobileLinkActive : ''}`} onClick={() => setIsMenuOpen(false)}>
+                    <Layers size={18} />
+                    <span>Services</span>
+                  </Link>
+                  <Link href="/services/ai" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                    <Brain size={18} />
+                    <span>AI Solutions</span>
+                  </Link>
+                  <Link href="/about" className={`${styles.mobileLink} ${isTabActive('/about') ? styles.mobileLinkActive : ''}`} onClick={() => setIsMenuOpen(false)}>
+                    <Users size={18} />
+                    <span>About Us</span>
+                  </Link>
+                  
+                  <div className={styles.menuDivider} />
+                  
+                  <Link href="/careers" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                    <Users size={18} />
+                    <span>Careers</span>
+                  </Link>
+                  <Link href="/events" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                    <Sparkles size={18} />
+                    <span>Events</span>
+                  </Link>
+                  <Link href="/swag" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                    <Package size={18} />
+                    <span>Swag</span>
+                  </Link>
+                  <Link href="/blog" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                    <Layers size={18} />
+                    <span>Blog</span>
+                  </Link>
+                  <Link href="/self-assessment" className={styles.mobileLink} onClick={() => setIsMenuOpen(false)}>
+                    <Shield size={18} />
+                    <span>Self Assessment</span>
+                  </Link>
+                </nav>
+
+                <div className={styles.menuDivider} />
+
+                {/* Quick Actions */}
+                <div className={styles.menuQuickActions}>
+                  <a href="tel:+14108552206" className={styles.menuQuickAction}>
+                    <Phone size={16} />
+                    <span>Call Us</span>
+                  </a>
+                  <a href="mailto:info@amaratechit.com" className={styles.menuQuickAction}>
+                    <Mail size={16} />
+                    <span>Email</span>
+                  </a>
+                  <a href="https://login.amaratechit.com" className={styles.menuQuickAction}>
+                    <LogIn size={16} />
+                    <span>Login</span>
+                  </a>
+                </div>
+
+                {/* CTA Button */}
+                <Link href="/contact" className={styles.menuCtaButton} onClick={() => setIsMenuOpen(false)}>
+                  <Mail size={16} />
+                  <span>Contact Us</span>
+                </Link>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 

@@ -567,3 +567,139 @@
     padding: 24px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .careersPage {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .sectionTitle,
+[data-theme='light'] .heroTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroSubtitle,
+[data-theme='light'] .sectionSubtitle {
+  color: #555555;
+}
+
+[data-theme='light'] .jobCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .jobCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .jobTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .jobDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .jobTag {
+  background: rgba(0, 0, 0, 0.04);
+  color: #555555;
+}
+
+[data-theme='light'] .contactInfo h2 {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .contactForm {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .page {
+  background: #f8f9fa !important;
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .hero {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%) !important;
+}
+
+[data-theme='light'] .heroOverlay {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0.5) 100%
+  ) !important;
+}
+
+[data-theme='light'] .metaIndex {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .metaLabel {
+  color: #666666 !important;
+}
+
+[data-theme='light'] .benefitsSection {
+  background: #ffffff !important;
+}
+
+[data-theme='light'] .benefitCard {
+  background: #f8f9fa !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme='light'] .benefitCard:hover {
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  background: #ffffff !important;
+}
+
+[data-theme='light'] .benefitTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .benefitDesc {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .jobsSection {
+  background: #f8f9fa !important;
+}
+
+[data-theme='light'] .sectionHeader h2 {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .sectionHeader p {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .contactSection {
+  background: #ffffff !important;
+}
+
+[data-theme='light'] .formInput,
+[data-theme='light'] .formTextarea {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .formInput::placeholder,
+[data-theme='light'] .formTextarea::placeholder {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme='light'] .formInput:focus,
+[data-theme='light'] .formTextarea:focus {
+  border-color: #C81E1E !important;
+}
+
+[data-theme='light'] .noJobsMessage {
+  color: #555555 !important;
+}

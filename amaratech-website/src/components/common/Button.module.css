@@ -69,3 +69,22 @@
   padding: 16px 32px;
   font-size: 16px;
 }
+
+/* Light Mode Styles */
+[data-theme='light'] .secondary {
+  color: #555555;
+}
+
+[data-theme='light'] .secondary:hover {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .ghost {
+  color: #1a1a1a;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='light'] .ghost:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: rgba(200, 30, 30, 0.05);
+}

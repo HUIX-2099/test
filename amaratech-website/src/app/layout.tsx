@@ -27,13 +27,26 @@ export const metadata: Metadata = {
   publisher: "AmaraTech IT Solutions",
   icons: {
     icon: [
+      { url: "/logo/Artboard- Amaratech4x.png", sizes: "any", type: "image/png" },
       { url: "/logo/Artboard- Amaratech4x.png", sizes: "32x32", type: "image/png" },
       { url: "/logo/Artboard- Amaratech4x.png", sizes: "16x16", type: "image/png" },
+      { url: "/logo/Artboard- Amaratech4x.png", sizes: "192x192", type: "image/png" },
+      { url: "/logo/Artboard- Amaratech4x.png", sizes: "512x512", type: "image/png" },
     ],
     apple: [
       { url: "/logo/Artboard- Amaratech4x.png", sizes: "180x180", type: "image/png" },
+      { url: "/logo/Artboard- Amaratech4x.png", sizes: "152x152", type: "image/png" },
+      { url: "/logo/Artboard- Amaratech4x.png", sizes: "144x144", type: "image/png" },
+      { url: "/logo/Artboard- Amaratech4x.png", sizes: "120x120", type: "image/png" },
     ],
     shortcut: "/logo/Artboard- Amaratech4x.png",
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/logo/Artboard- Amaratech4x.png",
+        color: "#C81E1E",
+      },
+    ],
   },
   manifest: "/manifest.json",
   formatDetection: {
@@ -51,22 +64,29 @@ export const metadata: Metadata = {
     url: "https://amaratechit.com",
     siteName: "AmaraTech IT Solutions",
     title: "AmaraTech IT Solutions | Cybersecurity & Cloud Services",
-    description: "Enterprise-grade cybersecurity and IT solutions.",
+    description: "Enterprise-grade cybersecurity and IT solutions. Microsoft Azure partner, 24/7 threat monitoring, CMMC/HIPAA compliance.",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/logo/Artboard- Amaratech4x.png",
+        width: 512,
+        height: 512,
+        alt: "AmaraTech IT Solutions Logo",
+      },
+      {
+        url: "/other_images/AmaraTech IT Solutions.png",
+        width: 1280,
+        height: 720,
         alt: "AmaraTech IT Solutions",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "AmaraTech IT Solutions | Cybersecurity & Cloud Services",
     description: "Enterprise-grade cybersecurity and IT solutions.",
     creator: "@amaratechit",
     site: "@amaratechit",
+    images: ["/logo/Artboard- Amaratech4x.png"],
   },
   robots: {
     index: true,
@@ -122,15 +142,30 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Favicon - Primary */}
+        <link rel="icon" type="image/png" href="/logo/Artboard- Amaratech4x.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo/Artboard- Amaratech4x.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/logo/Artboard- Amaratech4x.png" />
+        
         {/* PWA Meta Tags */}
         <meta name="application-name" content="AmaraTech" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="AmaraTech" />
         <meta name="mobile-web-app-capable" content="yes" />
+        
+        {/* Microsoft Tile Icons */}
         <meta name="msapplication-TileColor" content="#C81E1E" />
+        <meta name="msapplication-TileImage" content="/logo/Artboard- Amaratech4x.png" />
         <meta name="msapplication-tap-highlight" content="no" />
+        
+        {/* Apple Touch Icons */}
         <link rel="apple-touch-icon" href="/logo/Artboard- Amaratech4x.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/logo/Artboard- Amaratech4x.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo/Artboard- Amaratech4x.png" />
+        <link rel="apple-touch-icon" sizes="167x167" href="/logo/Artboard- Amaratech4x.png" />
+        
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

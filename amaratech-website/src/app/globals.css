@@ -58,21 +58,21 @@
   --glow-gold: rgba(212, 175, 55, 0.3);
   --border-gold: rgba(212, 175, 55, 0.25);
   
-  /* Background Colors - Light theme */
+  /* Background Colors - Light theme (Apple-inspired clean look) */
   --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F5F5F5;
-  --color-bg-tertiary: #EEEEEE;
+  --color-bg-secondary: #F8F9FA;
+  --color-bg-tertiary: #F1F3F5;
   
-  /* Text Colors - Light theme */
+  /* Text Colors - Light theme (high contrast for readability) */
   --color-text-primary: #1A1A1A;
-  --color-text-secondary: #666666;
+  --color-text-secondary: #555555;
   
   /* Effects - Adjusted for light mode */
-  --glow-red: rgba(200, 30, 30, 0.3);
-  --border-subtle: rgba(0, 0, 0, 0.1);
+  --glow-red: rgba(200, 30, 30, 0.2);
+  --border-subtle: rgba(0, 0, 0, 0.08);
   
-  /* Accent Colors - Same */
-  --cyan-accent: #00A8CC;
+  /* Accent Colors */
+  --cyan-accent: #0071E3;
   --success-green: #22C55E;
 }
 
@@ -232,19 +232,107 @@ button:focus-visible {
 
 [data-theme='light'] .glassCard,
 [data-theme='light'] .glass-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme='light'] .navbar {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border-bottom-color: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme='light'] .footer {
   background: var(--color-bg-secondary);
-  border-top-color: rgba(0, 0, 0, 0.1);
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Light mode typography refinements */
+[data-theme='light'] h1,
+[data-theme='light'] h2,
+[data-theme='light'] h3,
+[data-theme='light'] h4,
+[data-theme='light'] h5,
+[data-theme='light'] h6 {
+  color: #1A1A1A;
+}
+
+[data-theme='light'] p {
+  color: #555555;
+}
+
+/* Light mode scrollbar */
+[data-theme='light'] ::-webkit-scrollbar-track {
+  background: #f1f3f5;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
+  background: #C81E1E;
+}
+
+/* Light mode button adjustments */
+[data-theme='light'] button:focus-visible {
+  outline-color: #C81E1E;
+}
+
+/* ============================================
+   LIGHT MODE - BASE OVERRIDES ONLY
+   Component-specific styles are in their own CSS modules
+   ============================================ */
+
+/* Links */
+[data-theme='light'] a {
+  color: inherit;
+}
+
+[data-theme='light'] a:hover {
+  color: #C81E1E;
+}
+
+/* Inputs and forms */
+[data-theme='light'] input,
+[data-theme='light'] textarea,
+[data-theme='light'] select {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] input::placeholder,
+[data-theme='light'] textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] input:focus,
+[data-theme='light'] textarea:focus,
+[data-theme='light'] select:focus {
+  border-color: #C81E1E;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(200, 30, 30, 0.1);
+}
+
+/* Dividers */
+[data-theme='light'] hr {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Code blocks */
+[data-theme='light'] code {
+  background: #f1f3f5;
+  color: #C81E1E;
+}
+
+/* List items - only unscoped ones */
+[data-theme='light'] main > ul > li,
+[data-theme='light'] main > ol > li {
+  color: #555555;
 }
 
 /* Mobile bottom tab bar spacing */

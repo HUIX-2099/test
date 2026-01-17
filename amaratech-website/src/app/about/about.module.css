@@ -485,6 +485,11 @@
 .boardImageWrapper {
   position: relative;
   min-height: 280px;
+  overflow: hidden;
+}
+
+.boardImageWrapper img {
+  object-position: top center !important;
 }
 
 .boardImageOverlay {
@@ -575,7 +580,12 @@
 
 .teamImageWrapper {
   position: relative;
-  height: 320px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.teamImageWrapper img {
+  object-position: top center !important;
 }
 
 .teamImageGradient {
@@ -1059,7 +1069,7 @@
   }
 
   .teamImageWrapper {
-    height: 280px;
+    height: 350px;
   }
 
   .diasporaGrid {
@@ -1130,4 +1140,225 @@
   .teamName {
     font-size: 22px;
   }
+}
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .page {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .gridBg {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+}
+
+[data-theme='light'] .glowOrb {
+  background: radial-gradient(circle, rgba(200, 30, 30, 0.04) 0%, transparent 70%);
+}
+
+[data-theme='light'] .hero {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .breadcrumbLink {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .breadcrumbSep {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .heroNumber {
+  color: rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .heroTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroLead {
+  color: #555555;
+}
+
+[data-theme='light'] .statValue {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .statLabel {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .sectionLabel,
+[data-theme='light'] .headerLabel {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .journeyNumber {
+  color: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='light'] .journeyYear {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .missionLead,
+[data-theme='light'] .contractLead,
+[data-theme='light'] .mentorshipLead {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .missionText,
+[data-theme='light'] .contractText,
+[data-theme='light'] .mentorshipText {
+  color: #555555;
+}
+
+[data-theme='light'] .missionHighlights {
+  background: rgba(200, 30, 30, 0.06) !important;
+  border-left-color: #C81E1E !important;
+}
+
+[data-theme='light'] .highlightItem {
+  color: #333333 !important;
+}
+
+[data-theme='light'] .highlightItem svg {
+  color: #22C55E !important;
+}
+
+[data-theme='light'] .missionQuote {
+  background: rgba(200, 30, 30, 0.04);
+  border-left-color: #C81E1E;
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .quoteText {
+  color: #333333;
+}
+
+[data-theme='light'] .journeyCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .journeyCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .journeyTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .journeyDesc {
+  color: #555555;
+}
+
+[data-theme='light'] .ctaOutline,
+[data-theme='light'] .secondaryBtn {
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #333333;
+}
+
+[data-theme='light'] .ctaOutline:hover,
+[data-theme='light'] .secondaryBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .boardCard,
+[data-theme='light'] .teamCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .boardCard:hover,
+[data-theme='light'] .teamCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .boardIndex,
+[data-theme='light'] .teamIndex {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .boardName,
+[data-theme='light'] .teamName {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .boardExcerpt,
+[data-theme='light'] .teamRole {
+  color: #555555;
+}
+
+[data-theme='light'] .teamImageGradient {
+  background: linear-gradient(to top, rgba(248, 249, 250, 1) 0%, transparent 60%) !important;
+}
+
+[data-theme='light'] .boardImageOverlay {
+  background: linear-gradient(90deg, transparent 60%, rgba(248, 249, 250, 0.95) 100%) !important;
+}
+
+[data-theme='light'] .valueCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .valueCard:hover {
+  border-color: rgba(200, 30, 30, 0.25);
+  background: #ffffff;
+}
+
+[data-theme='light'] .valueTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .valueDesc {
+  color: #555555;
+}
+
+[data-theme='light'] .socialLink {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .socialLink:hover {
+  border-color: #C81E1E;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .certBadge {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #333333;
+}
+
+[data-theme='light'] .certBadge:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .ctaBox {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .ctaNumber {
+  color: rgba(200, 30, 30, 0.12);
+}
+
+[data-theme='light'] .ctaHeadline {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .ctaSubtitle {
+  color: #555555;
 }

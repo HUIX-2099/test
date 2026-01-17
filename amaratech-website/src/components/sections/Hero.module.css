@@ -1,6 +1,6 @@
 /* ============================================
-   HERO SECTION - Document-Forward Industrial Design
-   Professional, Clean, High-Contrast
+   HERO SECTION - AmaraTech Hexagon Brand Design
+   Bold, Modern, Premium Tech Aesthetic
    ============================================ */
 
 .hero {
@@ -12,6 +12,104 @@
   padding-top: 100px;
 }
 
+/* Animated Hexagon Background */
+.hexagonBackground {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Main large hexagon - animated rotation */
+.hexagonLarge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(500px, 70vw, 900px);
+  height: clamp(500px, 70vw, 900px);
+  transform: translate(-50%, -50%);
+  opacity: 0.08;
+  animation: rotateHex 60s linear infinite;
+}
+
+.hexagonLarge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  border: 3px solid #C81E1E;
+  box-shadow: 
+    0 0 60px rgba(200, 30, 30, 0.3),
+    inset 0 0 60px rgba(200, 30, 30, 0.1);
+}
+
+/* Hexagon with clip-path border trick */
+.hexagonLarge::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  background: transparent;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  border: 1px solid rgba(200, 30, 30, 0.4);
+}
+
+/* Secondary hexagon - counter-rotation */
+.hexagonMedium {
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: clamp(300px, 40vw, 500px);
+  height: clamp(300px, 40vw, 500px);
+  transform: translateY(-50%);
+  opacity: 0.05;
+  animation: rotateHexReverse 45s linear infinite;
+}
+
+.hexagonMedium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  border: 2px solid #2B2B2B;
+}
+
+/* Third hexagon - gold accent */
+.hexagonSmall {
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+  width: clamp(200px, 25vw, 350px);
+  height: clamp(200px, 25vw, 350px);
+  opacity: 0.06;
+  animation: floatHex 8s ease-in-out infinite;
+}
+
+.hexagonSmall::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  border: 2px solid #BFA65F;
+  box-shadow: 0 0 40px rgba(191, 166, 95, 0.2);
+}
+
+@keyframes rotateHex {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes rotateHexReverse {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(-360deg); }
+}
+
+@keyframes floatHex {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
 /* Background Grid */
 .gridOverlay {
   position: absolute;
@@ -21,7 +119,7 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Large Background Number */
@@ -33,9 +131,9 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(300px, 40vw, 600px);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.02);
+  color: rgba(255, 255, 255, 0.015);
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
   line-height: 1;
 }
 
@@ -49,6 +147,56 @@
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 100px);
+}
+
+/* ============================================
+   BRAND SHOWCASE - Hexagon Logo Display
+   ============================================ */
+
+.brandShowcase {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.brandHexagon {
+  position: relative;
+  width: clamp(180px, 20vw, 280px);
+  height: clamp(180px, 20vw, 280px);
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.brandHexagon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 30px rgba(200, 30, 30, 0.4));
+}
+
+.brandTagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 20px rgba(200, 30, 30, 0.3));
+    transform: scale(1);
+  }
+  50% { 
+    filter: drop-shadow(0 0 40px rgba(200, 30, 30, 0.5));
+    transform: scale(1.02);
+  }
 }
 
 /* ============================================
@@ -125,8 +273,15 @@
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.01);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
   height: 100%;
+  transition: all 0.3s ease;
+}
+
+.column:hover {
+  border-color: rgba(200, 30, 30, 0.2);
+  box-shadow: 0 0 40px rgba(200, 30, 30, 0.1);
 }
 
 .columnHeader {
@@ -136,6 +291,19 @@
   padding: 16px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+
+/* Hexagon accent on column headers */
+.columnHeader::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: linear-gradient(180deg, transparent, #C81E1E, transparent);
 }
 
 .columnNumber {
@@ -175,6 +343,7 @@
 
 .headlineAccent {
   color: #C81E1E;
+  text-shadow: 0 0 30px rgba(200, 30, 30, 0.3);
 }
 
 .headlineSmall {
@@ -209,10 +378,16 @@
   font-size: 12px;
   color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+.capItem:hover {
+  color: #ffffff;
+  transform: translateX(4px);
 }
 
 .capItem svg {
-  color: #D4AF37;
+  color: #BFA65F;
   flex-shrink: 0;
 }
 
@@ -249,7 +424,7 @@
   justify-content: center;
   gap: 10px;
   padding: 16px 24px;
-  background: #C81E1E;
+  background: linear-gradient(135deg, #C81E1E 0%, #9A1616 100%);
   color: #ffffff;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
@@ -257,11 +432,27 @@
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaPrimary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.ctaPrimary:hover::before {
+  transform: translateX(100%);
 }
 
 .ctaPrimary:hover {
-  background: #a01818;
+  box-shadow: 0 0 30px rgba(200, 30, 30, 0.5);
+  transform: translateY(-2px);
 }
 
 /* ============================================
@@ -348,6 +539,7 @@
   height: 56px;
   background: rgba(200, 30, 30, 0.9);
   border-radius: 50%;
+  box-shadow: 0 0 30px rgba(200, 30, 30, 0.5);
 }
 
 .videoControls {
@@ -373,6 +565,7 @@
 
 .controlBtn:hover {
   background: rgba(200, 30, 30, 0.8);
+  border-color: #C81E1E;
 }
 
 /* ============================================
@@ -402,12 +595,22 @@
   padding: 16px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+.complianceBadge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(200, 30, 30, 0.05) 0%, transparent 70%);
 }
 
 .complianceImage {
   width: 100px;
   height: auto;
   object-fit: contain;
+  position: relative;
+  z-index: 1;
 }
 
 .servicesList {
@@ -424,6 +627,12 @@
   font-size: 13px;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
+  transition: all 0.2s ease;
+}
+
+.serviceItem:hover {
+  color: #ffffff;
+  transform: translateX(4px);
 }
 
 .serviceItem svg {
@@ -439,20 +648,21 @@
   margin-top: auto;
   padding: 14px 20px;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(191, 166, 95, 0.3);
+  color: #BFA65F;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .ctaSecondary:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: #BFA65F;
+  background: rgba(191, 166, 95, 0.1);
+  box-shadow: 0 0 20px rgba(191, 166, 95, 0.2);
 }
 
 /* ============================================
@@ -490,10 +700,96 @@
 }
 
 /* ============================================
+   FLOATING HEXAGONS - Decorative
+   ============================================ */
+
+.floatingHexes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floatHex {
+  position: absolute;
+  opacity: 0.04;
+}
+
+.floatHex::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  border: 1px solid currentColor;
+}
+
+.floatHex1 {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  left: 10%;
+  color: #C81E1E;
+  animation: float1 12s ease-in-out infinite;
+}
+
+.floatHex2 {
+  width: 60px;
+  height: 60px;
+  top: 70%;
+  right: 15%;
+  color: #BFA65F;
+  animation: float2 10s ease-in-out infinite;
+}
+
+.floatHex3 {
+  width: 100px;
+  height: 100px;
+  bottom: 30%;
+  left: 20%;
+  color: #2B2B2B;
+  animation: float3 14s ease-in-out infinite;
+}
+
+.floatHex4 {
+  width: 50px;
+  height: 50px;
+  top: 40%;
+  right: 25%;
+  color: #C81E1E;
+  animation: float1 8s ease-in-out infinite reverse;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10px, -15px) rotate(5deg); }
+  50% { transform: translate(-5px, -25px) rotate(-3deg); }
+  75% { transform: translate(-15px, -10px) rotate(2deg); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-20px, 10px) rotate(-5deg); }
+  66% { transform: translate(15px, -15px) rotate(8deg); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(20px, -30px) rotate(10deg); }
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 
 /* Tablet - Switch to single column */
+@media (max-width: 1100px) {
+  .brandShowcase {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   .hero {
     padding-top: 90px;
@@ -515,6 +811,16 @@
 
   .specItem {
     min-width: 140px;
+  }
+
+  .hexagonLarge {
+    width: 400px;
+    height: 400px;
+  }
+
+  .hexagonMedium,
+  .hexagonSmall {
+    display: none;
   }
 }
 
@@ -557,4 +863,167 @@
     grid-template-columns: 1fr 1fr;
     gap: 16px;
   }
+
+  .hexagonLarge {
+    width: 300px;
+    height: 300px;
+  }
+
+  .floatingHexes {
+    display: none;
+  }
+}
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .hero {
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+}
+
+[data-theme='light'] .bgNumber {
+  color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='light'] .gridPattern {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+[data-theme='light'] .metaLabel,
+[data-theme='light'] .metaValue {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .metaBar::before {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='light'] .headline {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .subtext {
+  color: #555555;
+}
+
+[data-theme='light'] .column {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .column:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .columnHeader {
+  background: linear-gradient(135deg, rgba(200, 30, 30, 0.05) 0%, transparent 100%);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .columnLabel {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .columnTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .columnContent {
+  color: #555555;
+}
+
+[data-theme='light'] .columnDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .serviceItem {
+  color: #555555;
+}
+
+[data-theme='light'] .serviceItem:hover {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .specBar {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .specLabel {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .specValue {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='light'] .hexagon::before {
+  border-color: rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .hexagon::after {
+  background: radial-gradient(circle at center, rgba(200, 30, 30, 0.03) 0%, transparent 70%);
+}
+
+[data-theme='light'] .floatHex1,
+[data-theme='light'] .floatHex4 {
+  color: rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .floatHex2 {
+  color: rgba(191, 166, 95, 0.15);
+}
+
+[data-theme='light'] .floatHex3 {
+  color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .description {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .capItem {
+  color: #333333 !important;
+}
+
+[data-theme='light'] .capItem:hover {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .phoneLink {
+  color: #666666 !important;
+}
+
+[data-theme='light'] .phoneLink:hover {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .subHeadline {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .subDescription {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .capabilities {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .complianceBadge {
+  border-top-color: rgba(0, 0, 0, 0.08);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .videoFrame {
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .videoLabel {
+  color: rgba(0, 0, 0, 0.5);
 }

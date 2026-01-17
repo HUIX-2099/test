@@ -423,3 +423,79 @@
     font-size: 15px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .blogPostPage,
+[data-theme='light'] .page {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .hero {
+  background: #f8f9fa;
+}
+
+[data-theme='light'] .heroTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroMeta,
+[data-theme='light'] .metaItem {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .article {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .paragraph {
+  color: #444444;
+}
+
+[data-theme='light'] .contentH2,
+[data-theme='light'] .contentH3 {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .quote {
+  background: rgba(200, 30, 30, 0.04);
+  border-left-color: #C81E1E;
+}
+
+[data-theme='light'] .quoteText {
+  color: #333333;
+}
+
+[data-theme='light'] .shareCard,
+[data-theme='light'] .ctaCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .shareButton {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .shareButton:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .bottomCta {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .bottomCta h2 {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .bottomCta p {
+  color: #555555;
+}

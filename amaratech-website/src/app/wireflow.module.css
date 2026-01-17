@@ -964,3 +964,136 @@
     font-size: 28px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .page {
+  background: #f8f9fa !important;
+}
+
+[data-theme='light'] .page::before {
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(200, 30, 30, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(0, 100, 200, 0.02) 0%, transparent 50%);
+}
+
+[data-theme='light'] .gridBg {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+[data-theme='light'] .pageTitleCode {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='light'] .pageTitleMain {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .pageNumber {
+  color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme='light'] .pageDescription {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .breadcrumb {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='light'] .breadcrumb a {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='light'] .breadcrumb a:hover {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .flowLabel {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #555555 !important;
+}
+
+[data-theme='light'] .tapIndicator,
+[data-theme='light'] .tapIndicatorOutline {
+  color: #C81E1E !important;
+  border-color: #C81E1E !important;
+}
+
+[data-theme='light'] .nodeCard {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .nodeCard:hover {
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme='light'] .nodeHeader {
+  background: rgba(200, 30, 30, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme='light'] .nodeTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .nodeCode {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme='light'] .nodeBody {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .statusBadge {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #555555 !important;
+}
+
+[data-theme='light'] .statusBadge.active {
+  background: rgba(34, 197, 94, 0.1) !important;
+  border-color: rgba(34, 197, 94, 0.3) !important;
+  color: #16a34a !important;
+}
+
+[data-theme='light'] .statusBadge.critical {
+  background: rgba(200, 30, 30, 0.1) !important;
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .statusBadge.pending {
+  background: rgba(168, 85, 247, 0.1) !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
+  color: #9333ea !important;
+}
+
+[data-theme='light'] .connectionPoint {
+  background: #C81E1E !important;
+  border-color: #f8f9fa !important;
+}
+
+[data-theme='light'] .cornerDecor {
+  border-color: rgba(200, 30, 30, 0.3) !important;
+}
+
+[data-theme='light'] .btnSecondary {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: #333333 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme='light'] .btnSecondary:hover {
+  background: rgba(200, 30, 30, 0.08) !important;
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  color: #C81E1E !important;
+}

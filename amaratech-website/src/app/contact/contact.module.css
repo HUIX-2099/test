@@ -1067,3 +1067,242 @@
     text-align: center;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .formCard {
+  background: #ffffff;
+  border-color: rgba(200, 30, 30, 0.3);
+}
+
+[data-theme='light'] .formHeader {
+  background: linear-gradient(135deg, rgba(200, 30, 30, 0.06) 0%, transparent 100%);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .formHeaderTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .formHeaderCode {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .stageStep {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .stageSection {
+  background: linear-gradient(90deg, rgba(200, 30, 30, 0.04) 0%, transparent 100%);
+  border-bottom-color: rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .inputLabel {
+  color: #333333;
+}
+
+[data-theme='light'] .input,
+[data-theme='light'] .textarea {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .input::placeholder,
+[data-theme='light'] .textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .input:focus,
+[data-theme='light'] .textarea:focus {
+  background: #ffffff;
+  border-color: rgba(200, 30, 30, 0.5);
+  box-shadow: 0 0 0 3px rgba(200, 30, 30, 0.08);
+}
+
+[data-theme='light'] .select {
+  background: #f8f9fa;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .successMessage h3 {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .successMessage p {
+  color: #555555;
+}
+
+[data-theme='light'] .resetButton {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #333333;
+}
+
+[data-theme='light'] .resetButton:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .contactCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .contactCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+}
+
+[data-theme='light'] .contactLabel {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .contactValue {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .contactMeta {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .officeCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .officeCard:hover {
+  border-color: rgba(200, 30, 30, 0.2);
+}
+
+[data-theme='light'] .officeCity {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .officeAddress {
+  color: #555555;
+}
+
+[data-theme='light'] .officeHours {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .hoursCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .hoursHeader {
+  color: #333333;
+}
+
+[data-theme='light'] .hoursItem {
+  color: #555555;
+}
+
+[data-theme='light'] .emergencyCta {
+  background: rgba(200, 30, 30, 0.06);
+  border-color: rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .ctaTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .ctaSubtitle {
+  color: #555555;
+}
+
+[data-theme='light'] .mapContainer {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .mapHeader,
+[data-theme='light'] .mapFooter {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .mapHeaderTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .mapHeaderCode {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .mapTab {
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .mapTab:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: #333333;
+}
+
+[data-theme='light'] .mapTab.active {
+  background: rgba(200, 30, 30, 0.08);
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #C81E1E;
+}
+
+[data-theme='light'] .locationsList {
+  background: #ffffff;
+  border-right-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .locationsHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .locationsTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .locationsCount {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .locationItem {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: transparent;
+}
+
+[data-theme='light'] .locationItem:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .locationItem.active {
+  background: rgba(200, 30, 30, 0.06);
+  border-color: rgba(200, 30, 30, 0.2);
+}
+
+[data-theme='light'] .locationCity {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .locationAddress {
+  color: #555555;
+}
+
+[data-theme='light'] .mapEmbed {
+  background: #f8f9fa;
+}
+
+[data-theme='light'] .mapFooterMeta span {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .mapFooterLink {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .mapFooterLink:hover {
+  color: #1a1a1a;
+}

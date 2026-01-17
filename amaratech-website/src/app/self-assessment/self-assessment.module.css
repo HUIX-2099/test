@@ -858,3 +858,54 @@
     justify-content: center;
   }
 }
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .page {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroSubtitle {
+  color: #555555;
+}
+
+[data-theme='light'] .questionCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .questionText {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .optionButton {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .optionButton:hover,
+[data-theme='light'] .optionButton.selected {
+  background: rgba(200, 30, 30, 0.08);
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .resultCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .resultTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .resultDescription {
+  color: #555555;
+}

@@ -289,3 +289,54 @@
     left: 8px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .trustedBy {
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .trustedBy::before {
+  background: linear-gradient(90deg, transparent, rgba(200, 30, 30, 0.2), transparent);
+}
+
+[data-theme='light'] .sectionTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .sectionSubtitle {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .partnerCard {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .partnerCard:hover {
+  background: #ffffff;
+  border-color: var(--partner-color, rgba(200, 30, 30, 0.3));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .docNum {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .partnerLogo {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .partnerCard:hover .partnerLogo {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='light'] .partnerName {
+  color: #1a1a1a !important;
+}

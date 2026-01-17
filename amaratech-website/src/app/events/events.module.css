@@ -1115,3 +1115,58 @@
     font-size: 22px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .eventsPage {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroTitle,
+[data-theme='light'] .sectionTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroDescription,
+[data-theme='light'] .sectionSubtitle {
+  color: #555555;
+}
+
+[data-theme='light'] .eventCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .eventCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .eventTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .eventDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .countdownItem {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .countdownNumber {
+  color: #C81E1E;
+}
+
+[data-theme='light'] .newsletterCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .newsletterCard h2 {
+  color: #1a1a1a;
+}

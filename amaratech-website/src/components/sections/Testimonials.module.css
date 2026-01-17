@@ -283,3 +283,57 @@
     right: 16px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .testimonials {
+  background: #f8f9fa;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .gridOverlay {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+}
+
+[data-theme='light'] .title {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .navButton {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='light'] .navButton:hover {
+  background: #ffffff;
+  color: #1a1a1a;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='light'] .testimonialCard {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .testimonialCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .authorName {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .serviceLabel {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .quote {
+  color: #555555 !important;
+}

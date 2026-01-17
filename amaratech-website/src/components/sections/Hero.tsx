@@ -50,11 +50,45 @@ export default function Hero() {
 
   return (
     <section ref={containerRef} className={styles.hero}>
+      {/* Animated Hexagon Background */}
+      <div className={styles.hexagonBackground}>
+        <div className={styles.hexagonLarge} />
+        <div className={styles.hexagonMedium} />
+        <div className={styles.hexagonSmall} />
+      </div>
+
+      {/* Floating Hexagons */}
+      <div className={styles.floatingHexes}>
+        <div className={`${styles.floatHex} ${styles.floatHex1}`} />
+        <div className={`${styles.floatHex} ${styles.floatHex2}`} />
+        <div className={`${styles.floatHex} ${styles.floatHex3}`} />
+        <div className={`${styles.floatHex} ${styles.floatHex4}`} />
+      </div>
+      
       {/* Background Grid */}
       <div className={styles.gridOverlay} />
       
       {/* Large Background Number */}
       <div className={styles.bgNumber}>01</div>
+
+      {/* Brand Showcase - Hexagon Logo */}
+      <motion.div 
+        className={styles.brandShowcase}
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
+        <div className={styles.brandHexagon}>
+          <Image 
+            src="/design/AmaraTech.png" 
+            alt="AmaraTech Hexagon Logo" 
+            width={280}
+            height={280}
+            priority
+          />
+        </div>
+        <span className={styles.brandTagline}>Innovation • Security • Excellence</span>
+      </motion.div>
 
       <motion.div className={styles.container} style={{ opacity }}>
         

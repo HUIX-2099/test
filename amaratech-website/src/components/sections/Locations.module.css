@@ -578,3 +578,153 @@
     justify-content: center;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .locations {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .sectionHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .sectionTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .headerMeta {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .sectionDesc {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .processCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .processCard:hover {
+  background: #ffffff;
+  border-color: rgba(200, 30, 30, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .cardHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .cardTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .cardDescription {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .cardMeta {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .metaLabel {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .metaValue {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .industriesSection {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .industriesTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .industryItem {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .industryItem:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .industryIcon {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .industryItem:hover .industryIcon {
+  color: #C81E1E;
+}
+
+[data-theme='light'] .industryName {
+  color: #333333;
+}
+
+[data-theme='light'] .downloadSection {
+  background: rgba(200, 30, 30, 0.05);
+  border-color: rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .downloadTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .downloadDesc {
+  color: #555555;
+}
+
+[data-theme='light'] .storySection {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .storyTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .storyText {
+  color: #555555;
+}
+
+[data-theme='light'] .youtubeSection {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .youtubeHeader {
+  background: #f8f9fa;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .youtubeMeta {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .officeCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .officeCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .officeCity {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .officePhone {
+  color: #555555;
+}

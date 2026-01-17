@@ -530,3 +530,151 @@
     justify-content: center;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .faq {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .gridOverlay {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+[data-theme='light'] .title {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .subtitle {
+  color: #555555;
+}
+
+[data-theme='light'] .faqItem {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .faqItem:hover {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='light'] .faqItem.open {
+  background: #f8f9fa;
+  border-color: rgba(200, 30, 30, 0.3);
+}
+
+[data-theme='light'] .faqQuestion {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .faqQuestion:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='light'] .questionNumber {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .faqItem.open .questionNumber {
+  color: #C81E1E;
+}
+
+[data-theme='light'] .questionText {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .questionIcon {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .faqItem.open .questionIcon {
+  background: rgba(200, 30, 30, 0.1);
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #C81E1E;
+}
+
+[data-theme='light'] .faqAnswer p {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .whyChooseSection {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .bgNumber {
+  color: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='light'] .whyHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .whyTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .whyDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .whyMeta {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .benefitItem {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .benefitItem:hover {
+  border-color: rgba(200, 30, 30, 0.2);
+  background: #ffffff;
+}
+
+[data-theme='light'] .benefitIndex {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .benefitTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .benefitDesc {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .hireCta {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .hireRef {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .whyMeta2 {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .metaItem {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .metaDivider {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='light'] .contactCTA {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .ctaText {
+  color: #555555;
+}

@@ -140,3 +140,18 @@
     min-width: 100%;
   }
 }
+
+/* Light Mode Styles */
+[data-theme='light'] .systemInfo {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #555555;
+}
+
+[data-theme='light'] .label {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .value {
+  color: #1a1a1a;
+}

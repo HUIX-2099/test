@@ -267,3 +267,71 @@
     padding: 32px 20px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .products {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .gridOverlay {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+[data-theme='light'] .title {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .subtitle {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .comingSoonCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .cardHeader {
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .cardYear {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .comingSoonTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .comingSoonDesc {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .featureCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .featureCard:hover {
+  background: #ffffff;
+  border-color: rgba(200, 30, 30, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .featureNumber {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .featureTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .featureDesc {
+  color: #555555 !important;
+}

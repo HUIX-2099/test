@@ -737,3 +737,96 @@
     padding: 12px 20px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .page {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .hero {
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+[data-theme='light'] .heroTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .secondaryButton {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #333333;
+}
+
+[data-theme='light'] .secondaryButton:hover {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme='light'] .sectionTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .sectionDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .featureCard,
+[data-theme='light'] .methodCard,
+[data-theme='light'] .step {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .featureCard:hover,
+[data-theme='light'] .methodCard:hover,
+[data-theme='light'] .step:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .featureTitle,
+[data-theme='light'] .methodTitle,
+[data-theme='light'] .stepTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .featureDescription,
+[data-theme='light'] .methodDescription,
+[data-theme='light'] .stepDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .ctaCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .ctaCard h2 {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .ctaCard p {
+  color: #555555;
+}
+
+[data-theme='light'] .attackCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .attackTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .warningMessage {
+  background: rgba(200, 30, 30, 0.06);
+  color: #1a1a1a;
+}

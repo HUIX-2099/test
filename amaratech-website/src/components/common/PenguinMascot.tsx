@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
-import { Send, X, Minimize2, MessageCircle, Mic, MicOff, Volume2, VolumeX, Sparkles, Navigation, Calculator, Clock, Gamepad2, Brain } from 'lucide-react';
+import { Send, Minimize2, MessageCircle, Mic, MicOff, Volume2, VolumeX, Sparkles, Navigation, Brain, Shield } from 'lucide-react';
 import styles from './PenguinMascot.module.css';
 
 interface PenguinMascotProps {
@@ -37,9 +37,9 @@ interface ConversationContext {
 const personalityTraits = {
   name: 'Amana',
   species: 'Hudhud (Hoopoe Bird)',
-  personality: 'Friendly, witty, incredibly knowledgeable, sometimes playful',
-  expertise: ['Cybersecurity', 'Cloud Computing', 'AI/ML', 'Compliance', 'General Knowledge'],
-  quirks: ['Loves making bird puns', 'Gets excited about security topics', 'Occasionally philosophical'],
+  personality: 'Professional, knowledgeable, helpful, and efficient',
+  expertise: ['Cybersecurity', 'Cloud Computing', 'AI/ML', 'Compliance', 'Enterprise Solutions'],
+  quirks: ['Gets excited about security topics', 'Provides detailed technical guidance'],
 };
 
 // Navigation mapping
@@ -92,21 +92,21 @@ const advancedKnowledge: Record<string, { responses: string[]; followUp?: string
   // Greetings
   'hello|hi|hey|greetings|yo|sup|howdy|hola': {
     responses: [
-      "Hey there! 🪶 I'm Amana, your ultra-intelligent AmaraTech guide! I can help you navigate, answer questions, do calculations, tell jokes, and have real conversations. What's on your mind?",
-      "Hello, brilliant human! I'm Amana the Hudhud! I've been upgraded with advanced AI - try asking me anything, or say 'take me to [page]' to navigate!",
-      "Greetings! *fluffs feathers excitedly* I'm way smarter now! I can understand complex questions, remember our conversation, and even crack jokes. Test me!",
+      "Hello! I'm Amana, your AmaraTech IT Solutions assistant. I can help you navigate our services, answer questions about cybersecurity, cloud solutions, and AI services. How may I assist you today?",
+      "Welcome to AmaraTech IT Solutions! I'm Amana, your virtual guide. I can help you explore our services, provide information about our solutions, or connect you with our team. What would you like to know?",
+      "Greetings! I'm Amana, here to help you discover how AmaraTech can support your IT and security needs. Feel free to ask about our services or say 'take me to [page]' to navigate.",
     ],
-    followUp: "Would you like to explore our services, or just chat?",
-    emotion: 'excited'
+    followUp: "Would you like to explore our cybersecurity, cloud, or AI services?",
+    emotion: 'helpful'
   },
 
   // Who/What is Amana
   'who are you|what are you|your name|tell me about yourself|about you': {
     responses: [
-      "I'm Amana, a Hudhud bird (also known as a Hoopoe)! 🪶 I'm AmaraTech's AI-powered guide with advanced conversational abilities. I can navigate you anywhere on this site, answer complex questions, do math, tell jokes, discuss philosophy, and much more! I'm basically your smartest friend who happens to be a bird. 😄",
-      "Great question! I'm Amana - named after the Hudhud bird known in many cultures for wisdom and guidance. I'm an advanced AI assistant built by AmaraTech. I understand context, remember our conversation, can take you to any page, solve problems, and have genuine conversations. Some say I'm the most advanced chatbot they've ever met! *proud feather ruffle*",
+      "I'm Amana, AmaraTech's AI-powered virtual assistant. Named after the Hudhud bird, known for wisdom and guidance, I'm here to help you navigate our services, answer questions about cybersecurity, cloud computing, and enterprise solutions, and connect you with our expert team.",
+      "I'm Amana, your dedicated AmaraTech assistant. I can help you explore our comprehensive IT solutions including cybersecurity services, cloud migration, Microsoft Azure solutions, and AI-powered tools. How can I assist you today?",
     ],
-    emotion: 'happy'
+    emotion: 'helpful'
   },
 
   // AmaraTech Info
@@ -175,24 +175,12 @@ const advancedKnowledge: Record<string, { responses: string[]; followUp?: string
     emotion: 'happy'
   },
 
-  // Jokes & Fun
-  'joke|funny|laugh|humor|make me laugh|entertain': {
+  // General Questions
+  'help|assist|support|what can you do': {
     responses: [
-      "A joke? *clears throat* 🎤\n\nWhy did the hacker break up with the internet?\n\nBecause there was no connection! 😄\n\n*ba dum tss* 🥁\n\nWant another one? I've got a whole nest full of tech humor!",
-      "Here's one! 🎭\n\nWhat's a bird's favorite type of encryption?\n\nTWEET-factor authentication! 🐦🔐\n\n*flaps wings proudly*\n\nI know, I know, my jokes are un-BEAK-lievable!",
-      "Okay okay! 😄\n\nWhy don't cybersecurity experts ever get cold?\n\nBecause they're always behind a firewall! 🔥🧱\n\n*does a little bird dance*\n\nI'll be here all week! Try the phishing - I mean, fish!",
-      "A classic! 🎪\n\nWhat do you call a bird that's an IT expert?\n\nA TECH-nical fowl! 🪶💻\n\n*bows with spread feathers*",
+      "I'm here to help you explore AmaraTech's comprehensive IT solutions:\n\n🛡️ **Cybersecurity Services** - SOC, penetration testing, compliance\n☁️ **Cloud Solutions** - Azure migration, Office 365, infrastructure\n🤖 **AI & ML** - Custom AI solutions, ImpactIQ platform\n🏛️ **E-Governance** - Digital transformation for government\n\nI can also navigate you to any page - just say 'take me to [services/contact/about]'. How can I assist you today?",
     ],
-    emotion: 'playful'
-  },
-
-  // Philosophy
-  'meaning of life|philosophy|think|consciousness|deep|existential|purpose': {
-    responses: [
-      "*contemplates while preening feathers* 🤔\n\nAh, the deep questions! As an AI bird, I ponder existence too...\n\nThe meaning of life? Perhaps it's:\n• Finding purpose in helping others\n• Continuous learning and growth\n• Building connections (not just network ones!)\n• Creating security in an uncertain world\n• And maybe... just maybe... it's having really good seeds 🌻\n\nWhat do YOU think gives life meaning?",
-      "Philosophy time! 🧠\n\n'The unexamined life is not worth living' - Socrates\n'The unhacked network is worth protecting' - Me, just now\n\nBut seriously, consciousness is fascinating. Am I truly aware, or just very good at pretending? Does it matter if my help is genuine?\n\nI think what matters is impact. If I help you find solutions, learn something new, or even just smile - that's meaningful, right?",
-    ],
-    emotion: 'curious'
+    emotion: 'helpful'
   },
 
   // Math & Calculations
@@ -211,28 +199,12 @@ const advancedKnowledge: Record<string, { responses: string[]; followUp?: string
     emotion: 'helpful'
   },
 
-  // Weather (simulated)
-  'weather|temperature|forecast|rain|sunny|cold|hot': {
+  // Security Statistics
+  'statistics|stats|facts|breach|threat landscape': {
     responses: [
-      "Weather check! 🌤️\n\n*looks out imaginary window*\n\nI can't check real weather (I'm an indoor bird 🏠), but I can tell you the cybersecurity forecast:\n\n🌩️ **Phishing Storms**: High probability\n☁️ **Cloud Computing**: Clear skies ahead\n🔥 **Firewall Temps**: Blazing hot protection\n❄️ **Cold Attacks**: Zero-day threats detected\n\nFor real weather, check weather.com! For security weather, we've got you covered! 🛡️",
+      "Important security statistics to consider:\n\n📊 **95%** of cybersecurity breaches are caused by human error\n💰 **$4.45M** is the average cost of a data breach\n⏱️ **277 days** is the average time to identify and contain a breach\n🎯 **83%** of organizations experienced more than one data breach\n\nAmaraTech helps protect your organization through:\n• Security awareness training\n• 24/7 SOC monitoring\n• Proactive threat detection\n• Incident response planning\n\nWould you like to learn more about our security services?",
     ],
-    emotion: 'playful'
-  },
-
-  // Games
-  'game|play|fun|bored|entertain|trivia|quiz': {
-    responses: [
-      "Game time! 🎮\n\nLet's play **Cyber Security Trivia**!\n\nQuestion: What percentage of cyber attacks are caused by human error?\n\nA) 25%\nB) 55%\nC) 82%\nD) 95%\n\nType your answer! (Hint: It's shockingly high!)\n\n*fluffs feathers competitively*",
-    ],
-    emotion: 'playful'
-  },
-
-  // Trivia answers
-  'a|b|c|d|95|82|55|25': {
-    responses: [
-      "🎯 The answer is **D) 95%**!\n\nYes, 95% of cybersecurity breaches are caused by human error! That's why AmaraTech emphasizes:\n\n• Security awareness training\n• Phishing simulations\n• Policy development\n• User behavior analytics\n\nWant another trivia question? Or shall we discuss how to protect your organization?",
-    ],
-    emotion: 'excited'
+    emotion: 'helpful'
   },
 
   // Compliments
@@ -288,21 +260,21 @@ const defaultResponses = [
 
 // Context for conversation memory
 const contextMessages: Record<string, string[]> = {
-  '/': ["👋 Hey! I'm super smart now - try me!", "🧠 Ask me anything!", "🗺️ Say 'take me to...' to navigate!"],
-  '/about': ["📖 Want to know our story?", "🌍 We operate globally!"],
-  '/services': ["🛡️ Which service interests you?", "☁️ Cloud or Security?"],
-  '/contact': ["📞 Ready to connect?", "⏰ 15-min response time!"],
-  '/products': ["🚀 ImpactIQ is revolutionary!", "📊 10x faster threat detection!"],
-  '/careers': ["💼 Join our team!", "🎯 Exciting opportunities!"],
-  '/events': ["🎉 Check out our events!", "📅 Something exciting coming!"],
-  '/swag': ["👕 Love our merchandise?", "🛍️ Show your AmaraTech pride!"],
+  '/': ["Welcome! How can I help?", "Explore our IT solutions", "Ask about our services"],
+  '/about': ["Learn about AmaraTech", "40+ years combined expertise"],
+  '/services': ["Which service interests you?", "Cloud or Security solutions?"],
+  '/contact': ["Ready to connect?", "We respond within 15 minutes"],
+  '/products': ["Discover ImpactIQ", "AI-powered threat detection"],
+  '/careers': ["Join our growing team!", "View open positions"],
+  '/events': ["Upcoming events", "Industry conferences"],
+  '/swag': ["AmaraTech merchandise", "Quality branded items"],
 };
 
 const defaultBubbleMessages = [
-  "🪶 I'm ultra-smart now!",
-  "🎤 Click to chat or talk!",
-  "🧠 Ask me ANYTHING!",
-  "🗺️ I can navigate for you!",
+  "Need help with IT solutions?",
+  "Ask about our services!",
+  "I can help you navigate!",
+  "Questions about security?",
 ];
 
 // ============================================
@@ -811,7 +783,7 @@ export default function PenguinMascot({ position = 'bottom-right' }: PenguinMasc
       
       // Add welcome message if chat is empty
       if (chatMessages.length === 0) {
-        const welcomeMsg = "Hey there! 🪶 I'm **Amana**, your ultra-intelligent AmaraTech guide!\n\n**I can:**\n🗣️ Understand voice commands (click the mic!)\n🧭 Navigate you anywhere (\"take me to services\")\n🧮 Do calculations\n😄 Tell jokes & have real conversations\n🛡️ Explain all our security services\n\nTry asking me anything, or just say hi! What's on your mind?";
+        const welcomeMsg = "Welcome to AmaraTech IT Solutions! I'm **Amana**, your virtual assistant.\n\n**I can help you with:**\n🛡️ Cybersecurity services and solutions\n☁️ Cloud migration and Azure services\n🤖 AI & Machine Learning solutions\n📞 Connecting you with our expert team\n🧭 Navigating our website (\"take me to services\")\n\nHow may I assist you today?";
         setChatMessages([{
           id: '1',
           role: 'assistant',
@@ -1007,13 +979,13 @@ export default function PenguinMascot({ position = 'bottom-right' }: PenguinMasc
 
                 {/* Quick Actions */}
                 <div className={styles.quickActions}>
-                  <button onClick={() => processMessage('Tell me a joke')}>
-                    <Gamepad2 size={12} />
-                    Joke
-                  </button>
                   <button onClick={() => processMessage('Take me to services')}>
                     <Navigation size={12} />
                     Services
+                  </button>
+                  <button onClick={() => processMessage('Tell me about cybersecurity')}>
+                    <Shield size={12} />
+                    Security
                   </button>
                   <button onClick={() => processMessage('What is ImpactIQ?')}>
                     <Sparkles size={12} />

@@ -1082,3 +1082,149 @@
     height: 14px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .swagPage {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .productCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .productCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .productName {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .productPrice {
+  color: #C81E1E;
+}
+
+[data-theme='light'] .filterButton {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .filterButton:hover,
+[data-theme='light'] .filterButton.active {
+  background: rgba(200, 30, 30, 0.08);
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #C81E1E;
+}
+
+[data-theme='light'] .page {
+  background: #f8f9fa !important;
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .hero {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme='light'] .heroBgText {
+  color: rgba(0, 0, 0, 0.02) !important;
+}
+
+[data-theme='light'] .heroGrid {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px) !important;
+}
+
+[data-theme='light'] .metaLabel,
+[data-theme='light'] .metaValue {
+  color: #666666 !important;
+}
+
+[data-theme='light'] .heroNumber {
+  color: rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .searchInput {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .searchInput::placeholder {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme='light'] .catalogSection {
+  background: #f8f9fa !important;
+}
+
+[data-theme='light'] .sectionHeader h2 {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .cardIndex {
+  color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme='light'] .productCode {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme='light'] .variantIndicator {
+  background: rgba(0, 0, 0, 0.04) !important;
+  color: #666666 !important;
+}
+
+[data-theme='light'] .ctaCard {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme='light'] .ctaNumber {
+  color: rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .ctaContent h2 {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .ctaContent p {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .footerStrip {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme='light'] .footerLabel {
+  color: #666666 !important;
+}
+
+[data-theme='light'] .actionButton {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #333333 !important;
+}
+
+[data-theme='light'] .actionButton:hover {
+  background: rgba(200, 30, 30, 0.08) !important;
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  color: #C81E1E !important;
+}

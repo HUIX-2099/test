@@ -715,3 +715,142 @@
     padding: 24px;
   }
 }
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .section {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+[data-theme='light'] .sectionLabel {
+  color: #C81E1E;
+}
+
+[data-theme='light'] .sectionTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .serviceItem {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .serviceItem:hover,
+[data-theme='light'] .serviceItemActive {
+  background: rgba(200, 30, 30, 0.05);
+  border-color: rgba(200, 30, 30, 0.3);
+}
+
+[data-theme='light'] .serviceIndex {
+  color: #666666 !important;
+}
+
+[data-theme='light'] .serviceName {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .serviceItemActive .serviceIndex {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .serviceItemActive .serviceName {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .serviceArrow {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .serviceIcon {
+  color: #C81E1E !important;
+  background: transparent !important;
+}
+
+[data-theme='light'] .orbitRing {
+  border-color: rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .orbitRingOuter {
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .connectionLine {
+  stroke: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .centerNode {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-color: rgba(200, 30, 30, 0.4);
+  box-shadow: 0 4px 30px rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .centerTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .node {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .node:hover {
+  border-color: rgba(200, 30, 30, 0.4);
+  box-shadow: 0 8px 30px rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .nodeActive {
+  background: linear-gradient(135deg, rgba(200, 30, 30, 0.08) 0%, #ffffff 100%);
+  border-color: #C81E1E;
+}
+
+[data-theme='light'] .nodeIcon {
+  color: #333333 !important;
+}
+
+[data-theme='light'] .nodeActive .nodeIcon {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .nodeLabel {
+  color: #333333 !important;
+}
+
+[data-theme='light'] .nodeActive .nodeLabel {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .detailPanel {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .panelHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .panelLabel {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .panelTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .panelDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .specBar {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .specLabel {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .specValue {
+  color: #555555;
+}

@@ -11,8 +11,10 @@ import {
   Zap, Server, ArrowUpRight, Navigation
 } from 'lucide-react';
 import styles from './Footer.module.css';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export default function Footer() {
+  const { theme } = useTheme();
   const servicesLinks = [
     { name: 'Microsoft Azure', href: '/services/azure', code: 'AZR' },
     { name: 'Azure Migration Strategy', href: '/services/azure-migration', code: 'MIG' },
@@ -79,7 +81,7 @@ export default function Footer() {
             <Link href="/" className={styles.logo}>
               <div className={styles.logoMark}>
                 <Image 
-                  src="/logo/AmaraTech IT Logo (new) - dark bg.png" 
+                  src={theme === 'light' ? "/logo/Login Logo (140x60 px) light mode.png" : "/logo/AmaraTech IT Logo (new) - dark bg.png"}
                   alt="AmaraTech IT Solutions" 
                   width={180}
                   height={45}

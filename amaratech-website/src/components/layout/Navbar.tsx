@@ -323,14 +323,6 @@ export default function Navbar() {
 
           {/* Action Buttons */}
           <div className={styles.actions}>
-            <a href="https://login.amaratechit.com" className={styles.navActionBtn}>
-              <LogIn size={14} />
-              <span>Employee Login</span>
-            </a>
-            <a href="https://helpdesk.amaratechit.com" className={styles.navActionBtnPrimary}>
-              <TicketPlus size={14} />
-              <span>Create a Helpdesk Ticket</span>
-            </a>
             <Link href="/contact" className={styles.ctaButton}>
               Contact Us
             </Link>
@@ -457,10 +449,13 @@ export default function Navbar() {
                     <Mail size={16} />
                     <span>Email</span>
                   </a>
-                  <a href="https://login.amaratechit.com" className={styles.menuQuickAction}>
-                    <LogIn size={16} />
-                    <span>Login</span>
-                  </a>
+                  <button 
+                    className={styles.menuQuickAction}
+                    onClick={toggleTheme}
+                  >
+                    {isDarkMode ? <Sun size={16} /> : <Moon size={16} />}
+                    <span>{isDarkMode ? 'Light' : 'Dark'}</span>
+                  </button>
                 </div>
 
                 {/* CTA Button */}
@@ -494,10 +489,14 @@ export default function Navbar() {
           <Users size={20} />
           <span>About</span>
         </Link>
-        <Link href="/blog" className={`${styles.tabItem} ${isTabActive('/blog') ? styles.tabActive : ''}`}>
-          <Layers size={20} />
-          <span>Blog</span>
-        </Link>
+        <button 
+          className={styles.tabItem}
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          <span>{isDarkMode ? 'Light' : 'Dark'}</span>
+        </button>
       </nav>
     </>
   );

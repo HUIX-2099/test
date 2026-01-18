@@ -79,6 +79,8 @@
 }
 
 .logoImage {
+  height: 40px;
+  width: 160px;
   object-fit: contain;
   filter: drop-shadow(0 0 10px rgba(200, 30, 30, 0.3));
 }

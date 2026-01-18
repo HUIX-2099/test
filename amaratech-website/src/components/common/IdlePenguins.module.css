@@ -1,0 +1,92 @@
+/* ============================================
+   IDLE HUDHUD (Hoopoe) - MobaXterm-style Animation
+   ============================================ */
+
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 9998;
+  overflow: hidden;
+}
+
+.walkingPenguin {
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+  transition: filter 0.2s ease;
+}
+
+.walkingPenguin:hover {
+  filter: drop-shadow(0 5px 12px rgba(212, 149, 106, 0.5));
+}
+
+.flyingPenguin {
+  position: absolute;
+  cursor: pointer;
+  pointer-events: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: filter 0.2s ease;
+}
+
+.flyingPenguin:hover {
+  filter: drop-shadow(0 6px 16px rgba(212, 149, 106, 0.5));
+}
+
+.penguinSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Idle Message */
+.idleMessage {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(200, 30, 30, 0.3);
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.idleMessage span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    height: 60px;
+    bottom: 70px; /* Above mobile nav */
+  }
+
+  .idleMessage {
+    bottom: 140px;
+    font-size: 11px;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .idleMessage {
+    max-width: 90vw;
+    white-space: normal;
+    text-align: center;
+  }
+}

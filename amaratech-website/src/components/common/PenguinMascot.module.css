@@ -1,0 +1,885 @@
+/* ============================================
+   PENGUIN MASCOT - 3D Interactive Smart Guide
+   ============================================ */
+
+.mascotContainer {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.mascotContainer.bottom-right {
+  bottom: 16px;
+  right: 16px;
+}
+
+.mascotContainer.bottom-left {
+  bottom: 16px;
+  left: 16px;
+}
+
+/* ============================================
+   SPEECH BUBBLE
+   ============================================ */
+
+.speechBubble {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 10px;
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 30, 30, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  max-width: 220px;
+  min-width: 140px;
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(200, 30, 30, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.speechBubble p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: 'Inter', sans-serif;
+}
+
+.bubbleTail {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid rgba(5, 5, 5, 0.95);
+}
+
+/* ============================================
+   3D PENGUIN/BIRD
+   ============================================ */
+
+.penguin {
+  position: relative;
+  cursor: pointer;
+  width: 50px;
+  height: 62px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  transition: filter 0.3s ease, transform 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.penguin:hover {
+  filter: drop-shadow(0 12px 30px rgba(200, 30, 30, 0.4));
+}
+
+.penguinSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ============================================
+   STATUS INDICATOR
+   ============================================ */
+
+.statusIndicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #C81E1E;
+  box-shadow: 0 0 8px currentColor;
+  animation: pulse 2s ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+/* ============================================
+   CLICK HINT
+   ============================================ */
+
+.clickHint {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 3px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   CALL SOUND VISUAL
+   ============================================ */
+
+.callSound {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #D4956A;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(212, 149, 106, 0.5);
+  pointer-events: none;
+}
+
+/* ============================================
+   MINIMIZED BADGE
+   ============================================ */
+
+.minimizedBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 6px;
+  background: #C81E1E;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(200, 30, 30, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.minimizedBadge:hover {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   APPLE-STYLE CHAT WINDOW
+   ============================================ */
+
+.chatWindowWrapper {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10000;
+}
+
+.perchedBird {
+  position: relative;
+  z-index: 10001;
+  margin-bottom: -8px;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+  transition: transform 0.2s ease;
+}
+
+.perchedBird:hover {
+  transform: scale(1.1);
+}
+
+.chatWindow {
+  width: 360px;
+  height: 480px;
+  background: rgba(28, 28, 30, 0.98);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 25px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(139, 92, 246, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* macOS Window Header */
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, rgba(60, 60, 65, 0.95), rgba(45, 45, 50, 0.95));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+/* Traffic Light Buttons */
+.windowControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.windowBtn {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.windowBtn:hover {
+  filter: brightness(1.1);
+}
+
+.windowBtn::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.windowControls:hover .windowBtn::after {
+  opacity: 1;
+}
+
+.closeBtn {
+  background: linear-gradient(180deg, #FF6058 0%, #E14942 100%);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.closeBtn::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'%3E%3Cpath d='M1 1L5 5M5 1L1 5' stroke='%23820B05' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.minimizeBtn {
+  background: linear-gradient(180deg, #FFBD2E 0%, #DFA123 100%);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.minimizeBtn::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 2'%3E%3Cpath d='M0 1H6' stroke='%23985A10' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.maximizeBtn {
+  background: linear-gradient(180deg, #28C840 0%, #1AAD2B 100%);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.maximizeBtn::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'%3E%3Cpath d='M1.5 3L3 1.5L4.5 3L3 4.5Z' fill='%23116A16'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.chatTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+}
+
+.chatTitle svg {
+  color: #C81E1E;
+}
+
+.chatHeaderActions {
+  display: flex;
+  gap: 8px;
+}
+
+.headerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.headerBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Chat Messages */
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(20, 20, 22, 0.95);
+}
+
+.chatMessages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatMessages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chatMessages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+.chatMessages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.message {
+  display: flex;
+  gap: 8px;
+  max-width: 90%;
+}
+
+.message.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message.assistant {
+  align-self: flex-start;
+}
+
+.avatarIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4956A, #B87A4A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.messageContent {
+  padding: 8px 12px;
+  border-radius: 14px;
+  position: relative;
+}
+
+.message.user .messageContent {
+  background: linear-gradient(135deg, #C81E1E, #a01818);
+  border-bottom-right-radius: 4px;
+}
+
+.message.assistant .messageContent {
+  background: rgba(60, 60, 65, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom-left-radius: 4px;
+}
+
+.messageContent p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+}
+
+.messageTime {
+  display: block;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* Typing Indicator */
+.typingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 12px;
+  background: rgba(60, 60, 65, 0.9);
+  border-radius: 14px;
+  border-bottom-left-radius: 4px;
+}
+
+.typingIndicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typingIndicator span:nth-child(1) { animation-delay: 0s; }
+.typingIndicator span:nth-child(2) { animation-delay: 0.2s; }
+.typingIndicator span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+
+/* Chat Input */
+.chatInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(30, 30, 32, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chatInput input {
+  flex: 1;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  font-size: 12px;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.chatInput input:focus {
+  outline: none;
+  border-color: rgba(200, 30, 30, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.chatInput input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.sendBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #C81E1E, #a01818);
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(200, 30, 30, 0.3);
+}
+
+.sendBtn:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(200, 30, 30, 0.4);
+}
+
+.sendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Quick Actions */
+.quickActions {
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px 10px;
+  background: rgba(25, 25, 28, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+}
+
+.quickActions::-webkit-scrollbar {
+  display: none;
+}
+
+.quickActions button {
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+}
+
+.quickActions button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quickActions button:hover {
+  background: rgba(200, 30, 30, 0.2);
+  border-color: rgba(200, 30, 30, 0.4);
+  color: #ffffff;
+}
+
+.quickActions button svg {
+  opacity: 0.7;
+}
+
+.quickActions button:hover svg {
+  opacity: 1;
+}
+
+/* ============================================
+   VOICE CONTROLS
+   ============================================ */
+
+.voiceControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(20, 20, 25, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.voiceBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+}
+
+.voiceBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.voiceBtn.listening {
+  background: rgba(200, 30, 30, 0.3);
+  border-color: #C81E1E;
+  color: #ffffff;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.voiceBtn.active {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #22C55E;
+}
+
+.voiceBtn.active svg {
+  color: #22C55E;
+}
+
+.aiIndicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(139, 92, 246, 0.9);
+  letter-spacing: 0.02em;
+}
+
+.aiIndicator svg {
+  color: #8B5CF6;
+}
+
+.sendBtn.speaking {
+  animation: speakPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes speakPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .mascotContainer.bottom-right {
+    bottom: 70px;
+    right: 12px;
+  }
+
+  .mascotContainer.bottom-left {
+    bottom: 70px;
+    left: 12px;
+  }
+
+  .penguin {
+    width: 44px;
+    height: 55px;
+  }
+
+  .speechBubble {
+    max-width: 180px;
+    padding: 8px 12px;
+    right: 0;
+    left: auto;
+    transform: none;
+  }
+
+  .bubbleTail {
+    left: auto;
+    right: 20px;
+    transform: none;
+  }
+
+  .speechBubble p {
+    font-size: 10px;
+  }
+
+  .clickHint {
+    font-size: 7px;
+    padding: 2px 6px;
+  }
+
+  .statusIndicator {
+    width: 6px;
+    height: 6px;
+    top: 2px;
+    right: 2px;
+  }
+
+  .chatWindowWrapper {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    align-items: center;
+  }
+
+  .perchedBird {
+    margin-bottom: -6px;
+  }
+
+  .chatWindow {
+    width: 100%;
+    height: 55vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .chatHeader {
+    padding: 10px 12px;
+  }
+
+  .chatTitle span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .penguin {
+    width: 40px;
+    height: 50px;
+  }
+
+  .speechBubble {
+    max-width: 160px;
+    padding: 6px 10px;
+  }
+
+  .chatWindow {
+    height: 60vh;
+  }
+
+  .perchedBird {
+    transform: scale(0.85);
+  }
+
+  .quickActions {
+    padding: 6px 10px 10px;
+    gap: 4px;
+  }
+
+  .quickActions button {
+    padding: 4px 10px;
+    font-size: 9px;
+  }
+}
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .speechBubble {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(200, 30, 30, 0.05);
+}
+
+[data-theme='light'] .speechBubble p {
+  color: #333333;
+}
+
+[data-theme='light'] .bubbleTail {
+  border-top-color: rgba(255, 255, 255, 0.98);
+}
+
+[data-theme='light'] .chatWindow {
+  background: #ffffff;
+  box-shadow: 
+    0 25px 80px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .windowHeader {
+  background: linear-gradient(180deg, #f8f8f8 0%, #ebebeb 100%);
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .chatTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .headerActions button {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .headerActions button:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .chatMessages {
+  background: #fafafa;
+}
+
+[data-theme='light'] .chatMessages::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='light'] .chatMessages::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .messageBubble.assistant {
+  background: #f0f0f0;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .messageText {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .typingIndicator {
+  background: #f0f0f0;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .typingDot {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .chatInputArea {
+  background: #f8f8f8;
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .chatInput input {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .chatInput input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .chatInput input:focus {
+  border-color: rgba(200, 30, 30, 0.5);
+  background: #ffffff;
+}
+
+[data-theme='light'] .quickActions {
+  background: #f8f8f8;
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .quickActions button {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .quickActions button:hover {
+  border-color: rgba(200, 30, 30, 0.4);
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .voiceFooter {
+  background: #f8f8f8;
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .voiceBtn {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .voiceBtn:hover {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .aiIndicator {
+  color: rgba(139, 92, 246, 0.9);
+}

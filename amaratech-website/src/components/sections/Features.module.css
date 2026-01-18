@@ -1,0 +1,545 @@
+/* ============================================
+   FEATURES - Security Operations Dashboard
+   ============================================ */
+
+.features {
+  position: relative;
+  background: #000000;
+  color: #ffffff;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+/* Background Effects */
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headerLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #D4AF37;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.headerMeta {
+  display: flex;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.metaDivider {
+  opacity: 0.3;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.statusDots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.dotActive {
+  composes: dot;
+  background: #22C55E;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+}
+
+/* ============================================
+   MAIN GRID
+   ============================================ */
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* ============================================
+   NETWORK PANEL (Left - Modules Dashboard)
+   ============================================ */
+
+.networkPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.networkViz {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ============================================
+   SECURITY MODULES GRID
+   ============================================ */
+
+.modulesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.moduleCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Gold stripe accent on left */
+.moduleCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #D4AF37 0%, #B8860B 50%, #D4AF37 100%);
+  opacity: 0.6;
+}
+
+.moduleCard:hover,
+.moduleCard.moduleActive {
+  background: rgba(212, 175, 55, 0.04);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.moduleCard:hover::before,
+.moduleCard.moduleActive::before {
+  opacity: 1;
+}
+
+.moduleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.moduleIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.moduleStatus {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 3px 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid currentColor;
+  opacity: 0.8;
+}
+
+.moduleTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #D4AF37;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.moduleMetric {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.metricValue {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.metricLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+}
+
+.moduleProgress {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  opacity: 0.6;
+}
+
+/* ============================================
+   LIVE STATS BAR
+   ============================================ */
+
+.liveStatsBar {
+  display: flex;
+  gap: 24px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.liveStat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.liveStatIcon {
+  color: #C81E1E;
+  opacity: 0.7;
+}
+
+.liveStatValue {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.liveStatLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   TRACKS PANEL (Right - Features List)
+   ============================================ */
+
+.tracksPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 20px;
+}
+
+.trackHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.trackCode {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+}
+
+.trackActivity {
+  color: #22C55E;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Tracks Section */
+.tracksSection {
+  flex: 1;
+}
+
+.tracksList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trackItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.trackItem:hover,
+.trackItem.trackActive {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.trackItem.trackActive {
+  border-left: 2px solid #C81E1E;
+}
+
+.trackNum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  min-width: 20px;
+  padding-top: 2px;
+}
+
+.trackIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(200, 30, 30, 0.1);
+  border: 1px solid rgba(200, 30, 30, 0.2);
+  flex-shrink: 0;
+}
+
+.trackIcon {
+  color: #C81E1E;
+}
+
+.trackContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trackName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #D4AF37;
+}
+
+.trackDesc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.4;
+}
+
+.trackCheck {
+  color: #22C55E;
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ============================================
+   SYSTEM STATUS
+   ============================================ */
+
+.systemStatus {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.statusRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statusLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.05em;
+}
+
+.statusValue {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #22C55E;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footerLogo {
+  font-size: 16px;
+  color: #D4AF37;
+}
+
+.footerCenter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footerCenter span:first-child {
+  color: #C81E1E;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .modulesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .liveStatsBar {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .liveStat {
+    flex: 0 0 calc(50% - 8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .features {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .modulesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .liveStatsBar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .liveStat {
+    flex: 1;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .tracksPanel {
+    padding: 16px;
+  }
+
+  .trackItem {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .moduleCard {
+    padding: 12px;
+  }
+
+  .metricValue {
+    font-size: 20px;
+  }
+
+  .trackName {
+    font-size: 12px;
+  }
+
+  .trackDesc {
+    font-size: 10px;
+  }
+}

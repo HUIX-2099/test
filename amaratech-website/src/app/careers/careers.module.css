@@ -1,0 +1,705 @@
+/* ============================================
+   CAREERS PAGE STYLES
+   ============================================ */
+
+.page {
+  min-height: 100vh;
+  background: #000000;
+  color: #ffffff;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 140px 0 80px;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+}
+
+.heroContent {
+  max-width: 600px;
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.metaIndex {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #C81E1E;
+  letter-spacing: 0.05em;
+}
+
+.metaDivider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.metaLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.titleAccent {
+  color: #C81E1E;
+}
+
+.heroSubtitle {
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cloudsDecor {
+  position: absolute;
+  bottom: 40px;
+  right: 80px;
+  z-index: 5;
+  opacity: 0.6;
+}
+
+.cloudImage {
+  filter: brightness(0.8);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Benefits Section */
+.benefitsSection {
+  padding: 60px 0;
+  background: linear-gradient(to bottom, rgba(200, 30, 30, 0.05), transparent);
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.benefitCard {
+  background: rgba(15, 15, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.benefitCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  transform: translateY(-4px);
+}
+
+.benefitIcon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 30, 30, 0.1);
+  border: 1px solid rgba(200, 30, 30, 0.3);
+  border-radius: 12px;
+  margin: 0 auto 16px;
+  color: #C81E1E;
+}
+
+.benefitCard h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.benefitCard p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}
+
+/* Jobs Section */
+.jobsSection {
+  padding: 80px 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.sectionHeader h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.sectionHeader p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.jobsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.jobCard {
+  background: rgba(15, 15, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.jobCard:hover {
+  border-color: rgba(200, 30, 30, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.jobHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.jobIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 30, 30, 0.1);
+  border: 1px solid rgba(200, 30, 30, 0.3);
+  border-radius: 12px;
+  color: #C81E1E;
+  flex-shrink: 0;
+}
+
+.jobTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.jobDetails {
+  margin-bottom: 24px;
+}
+
+.jobDetail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.jobDetail:last-child {
+  margin-bottom: 0;
+}
+
+.detailLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  min-width: 70px;
+}
+
+.statusBadge,
+.locationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.statusBadge {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #22C55E;
+}
+
+.applyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 24px;
+  background: #C81E1E;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.applyButton:hover {
+  background: #a01818;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200, 30, 30, 0.4);
+}
+
+/* Contact Section */
+.contactSection {
+  padding: 80px 0 120px;
+  background: rgba(10, 10, 15, 0.5);
+}
+
+.contactWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contactInfo h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.contactInfo > p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 32px;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contactItem svg {
+  color: #C81E1E;
+}
+
+.illustration {
+  opacity: 0.5;
+}
+
+/* Contact Form */
+.contactForm {
+  background: rgba(15, 15, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+}
+
+.formGroup label svg {
+  color: #C81E1E;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  resize: none;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #C81E1E;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 32px;
+  background: #C81E1E;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #a01818;
+  transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.successMessage {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 197, 94, 0.1);
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  color: #22C55E;
+}
+
+.successMessage h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.successMessage p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .jobsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contactWrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .illustration {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 0 60px;
+    min-height: auto;
+  }
+
+  .heroContainer {
+    padding: 0 24px;
+  }
+
+  .heroTitle {
+    font-size: 36px;
+  }
+
+  .cloudsDecor {
+    display: none;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .benefitCard {
+    padding: 20px 16px;
+  }
+
+  .jobsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 28px;
+  }
+
+  .contactForm {
+    padding: 28px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 28px;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .jobCard {
+    padding: 24px;
+  }
+
+  .jobHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contactInfo h2 {
+    font-size: 26px;
+  }
+
+  .contactForm {
+    padding: 24px;
+  }
+}
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .careersPage {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .sectionTitle,
+[data-theme='light'] .heroTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .heroSubtitle,
+[data-theme='light'] .sectionSubtitle {
+  color: #555555;
+}
+
+[data-theme='light'] .jobCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .jobCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .jobTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .jobDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .jobTag {
+  background: rgba(0, 0, 0, 0.04);
+  color: #555555;
+}
+
+[data-theme='light'] .contactInfo h2 {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .contactForm {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .page {
+  background: #f8f9fa !important;
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .hero {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%) !important;
+}
+
+[data-theme='light'] .heroOverlay {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0.5) 100%
+  ) !important;
+}
+
+[data-theme='light'] .metaIndex {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .metaLabel {
+  color: #666666 !important;
+}
+
+[data-theme='light'] .benefitsSection {
+  background: #ffffff !important;
+}
+
+[data-theme='light'] .benefitCard {
+  background: #f8f9fa !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme='light'] .benefitCard:hover {
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  background: #ffffff !important;
+}
+
+[data-theme='light'] .benefitTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .benefitDesc {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .jobsSection {
+  background: #f8f9fa !important;
+}
+
+[data-theme='light'] .sectionHeader h2 {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .sectionHeader p {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .contactSection {
+  background: #ffffff !important;
+}
+
+[data-theme='light'] .formInput,
+[data-theme='light'] .formTextarea {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .formInput::placeholder,
+[data-theme='light'] .formTextarea::placeholder {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme='light'] .formInput:focus,
+[data-theme='light'] .formTextarea:focus {
+  border-color: #C81E1E !important;
+}
+
+[data-theme='light'] .noJobsMessage {
+  color: #555555 !important;
+}

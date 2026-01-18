@@ -1,0 +1,1099 @@
+/* ============================================
+   WIREFLOW DESIGN SYSTEM
+   Based on node-based UI flow diagrams
+   ============================================ */
+
+/* Base Page Layout */
+.page {
+  min-height: 100vh;
+  background: #050508;
+  position: relative;
+  overflow: hidden;
+}
+
+.page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(200, 30, 30, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(0, 209, 255, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Grid Background */
+.gridBg {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Page Header */
+.pageHeader {
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.pageHeaderInner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.pageTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pageTitleCode {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.2em;
+}
+
+.pageTitleMain {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.pageTitleAccent {
+  color: #C81E1E;
+}
+
+.pageNumber {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.1);
+  line-height: 1;
+}
+
+.pageDescription {
+  max-width: 600px;
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.breadcrumb a {
+  color: #C81E1E;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.breadcrumb a:hover {
+  opacity: 0.7;
+}
+
+.breadcrumbSep {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   NODE CARD SYSTEM
+   ============================================ */
+
+.nodeCard {
+  position: relative;
+  background: rgba(15, 15, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.nodeCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(200, 30, 30, 0.1);
+}
+
+/* Node Card Header */
+.nodeHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(200, 30, 30, 0.1) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nodeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(200, 30, 30, 0.15);
+  border-radius: 10px;
+  color: #C81E1E;
+}
+
+.nodeTitle {
+  flex: 1;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nodeStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: #22C55E;
+}
+
+.nodeStatusDot {
+  width: 6px;
+  height: 6px;
+  background: #22C55E;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22C55E;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Node Card Body */
+.nodeBody {
+  padding: 20px;
+}
+
+/* Node Card Footer */
+.nodeFooter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   CONNECTION POINTS
+   ============================================ */
+
+.connectionPoint {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #0a0a0f;
+  border: 2px solid #C81E1E;
+  z-index: 10;
+}
+
+.connectionPoint::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #C81E1E;
+  border-radius: 50%;
+}
+
+.connectionPoint.top {
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.connectionPoint.bottom {
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.connectionPoint.left {
+  left: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.connectionPoint.right {
+  right: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ============================================
+   WIRE CONNECTIONS SVG
+   ============================================ */
+
+.wireContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wireSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.wirePath {
+  fill: none;
+  stroke: #C81E1E;
+  stroke-width: 1.5;
+  opacity: 0.4;
+}
+
+.wirePathDashed {
+  stroke-dasharray: 8 4;
+}
+
+.wirePathAnimated {
+  animation: wireFlow 2s linear infinite;
+}
+
+@keyframes wireFlow {
+  from { stroke-dashoffset: 24; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Data packet animation on wire */
+.dataPacket {
+  fill: #C81E1E;
+  filter: drop-shadow(0 0 4px #C81E1E);
+}
+
+/* ============================================
+   TAP INDICATOR (Pill Button Style)
+   ============================================ */
+
+.tapIndicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #C81E1E;
+  border: 2px solid #C81E1E;
+  border-radius: 25px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  box-shadow: 
+    0 0 20px rgba(200, 30, 30, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tapIndicator::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.tapIndicator:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 30px rgba(200, 30, 30, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Outline variant */
+.tapIndicatorOutline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 2px solid #C81E1E;
+  border-radius: 25px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+}
+
+.tapIndicatorOutline::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #C81E1E;
+  border-radius: 50%;
+}
+
+/* ============================================
+   INDUSTRIAL PANEL (Order Tracking Style)
+   ============================================ */
+
+.industrialPanel {
+  position: relative;
+  background: #0a0a0f;
+  border: 2px solid #C81E1E;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.industrialPanel::before,
+.industrialPanel::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #C81E1E;
+}
+
+.industrialPanel::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.industrialPanel::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+.industrialHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(180deg, rgba(200, 30, 30, 0.15) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(200, 30, 30, 0.3);
+}
+
+.industrialBody {
+  padding: 24px 20px;
+}
+
+.industrialFooter {
+  padding: 16px 20px;
+  background: rgba(200, 30, 30, 0.1);
+  border-top: 1px solid rgba(200, 30, 30, 0.2);
+}
+
+/* ============================================
+   FLOW CONNECTOR LINES
+   ============================================ */
+
+.flowConnector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flowConnector::before {
+  content: '';
+  width: 40px;
+  height: 2px;
+  background: #C81E1E;
+  opacity: 0.5;
+}
+
+.flowConnectorDashed {
+  position: relative;
+}
+
+.flowConnectorDashed::before {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  width: 60px;
+  height: 0;
+  border-top: 2px dashed rgba(200, 30, 30, 0.5);
+  transform: translateY(-50%);
+}
+
+.flowConnectorDashed::after {
+  content: '';
+  position: absolute;
+  left: calc(100% + 60px);
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: #C81E1E;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/* Flow Arrow */
+.flowArrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.flowArrow::after {
+  content: '→';
+  color: #C81E1E;
+  font-size: 14px;
+}
+
+/* ============================================
+   MENU LIST (Playlist Style)
+   ============================================ */
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  border-left: 3px solid transparent;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.menuItem:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.menuItemActive {
+  color: #ffffff;
+  font-weight: 600;
+  border-left-color: #C81E1E;
+  background: rgba(200, 30, 30, 0.1);
+}
+
+.menuItemActive::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #C81E1E;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #C81E1E;
+}
+
+/* ============================================
+   DATA ROW (Order Details Style)
+   ============================================ */
+
+.dataRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dataRow:last-child {
+  border-bottom: none;
+}
+
+.dataLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.dataValue {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  text-align: right;
+}
+
+.dataValueLarge {
+  font-size: 32px;
+  font-weight: 300;
+  color: #ffffff;
+}
+
+/* ============================================
+   ICON GRID (Product Categories Style)
+   ============================================ */
+
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.iconGridItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  background: rgba(200, 30, 30, 0.1);
+  border: 1px solid rgba(200, 30, 30, 0.3);
+  border-radius: 8px;
+  color: #C81E1E;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.iconGridItem:hover {
+  background: rgba(200, 30, 30, 0.2);
+  transform: translateY(-2px);
+}
+
+.iconGridItem svg {
+  width: 32px;
+  height: 32px;
+}
+
+.iconGridLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   STAGE DISPLAY (Large Number Style)
+   ============================================ */
+
+.stageDisplay {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.stageBigNumber {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 120px;
+  font-weight: 200;
+  line-height: 0.8;
+  color: rgba(200, 30, 30, 0.3);
+  -webkit-text-stroke: 1px rgba(200, 30, 30, 0.5);
+}
+
+.stageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 20px;
+}
+
+.stageTitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.stageDesc {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 200px;
+}
+
+/* ============================================
+   NAVIGATION FLOW INDICATOR
+   ============================================ */
+
+.navFlow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.navFlowStep {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navFlowDot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.navFlowDot.active {
+  background: #C81E1E;
+  box-shadow: 0 0 10px #C81E1E;
+}
+
+.navFlowLine {
+  width: 40px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navFlowLine.active {
+  background: linear-gradient(90deg, #C81E1E, rgba(200, 30, 30, 0.3));
+}
+
+/* ============================================
+   FLOW SECTION
+   ============================================ */
+
+.flowSection {
+  position: relative;
+  padding: 40px 0;
+}
+
+.flowLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.15em;
+}
+
+.flowLabel::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C81E1E);
+}
+
+/* ============================================
+   STAGE INDICATOR
+   ============================================ */
+
+.stageIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stageNumber {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 72px;
+  font-weight: 200;
+  color: rgba(200, 30, 30, 0.3);
+  line-height: 1;
+}
+
+.stageLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   DATA TABLE
+   ============================================ */
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataTable th {
+  padding: 12px 16px;
+  text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dataTable td {
+  padding: 14px 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.dataTable tr:hover td {
+  background: rgba(200, 30, 30, 0.05);
+}
+
+/* Status Badge */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.statusBadge.active {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22C55E;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.statusBadge.pending {
+  background: rgba(251, 191, 36, 0.15);
+  color: #FBbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.statusBadge.critical {
+  background: rgba(200, 30, 30, 0.15);
+  color: #C81E1E;
+  border: 1px solid rgba(200, 30, 30, 0.3);
+}
+
+/* ============================================
+   METRIC CARD
+   ============================================ */
+
+.metricCard {
+  padding: 24px;
+  background: rgba(15, 15, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+
+.metricValue {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.metricValue.accent {
+  color: #C81E1E;
+}
+
+.metricLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   CORNER DECORATIONS
+   ============================================ */
+
+.cornerDecor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.cornerDecor.topLeft {
+  top: 0;
+  left: 0;
+  border-top: 2px solid rgba(200, 30, 30, 0.5);
+  border-left: 2px solid rgba(200, 30, 30, 0.5);
+}
+
+.cornerDecor.topRight {
+  top: 0;
+  right: 0;
+  border-top: 2px solid rgba(200, 30, 30, 0.5);
+  border-right: 2px solid rgba(200, 30, 30, 0.5);
+}
+
+.cornerDecor.bottomLeft {
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid rgba(200, 30, 30, 0.5);
+  border-left: 2px solid rgba(200, 30, 30, 0.5);
+}
+
+.cornerDecor.bottomRight {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid rgba(200, 30, 30, 0.5);
+  border-right: 2px solid rgba(200, 30, 30, 0.5);
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, #C81E1E 0%, #9A1616 100%);
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(200, 30, 30, 0.3);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(200, 30, 30, 0.4);
+}
+
+.btnSecondary {
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #ffffff;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 16px 60px;
+  }
+
+  .pageHeaderInner {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pageNumber {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+  }
+
+  .nodeHeader {
+    padding: 14px 16px;
+  }
+
+  .nodeBody {
+    padding: 16px;
+  }
+
+  .stageNumber {
+    font-size: 48px;
+  }
+
+  .metricValue {
+    font-size: 28px;
+  }
+}
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .page {
+  background: #f8f9fa !important;
+}
+
+[data-theme='light'] .page::before {
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(200, 30, 30, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(0, 100, 200, 0.02) 0%, transparent 50%);
+}
+
+[data-theme='light'] .gridBg {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+[data-theme='light'] .pageTitleCode {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='light'] .pageTitleMain {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .pageNumber {
+  color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme='light'] .pageDescription {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .breadcrumb {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='light'] .breadcrumb a {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='light'] .breadcrumb a:hover {
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .flowLabel {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #555555 !important;
+}
+
+[data-theme='light'] .tapIndicator,
+[data-theme='light'] .tapIndicatorOutline {
+  color: #C81E1E !important;
+  border-color: #C81E1E !important;
+}
+
+[data-theme='light'] .nodeCard {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='light'] .nodeCard:hover {
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme='light'] .nodeHeader {
+  background: rgba(200, 30, 30, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme='light'] .nodeTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .nodeCode {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme='light'] .nodeBody {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .statusBadge {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #555555 !important;
+}
+
+[data-theme='light'] .statusBadge.active {
+  background: rgba(34, 197, 94, 0.1) !important;
+  border-color: rgba(34, 197, 94, 0.3) !important;
+  color: #16a34a !important;
+}
+
+[data-theme='light'] .statusBadge.critical {
+  background: rgba(200, 30, 30, 0.1) !important;
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  color: #C81E1E !important;
+}
+
+[data-theme='light'] .statusBadge.pending {
+  background: rgba(168, 85, 247, 0.1) !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
+  color: #9333ea !important;
+}
+
+[data-theme='light'] .connectionPoint {
+  background: #C81E1E !important;
+  border-color: #f8f9fa !important;
+}
+
+[data-theme='light'] .cornerDecor {
+  border-color: rgba(200, 30, 30, 0.3) !important;
+}
+
+[data-theme='light'] .btnSecondary {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: #333333 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme='light'] .btnSecondary:hover {
+  background: rgba(200, 30, 30, 0.08) !important;
+  border-color: rgba(200, 30, 30, 0.3) !important;
+  color: #C81E1E !important;
+}

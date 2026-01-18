@@ -1,0 +1,680 @@
+/* ============================================
+   FAQ SECTION
+   Numbered Accordion Design
+   ============================================ */
+
+.faq {
+  position: relative;
+  background: #000000;
+  color: #ffffff;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Two Column Layout for Desktop */
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.headerLabel {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #C81E1E;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   FAQ LIST
+   ============================================ */
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faqItem {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.faqItem.open {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(200, 30, 30, 0.3);
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.faqQuestion:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.questionNumber {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.faqItem.open .questionNumber {
+  color: #C81E1E;
+}
+
+.questionText {
+  flex: 1;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.questionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.faqItem.open .questionIcon {
+  background: rgba(200, 30, 30, 0.15);
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #C81E1E;
+}
+
+.faqAnswer {
+  overflow: hidden;
+}
+
+.faqAnswer p {
+  padding: 0 24px 24px 56px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+}
+
+/* ============================================
+   WHY CHOOSE SECTION
+   ============================================ */
+
+.whyChooseSection {
+  position: relative;
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  height: fit-content;
+}
+
+.bgNumber {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 180px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.whyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 20px;
+}
+
+.whyHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.whyLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+}
+
+.whyTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.titleAccent {
+  color: #C81E1E;
+}
+
+.whyHeaderRight {
+  display: flex;
+  align-items: center;
+}
+
+.whyMeta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.08em;
+}
+
+.whyDescription {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 32px;
+  max-width: 600px;
+}
+
+/* Image */
+.whyImageWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.whyImage {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Benefits List */
+.benefitsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+}
+
+.benefitItem:hover {
+  border-color: rgba(200, 30, 30, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.benefitIndex {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+.benefitIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(200, 30, 30, 0.1);
+  border: 1px solid rgba(200, 30, 30, 0.2);
+  color: #C81E1E;
+  flex-shrink: 0;
+}
+
+.benefitContent {
+  flex: 1;
+}
+
+.benefitTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.benefitDesc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+
+/* Hire CTA */
+.hireCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 24px;
+}
+
+.hireButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: #C81E1E;
+  border: none;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.hireButton:hover {
+  background: #a01818;
+}
+
+.hireRef {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.05em;
+}
+
+/* Bottom Meta */
+.whyMeta2 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.metaItem {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.1em;
+}
+
+.metaDivider {
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 9px;
+}
+
+/* ============================================
+   CONTACT CTA
+   ============================================ */
+
+.contactCTA {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ctaText {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ctaLink {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #C81E1E;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.ctaLink:hover {
+  opacity: 0.8;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .whyChooseSection {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .faqQuestion {
+    padding: 16px 20px;
+    gap: 12px;
+  }
+
+  .questionText {
+    font-size: 14px;
+  }
+
+  .faqAnswer p {
+    padding: 0 20px 20px 44px;
+    font-size: 13px;
+  }
+
+  .contactCTA {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Why Choose Section */
+  .whyChooseSection {
+    padding: 32px 20px;
+  }
+
+  .whyHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .whyTitle {
+    font-size: 24px;
+  }
+
+  .bgNumber {
+    font-size: 120px;
+    right: -10px;
+  }
+
+  .benefitItem {
+    padding: 12px;
+  }
+
+  .benefitIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .benefitTitle {
+    font-size: 14px;
+  }
+
+  .benefitDesc {
+    font-size: 12px;
+  }
+
+  .hireCta {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .whyMeta2 {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .questionIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .whyTitle {
+    font-size: 22px;
+  }
+
+  .benefitItem {
+    flex-wrap: wrap;
+  }
+
+  .benefitIndex {
+    min-width: auto;
+  }
+
+  .bgNumber {
+    display: none;
+  }
+
+  .hireButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .faq {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .gridOverlay {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+[data-theme='light'] .title {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .subtitle {
+  color: #555555;
+}
+
+[data-theme='light'] .faqItem {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .faqItem:hover {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='light'] .faqItem.open {
+  background: #f8f9fa;
+  border-color: rgba(200, 30, 30, 0.3);
+}
+
+[data-theme='light'] .faqQuestion {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .faqQuestion:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='light'] .questionNumber {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .faqItem.open .questionNumber {
+  color: #C81E1E;
+}
+
+[data-theme='light'] .questionText {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .questionIcon {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .faqItem.open .questionIcon {
+  background: rgba(200, 30, 30, 0.1);
+  border-color: rgba(200, 30, 30, 0.3);
+  color: #C81E1E;
+}
+
+[data-theme='light'] .faqAnswer p {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .whyChooseSection {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .bgNumber {
+  color: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='light'] .whyHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .whyTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .whyDescription {
+  color: #555555;
+}
+
+[data-theme='light'] .whyMeta {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .benefitItem {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .benefitItem:hover {
+  border-color: rgba(200, 30, 30, 0.2);
+  background: #ffffff;
+}
+
+[data-theme='light'] .benefitIndex {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .benefitTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .benefitDesc {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .hireCta {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .hireRef {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .whyMeta2 {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .metaItem {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .metaDivider {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='light'] .contactCTA {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .ctaText {
+  color: #555555;
+}

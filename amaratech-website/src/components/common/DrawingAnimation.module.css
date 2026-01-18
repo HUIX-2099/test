@@ -1,0 +1,45 @@
+/* Drawing Animation Container */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* All paths start hidden for drawing effect */
+.svg path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Initial state for circles */
+.svg circle {
+  transform-origin: center;
+}
+
+/* Initial state for text */
+.svg text {
+  opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    max-width: 320px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 280px;
+    padding: 12px;
+  }
+}

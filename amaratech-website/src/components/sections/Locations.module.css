@@ -1,0 +1,730 @@
+/* ============================================
+   LOCATIONS / HOW IT WORKS SECTION
+   Two Column Layout
+   ============================================ */
+
+.locations {
+  position: relative;
+  background: #050505;
+  color: #ffffff;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 20px;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headerLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #C81E1E;
+  letter-spacing: 0.15em;
+}
+
+.sectionTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.headerMeta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.08em;
+}
+
+.sectionDesc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  max-width: 700px;
+  margin-bottom: 48px;
+}
+
+/* ============================================
+   TWO COLUMN GRID
+   ============================================ */
+
+.twoColumnGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ============================================
+   PROCESS CARDS GRID
+   ============================================ */
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.processCard {
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.processCard:hover {
+  border-color: rgba(200, 30, 30, 0.4);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cardIndex {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #C81E1E;
+  line-height: 1;
+}
+
+.cardTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.cardDescription {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+  flex: 1;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.metaValue {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.deliverables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.deliverableTag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 6px 10px;
+  background: rgba(200, 30, 30, 0.1);
+  border: 1px solid rgba(200, 30, 30, 0.2);
+  color: #C81E1E;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   INDUSTRIES SECTION
+   ============================================ */
+
+.industriesSection {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.industriesHeader {
+  margin-bottom: 20px;
+}
+
+.industriesLabel {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.industriesTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.industriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.industryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+}
+
+.industryItem:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: rgba(200, 30, 30, 0.05);
+}
+
+.industryIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.industryItem:hover .industryIcon {
+  border-color: rgba(200, 30, 30, 0.4);
+  color: #C81E1E;
+}
+
+.industryName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+/* ============================================
+   DOWNLOAD SECTION
+   ============================================ */
+
+.downloadSection {
+  padding: 24px;
+  background: rgba(200, 30, 30, 0.05);
+  border: 1px solid rgba(200, 30, 30, 0.15);
+}
+
+.downloadContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.downloadLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+}
+
+.downloadTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.downloadDesc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #C81E1E;
+  border: none;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.downloadButton:hover {
+  background: #a01818;
+}
+
+/* ============================================
+   STORY + VIDEO GRID
+   ============================================ */
+
+.storyVideoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+/* ============================================
+   STORY SECTION
+   ============================================ */
+
+.storySection {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.storyHeader {
+  margin-bottom: 16px;
+}
+
+.storyLabel {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.storyTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.storyText {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+}
+
+/* ============================================
+   YOUTUBE SECTION
+   ============================================ */
+
+.youtubeSection {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.youtubeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(20, 20, 20, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.youtubeLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+}
+
+.youtubeMeta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+}
+
+.youtubeWrapper {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #000;
+}
+
+.youtubeIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ============================================
+   OFFICE CARDS
+   ============================================ */
+
+.officesRow {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.officeCard {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.officeCard:hover {
+  border-color: rgba(200, 30, 30, 0.4);
+}
+
+.officeFlag {
+  font-size: 24px;
+}
+
+.officeInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.officeCity {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.officePhone {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hqBadge {
+  padding: 3px 8px;
+  background: rgba(200, 30, 30, 0.15);
+  border: 1px solid rgba(200, 30, 30, 0.3);
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  color: #C81E1E;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .processGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+
+  .twoColumnGrid {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .locations {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .processGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .twoColumnGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .industriesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .officesRow {
+    flex-direction: column;
+  }
+
+  .storyVideoGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .processCard {
+    padding: 20px;
+  }
+
+  .cardIndex {
+    font-size: 28px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+  }
+
+  .cardDescription {
+    font-size: 13px;
+  }
+
+  .industriesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .industriesSection,
+  .downloadSection,
+  .storySection {
+    padding: 16px;
+  }
+
+  .downloadButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   LIGHT MODE STYLES
+   ============================================ */
+
+[data-theme='light'] .locations {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .sectionHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .sectionTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .headerMeta {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] .sectionDesc {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .processCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .processCard:hover {
+  background: #ffffff;
+  border-color: rgba(200, 30, 30, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .cardHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .cardTitle {
+  color: #1a1a1a !important;
+}
+
+[data-theme='light'] .cardDescription {
+  color: #555555 !important;
+}
+
+[data-theme='light'] .cardMeta {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .metaLabel {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .metaValue {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .industriesSection {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .industriesTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .industryItem {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .industryItem:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .industryIcon {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555555;
+}
+
+[data-theme='light'] .industryItem:hover .industryIcon {
+  color: #C81E1E;
+}
+
+[data-theme='light'] .industryName {
+  color: #333333;
+}
+
+[data-theme='light'] .downloadSection {
+  background: rgba(200, 30, 30, 0.05);
+  border-color: rgba(200, 30, 30, 0.15);
+}
+
+[data-theme='light'] .downloadTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .downloadDesc {
+  color: #555555;
+}
+
+[data-theme='light'] .storySection {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .storyTitle {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .storyText {
+  color: #555555;
+}
+
+[data-theme='light'] .youtubeSection {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .youtubeHeader {
+  background: #f8f9fa;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .youtubeMeta {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] .officeCard {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .officeCard:hover {
+  border-color: rgba(200, 30, 30, 0.3);
+  background: #ffffff;
+}
+
+[data-theme='light'] .officeCity {
+  color: #1a1a1a;
+}
+
+[data-theme='light'] .officePhone {
+  color: #555555;
+}
